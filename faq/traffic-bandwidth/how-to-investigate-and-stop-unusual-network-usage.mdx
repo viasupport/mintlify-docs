@@ -1,6 +1,6 @@
 ---
 title: "How to Investigate and Stop Unusual Network Usage on Linux"
-sidebarTitle: "Detect Unusual Network Usage"
+sidebarTitle: "* Detect Unusual Network Usage"
 description: "Your VPS may start showing abnormal network usage because of hidden background processes — from rogue scripts and crypto miners to misbehaving cron jobs. Learn how to find and stop them before they impact performance."
 slug: "investigate-stop-unusual-network-usage-linux"
 ---
@@ -15,7 +15,7 @@ Unusual network spikes often come from background activity you don’t expect �
 
 Spotting these early helps you prevent wasted data, slow performance, and unexpected network costs.
    
-📘 **Related:** Learn the difference between *traffic* and *bandwidth* in [this EDIS Global guide](https://docs.edisglobal.com/faq/traffic-bandwidth/traffic-vs-bandwidth).  
+📘 **Related:** Learn the difference between *traffic* and *bandwidth* in [this EDBB guide](https://docs.edbb.com/faq/traffic-bandwidth/traffic-vs-bandwidth).  
 
 ---
 
@@ -177,10 +177,10 @@ You’ll see a live list of processes with **sent** and **received** rates — p
 
 ## 7) Check Your Overall Network Usage
 
-If you suspect something has already used too much data, you can review your usage stats directly in your EDIS dashboard.  
+If you suspect something has already used too much data, review your usage stats directly in the EDBB portal.  
 It shows **total monthly usage**, **daily graphs**, and **refill times**.
 
-📘 [Learn how EDIS Global measures network usage and refill cycles here](https://docs.edisglobal.com/faq/traffic-bandwidth/traffic-stats-refill-explained).
+📘 [Learn how EDBB measures network usage and refill cycles here](https://docs.edbb.com/faq/traffic-bandwidth/traffic-stats-refill-explained).
 
 ---
 
@@ -214,7 +214,7 @@ After removing the rogue process, secure your server to prevent it from coming b
   sudo journalctl -u ssh | grep "Failed password"
   ```
 
-💡 *Tip:* You can also follow our detailed [SSH Security Hardening Guide](https://docs.edisglobal.com/getting-started/ssh-security-hardening-guide)  
+💡 *Tip:* You can also follow our detailed [SSH Security Hardening Guide](../../ssh-security-hardening-guide)  
 for advanced protection steps such as disabling root login, changing default SSH ports, and setting up fail2ban.
 
 ---

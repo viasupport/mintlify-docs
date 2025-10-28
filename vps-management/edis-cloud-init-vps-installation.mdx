@@ -1,110 +1,113 @@
 ---
-title: Cloud-Init based VPS Installation
-sidebarTitle:  Cloud-Init
-description: Discover how EDIS Global's shift to Cloud-Init and .qcow2 based installations revolutionizes VPS management. Learn the benefits of Cloud-Init over traditional .iso setups, understand cloudinit_user_data configurations, and experience enhanced efficiency,
+title: "Provision EDBB VPS with Cloud-Init"
+sidebarTitle: "* Cloud-Init"
+description: "Learn how EDBB deploys cloud-init enabled images, where to provide user-data, and how to customize first-boot automation."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-## Easy VPS Installation with Cloud-Init
+## Why EDBB Uses Cloud-Init
 
-***
+- **Automation** – configure hostnames, users, SSH keys, and services without touching the console.  
+- **Speed** – qcow2 templates boot quickly; first-boot scripts complete in minutes.  
+- **Consistency** – the same user-data file produces identical builds across regions.  
+- **Scalability** – perfect for provisioning fleets via the EDBB API or portal.
 
-**Introduction**
+---
 
-EDIS Global has recently transitioned from traditional .iso-based operating system installations to .qcow2 based installations using Cloud-Init for its Virtual Private Servers (VPS). This change affects most recent distributions supporting Cloud-Init. This article aims to explain what Cloud-Init is, the benefits of using Cloud-Init over .iso based installations, and how to utilize `cloudinit_user_data` for effective VPS management.
+## Provide User-Data During Deploy or Reinstall
 
-***
+### New Orders
 
-## What is Cloud-Init?
+1. In the order form, select a Cloud-Init ready Linux image.  
+2. Paste your `#cloud-config` content into the **Cloud-Init user-data** box.  
+3. Complete checkout—once payment clears, the VPS boots and applies the configuration.
 
-Cloud-Init is an industry standard for automated cloud instance initialization. It is used to configure a cloud instance (like a VPS) during its first boot while it is being created. Cloud-Init can perform tasks such as setting the hostname, adding users, and installing packages. It works by reading user data provided during the instance creation process and executing the specified configurations.
+### Existing VPS (Reinstall Workflow)
 
-***
+1. In the EDBB portal, open **Services → your VPS → Reinstall**.  
+2. Choose the target image and paste/replace the user-data.  
+3. Confirm the reinstall. The VPS wipes the disk, boots the new image, and runs your script.
 
-## Benefits of Cloud-Init vs .ISO Based OS Installations
+Need to adjust user-data later? Repeat the reinstall with updated YAML or switch to manual post-boot configuration.
 
-1. **Automated Configuration**: Cloud-Init automates the process of setting up a new VPS, reducing the need for manual configuration.
-
-2. **Speed and Efficiency**: Instances boot and become operational faster compared to .iso installations, enhancing efficiency.
-
-3. **Customization**: Allows for greater customization of the instance on its first boot, tailored to specific needs.
-
-4. **Scalability**: Easier to scale and manage multiple instances, as each can be configured identically or differently based on the provided user data.
-
-5. **Cross-platform Compatibility**: Supports a variety of operating systems, making it versatile for different environments.
-
-***
+---
 
 ## Understanding `cloudinit_user_data`
 
-`cloudinit_user_data` is a powerful feature of Cloud-Init that allows users to provide custom configurations and scripts that the system will execute upon initialization. This data is in the format of `#cloud-config`, which is a YAML-based configuration file.
+Cloud-Init consumes YAML documents that begin with `#cloud-config`.  
+During the first boot, the directives in that document are executed in order—covering everything from package installs to systemd service tweaks.
 
-**Example Configuration Explanation:**
+### Sample Scenario: Deploy a Python App Host
 
 ```yaml
 #cloud-config
-set_hostname: YOUR_HOSTNAME
-user: root
-password: YOUR_ROOT_PASSWORD
-disable_root: false
-disable_root_opts: ""
-ssh_pwauth: True
-manage_etc_hosts: true
-expire: False
-runcmd:
-  - chage -d 19000 root
-  - [
-      /usr/bin/sed,
-      -i,
-      -E,
-      "s/disable_root:.*true/disable_root: false/i",
-      /etc/cloud/cloud.cfg,
-    ]
-  - [
-      /usr/bin/sed,
-      -i,
-      -E,
-      "s/#PermitRootLogin.*/PermitRootLogin yes/i",
-      /etc/ssh/sshd_config,
-    ]
+hostname: app-node-01
 users:
   - default
-power_state:
-  delay: now
-  mode: reboot
-  message: Bye Bye
-  timeout: 30
-  condition: True
+  - name: deploy
+    groups: sudo
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExampleKeyHere
+package_update: true
 package_upgrade: true
+packages:
+  - python3-venv
+  - nginx
+write_files:
+  - path: /etc/systemd/system/app.service
+    owner: root:root
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=Gunicorn Application
+      After=network.target
+
+      [Service]
+      User=deploy
+      WorkingDirectory=/opt/app
+      ExecStart=/opt/app/.venv/bin/gunicorn wsgi:app --bind 0.0.0.0:8000
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+runcmd:
+  - [mkdir, -p, /opt/app]
+  - [chown, -R, deploy:deploy, /opt/app]
+  - [runuser, -l, deploy, -c, "python3 -m venv /opt/app/.venv"]
+  - [systemctl, daemon-reload]
+  - [systemctl, enable, --now, app.service]
+power_state:
+  mode: reboot
 ```
 
-**set\_hostname**: Sets the hostname of the VPS.
+#### Highlights
 
-**user** and **password**: Configures the default user and password.
+- `hostname` – sets the server name for logs and prompts.  
+- `users` – provisions a `deploy` account with sudo access and SSH key authentication.  
+- `package_update` / `package_upgrade` – ensure the instance begins with current patches.  
+- `packages` – installs Python and NGINX immediately after first boot.  
+- `write_files` – drops a systemd unit that manages your Gunicorn app.  
+- `runcmd` – prepares the app directory, ownership, virtual environment, and starts the service.  
+- `power_state` – triggers a reboot once provisioning finishes so services start clean on subsequent boots.
 
-**disable\_root**: Determines whether the root account should be disabled
+---
 
-**ssh\_pwauth**: Enables SSH password authentication.
+## Validate and Troubleshoot
 
-**manage\_etc\_hosts**: Allows Cloud-Init to manage the `/etc/hosts` file.
+- **Log review** – after boot, run `sudo cloud-init status` or check `/var/log/cloud-init.log` for detailed output.  
+- **Redeploy** – if something misfires, edit the YAML, reinstall, and Cloud-Init replays from scratch.  
+- **Version control** – store your user-data files in Git to track changes across environments.
 
-**runcmd**: Executes specified commands on first boot. In this example, it modifies root password expiry and SSH configurations.
+---
 
-**users**: Defines additional users.
+## Additional Tips
 
-**power\_state**: Controls the power state of the instance after initialization, here set to reboot.
+- Combine Cloud-Init with EDBB’s API to generate instances programmatically.  
+- Use multipart MIME format if you need to supply scripts alongside `#cloud-config`.  
+- For images that do not include Cloud-Init, reinstall with a supported template before providing user-data.
 
-**package\_upgrade**: Ensures that all packages are upgraded on first boot.
-
-***
-
-**Summary**
-
-The shift to Cloud-Init and .qcow2 based installations marks a significant advancement in the way EDIS Global manages its VPS offerings. By leveraging Cloud-Init, users can enjoy faster deployment, increased automation, and more customized configurations, enhancing the overall user experience and efficiency.
-
-***
-
-External reference:
+---
 
 <CtaButton label="Official Cloud-Init Documentation" link="https://cloudinit.readthedocs.io/en/latest/" openInNewTab={true} />

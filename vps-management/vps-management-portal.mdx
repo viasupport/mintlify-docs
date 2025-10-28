@@ -1,31 +1,60 @@
 ---
-title: "VPS Control Panel | EDIS KVM Management Portal"
-sidebarTitle: "VPS Control Panel"
-description: "Our dashboard offers a wide range of features including powercycling, autoinstallers, BYO .iso, rDNS, VNC/noVNC, Turnkey images, post-install scripts, traffic pool, statistics, ..."
+title: "VPS Control Panel | EDBB Portal"
+sidebarTitle: "* VPS Control Panel"
+description: "Explore the tools available in the EDBB portal—power cycle your VPS, reinstall OS images, mount custom ISOs, manage rDNS, review traffic, and more."
 ---
 
-## **Overview KVM management portal**
+# Meet the EDBB VPS Portal
 
-Here is a short list of available features of our <a href="https://manage.edisglobal.com/clientarea.php" target="_blank">
- KVM Management portal</a>
+The EDBB portal is the control plane for everything related to your VPS fleet. From reinstalls to rDNS changes, every day-to-day task lives under one interface.
 
-.
-
-- [Power Cycle](./power-cycle-or-reboot-a-vps) Start / Stop / Restart your service
-- [1-Click Installation](./autoinstall-reinstall-install-vps-linux-windows) of common Linux distributions CentOS 9, CentOS 8, CentOS 7, Debian 13 (trixie), Debian 12 (Bookworm), Debian 11 (Bullseye), Debian 10 (Buster), Debian 9 (Stretch), Ubuntu 24.04, Ubuntu 22.04, Ubuntu 18.04, Ubuntu 16.04
-- [1-Click Installation](./autoinstall-reinstall-install-vps-linux-windows) of Windows Server 2022, 2019, 2016, and Windows 10
-- [Upload your own ISO](./bring-your-own-iso) (we are cloud-init ready), or mount provided OS ISOs
-- [Reverse DNS](../faq/ip-addresses/setting-up-reverse-pointers) PTR record delegation for IPv4 and IPv6
-- [VNC Server](./enable-vnc-server) Access your VPS with a desktop VNC client
-- [Console](./enable-vnc-server#novnc-console-instructions) Access your VPS with through the provided web-based noVNC Console
-- Screenshot: Pull a live screenshot from your server (without launching VNC)
-- [System Configuration](./system-configuration-dialog) Customize important hardware emulation settings (ethernet, display, boot timeout, cores vs sockets, vlan)
-- [Post-Install Scripts](./post-install-scripts) (automate your deployment)
-- CPU statistics, Traffic statistics
-- [Detailed Traffic Information](../faq/traffic-bandwidth/traffic-stats-refill-explained) Plan traffic, used traffic, traffic refill/reset days
-- [Traffic Pool](../faq/traffic-bandwidth/traffic-pool-global-and-premium-traffic-zone) Traffic Zone, Traffic Pool Size, Manual Hydration Buttons, Toggle Auto Hydration, Hydration Log per VPS and Traffic Pool balance sheet for your entire account.
-- [Order API](https://docs.edisglobal.com/order-api-reference/order-api-welcome) Automate the entire product lifecycle, including configuration, ordering and cancellations.
-- [Management API](https://docs.edisglobal.com/management-api-reference/authentication/create-auth-session) Automate and remote-control every technical aspect of your VPS hosting plans.
-- Your servers [Support PIN](./your-support-pin)
+<Info>
+  Bookmark <a href="https://my.edbb.com/clientarea.php" target="_blank">my.edbb.com</a> for direct access. Multi-factor authentication is available—enable it from <strong>Account &rarr; Security Settings</strong>.
+</Info>
 
 ![Management Portal](/assets/edis-global-management-portal.webp)
+
+---
+
+## What You’ll Find on the Service Dashboard
+
+- **Status & console controls** – power on/off, soft reboot, live screenshots, and a launch button for the built-in noVNC console.  
+- **System configuration dialog** – adjust CPU topology (cores vs. sockets), BIOS type, boot sequence, and NIC model without opening a ticket.  
+- **ISO management** – mount helper images, <a href="./mount-iso-image">boot recovery tools</a>, or <a href="./bring-your-own-iso">upload a custom ISO</a>.  
+- **Automated reinstalls** – redeploy Linux and Windows templates in minutes with Cloud-Init or unattended setups.  
+- **Network information** – review IPv4/IPv6 assignments, request <a href="../faq/ip-addresses/setting-up-reverse-pointers">reverse DNS changes</a>, and inspect traffic usage.  
+- **Support credentials** – copy the Support PIN before opening a chat so our engineers can verify ownership quickly.
+
+---
+
+## Power & Recovery
+
+- Trigger graceful reboots or emergency power-off commands if the guest OS stops responding.  
+- Enable temporary VNC access for console-level troubleshooting.  
+- Mount password-reset or rescue ISOs to recover access without reinstalling.  
+- Schedule reinstalls with your own Cloud-Init user-data or post-install scripts.
+
+Refer to:
+- <a href="./power-cycle-or-reboot-a-vps">Power cycle or reboot a VPS</a>  
+- <a href="./reset-root-password-linux">Reset root password (Linux)</a>  
+- <a href="./reset-windows-admin-password">Reset Administrator password (Windows)</a>
+
+---
+
+## Billing & Traffic Insights
+
+- See the next renewal date and open invoices for the selected service.  
+- Track monthly bandwidth, hydration events, and remaining pool balance.  
+- Order additional resources—IPv4 addresses, RAM, CPU upgrades—without leaving the portal.
+
+For full billing workflows, visit the <a href="/faq/billing-lifecycle/automated-vps-billing-workflow">automated billing guide</a>.
+
+---
+
+## Stay Organized
+
+- Use the tagging and notes fields to document the role of each VPS.  
+- Export traffic reports for compliance or chargeback purposes.  
+- Manage contact details so the right people receive downtime or invoice alerts.
+
+When you’re ready to remove a server, the portal also handles the entire cancellation workflow—see <a href="/faq/billing-lifecycle/cancel-a-service">Cancel an EDBB VPS</a> for the checklist.

@@ -1,20 +1,18 @@
 ---
-title: "IP spoofing: EDIS Global's strict stance"
-description: Unpack the concept of IP spoofing, understand its potential dangers, and learn about EDIS Global's strict stance against this malicious practice.
+title: "Is IP Spoofing Allowed?"
+sidebarTitle: "* IP Spoofing"
+description: "EDBB enforces source validation across its network. IP spoofing is prohibited and blocked at the edge."
 ---
 
-## Is IP Spoofing allowed?
+## Policy
 
-<Warning>
-  **IP Spoofing is strictly prohibited (and technically not possible) in our
-  network.** EDIS Global has multiple measures in place to prevent IP address
-  spoofing.
-</Warning>
+EDBB does not permit IP spoofing on any service.  
+Edge filters enforce source validation so packets with forged addresses are discarded before they leave the network.
 
-### What is IP spoofing?
+## Rationale
 
-IP spoofing refers to the practice of altering the source IP address in an IP packet header to make it appear as though the packet is coming from a different source than its true origin. This deceptive tactic can serve various malicious purposes.
+- Protects the EDBB backbone and upstream partners from abuse
+- Maintains reputation for shared IP ranges
+- Complies with anti-spoofing best practices (BCP 38/84)
 
-### Dangers and Concerns
-
-IP spoofing can undermine the trust and integrity of network communications, posing significant security risks. It can be used as part of more extensive attacks, deceive users, and evade security systems.
+Accounts found attempting to circumvent these controls risk immediate termination without refund.

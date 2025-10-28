@@ -1,57 +1,27 @@
 ---
-title: CPU Cores vs. CPU Sockets in VPS Environments
-description: Learn about differences between CPU cores and sockets within a VPS setting. Learn about virtualization capabilities and adjusting settings in the KVM management dashboard.
-sidebarTitle: Understanding CPU Cores vs. Sockets
+title: "CPU Cores vs Sockets in VPS"
+sidebarTitle: "* Cores vs Sockets"
+description: "Learn how EDBB exposes vCPUs to your VPS and when to switch between multi-core and multi-socket presentation." 
 ---
 
-import { CtaButton } from "/snippets/cta-button.mdx";
+## Definitions
 
-### Understanding CPU Cores vs. CPU Sockets in VPS Environments
+- **Core** – individual processing unit within a CPU.  
+- **Socket** – physical CPU slot; each socket may host multiple cores.
 
-Virtualization technology has transformed the landscape of modern computing, especially in server environments. Within a Virtual Private Server (VPS) environment, understanding the difference between CPU cores and CPU sockets can be critical to optimizing performance. This article will detail these distinctions, describe how virtualization technology can render vCPU cores, and guide you through adjusting these settings in the VPS management dashboard.
+In virtualization, a vCPU can be presented as multiple cores on a single socket or split across virtual sockets to satisfy guest OS limits.
 
-<CtaButton label="fast forward to guide" link="#3-adjusting-cpu-settings-in-kvm-management-dashboard" />
+## Why Presentation Matters
 
-### 1. CPU Cores vs. CPU Sockets: What's the Difference?
+- Windows editions typically recognize up to two sockets but many cores per socket.  
+- Some licensing models count sockets instead of cores.  
+- Certain software may perform better when cores are exposed as a single socket.
 
-* **CPU Core**: A CPU core is an independent processing unit within a CPU. Modern CPUs can have multiple cores, allowing them to perform multiple tasks simultaneously. In a VPS environment, assigning multiple cores can increase the multitasking capability of a virtual machine.
+## Adjusting in the Portal
 
-* **CPU Socket**: A CPU socket, often just referred to as a socket, is the physical slot on the computer's motherboard that holds the CPU. Each socket can hold one CPU chip, and that chip can contain one or more cores. When a VPS environment refers to 'sockets,' it often means virtual representations of these physical slots.
+1. Open the VPS in the EDBB portal.  
+2. Go to **KVM Settings** → **CPU Topology**.  
+3. Select the desired combination of sockets and cores.  
+4. Shut down the VPS, apply the change, and power it back on.
 
-### 2. Virtualization Capabilities
-
-In the world of virtualization, technology can mimic hardware behavior. This means that a vCPU core can be rendered either as a representation of a CPU socket or as a direct CPU core. While the underlying physical hardware might have a fixed number of sockets and cores, virtualization can manipulate these representations to suit software requirements, like operating system limitations or specific software constraints.
-
-###
-
-### 3. Adjusting CPU Settings in KVM Management Dashboard
-
-If you're using the KVM management dashboard, here's how to access and modify the vCPU presentation:
-
-![CPU Cores vs. CPU Sockets](/assets/vps-system-configuration.webp)
-
-
-
-1. Navigate to your&#x20;
-
-   <a href="https://manage.edisglobal.com/clientarea.php" target="_blank">VPS Management Portal</a>
-
-2. Locate your VPS in the Services tab
-
-3. Click on **KVM Settings**
-
-4. Within the settings, you'll find options to switch between "multiple sockets" and "multiple cores".
-
-5. Choose the desired configuration based on your requirements.
-
-6. Power-Cyle your VPS (shutdown in the OS, power off, power-on)
-
-![CPU Cores vs. CPU Sockets](/assets/huaNpFAxK5PVCl_NLo3ID-tcYuoIemRB1MLqTyqaz6a-20240806-114542.png)
-
-### 4. When to Change the Settings
-
-Typically, you might need to adjust these settings based on the operating system or specific software you are running on your VPS. For example, Microsoft Windows is designed to recognize only two sockets but can handle multiple cores. Hence, if you're running Windows on your VPS, you'll want to ensure your vCPU cores are represented as "multiple cores" rather than "multiple sockets".
-
-**Note**: Always remember to consult documentation or tech support when unsure, as certain settings can affect the performance and stability of your VPS.
-
-<CtaButton label="Check CPU Cores on a Windows VPS" link="./how-to-check-cpu-cores-windows-vps" />
+Choose the topology that matches your operating system and licensing requirements for optimal behavior.

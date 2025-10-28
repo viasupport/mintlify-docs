@@ -1,62 +1,56 @@
 ---
-title: "What is a KVM VPS?"
-description: "EDIS Global KVM VPS offers full hardware virtualization with TUN/TAP, HostCPU passthrough, VLAN support, and flexibility to run almost any OS or networking service."
-sidebarTitle: "KVM VPS Explained"
+title: "What Is a KVM VPS?"
+sidebarTitle: "* KVM Explained"
+description: "See how EDBB KVM virtualization delivers full hardware access, custom OS installs, and advanced networking features."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-## Why KVM Virtual Private Servers are superior
+## Kernel-based Virtual Machines (KVM)
 
-**KVM** are virtual machines based on the KVM hypervisor and provide full hardware virtualization (sometimes called "bare metal virtualization"). Almost every operating system that runs on x86 or AMD64 hardware (Linux distributions, FreeBSD, Microsoft Windows Server, …) can be run inside an EDIS Global KVM.
+EDBB VPS instances run on **KVM**, a Linux hypervisor that exposes virtual hardware directly to each guest.  
+This approach, often called “full virtualization,” behaves much like a dedicated server while retaining the flexibility of cloud resources.
 
-### Key features that differentiate EDIS Global KVM from a standard VPS:
-
-- TUN/TAP device is available (required for VPN)
-- HostCPU passthrough is available (provides hardware functions of Intel processors, e.g. AES-NI for encryption — important for VPN throughput with low CPU impact)
-- Runs all kinds of networking services
-- Runs all kinds of admin panels like cPanel, DirectAdmin, Odin Plesk panel, and many more
-- Additional virtual NICs can be added
-- VLAN tagging within a particular location can be activated
-- KVM can be compared to a dedicated server, with all the benefits of a virtual machine
-- Operating systems can be installed at the touch of a button via one-click installation
-- Manually install or debug inside a noVNC session (comparable to a remote desktop)
-- Bring your own .ISO and boot up a bare-metal backup of any server inside an EDIS KVM
-
-<CtaButton label="Make a KVM yours today" link="https://www.edisglobal.com" openInNewTab={true} />
+You can boot Linux, BSD, or Windows images, upload your own ISO, or restore qcow2 backups—all from the EDBB VPS Portal.
 
 ---
 
-## Unexpected use cases for a KVM VPS
+## Feature Highlights
 
-Beyond hosting websites and running admin panels, a KVM VPS opens the door to some surprising projects:
-
-- 🌍 **Geo-distributed VPN nodes** → spin up exit nodes in dozens of countries to test geo-blocked services, monitor latency, or build private multi-region VPN networks
-- 🔐 **Encrypted data vaults** → run your own end-to-end encrypted backup service, completely isolated from third-party storage providers
-- 📡 **Ad & tracker sinkhole** → deploy Pi-hole or custom DNS filtering to block advertising and trackers for your entire team
-- 🤖 **Automation hubs** → control IoT devices, cron-based workflows, or even manage smart home dashboards from anywhere in the world
-- 🎙 **Internet radio or podcast relay** → broadcast live audio or rebroadcast streams through Icecast/Shoutcast for small-scale media projects
-- 🧪 **Security sandbox** → safely detonate malware samples, test exploits, or run penetration-testing labs with real networking features (thanks to TUN/TAP and HostCPU passthrough)
-- 📈 **Data collection node** → scrape public data, run uptime monitoring, or capture BGP/DNS telemetry from different regions
-- 🎨 **Creative computing** → train small AI models, render art with tools like Stable Diffusion, or host collaborative creative coding environments (Jupyter, Processing, …)
-- 📚 **Learning lab** → simulate complex multi-OS networks for certifications (RHCE, CCNA, …) or for teaching computer science remotely
+- **Host CPU passthrough** – guest systems see modern CPU extensions (AES-NI, AVX2) for high-speed encryption and compute tasks.  
+- **TUN/TAP support** – required for VPN servers and advanced tunneling solutions.  
+- **Multiple NICs** – attach extra virtual network interfaces for segmentation or routing labs.  
+- **VLAN tagging** – enable private layer-2 networks between VPSs in the same facility.  
+- **Console access** – troubleshoot with noVNC even if SSH is down.  
+- **Bring-your-own-image** – boot custom installers, recovery tools, or tailored qcow2 snapshots.
 
 ---
 
-## KVM VPS FAQ
+## Use Cases Beyond Web Hosting
 
-**Is a KVM VPS like a dedicated server?**\
-Almost — you get the same flexibility as a dedicated server, but at a fraction of the cost.
-
-**Can I install my own operating system?**\
-Yes. You can upload and boot from your own ISO image or QCOW2.
-
-**Does it support VPNs and encryption?**\
-Yes. TUN/TAP and HostCPU passthrough are available for high-performance VPN and crypto workloads.
-
-**Can I run admin panels like cPanel or Plesk?**\
-Absolutely. Any Linux or Windows-based admin panel runs seamlessly inside your KVM VPS.
+- **Network appliances** – firewalls, BGP routers, or SD-WAN controllers.  
+- **Security labs** – penetration testing platforms or malware analysis sandboxes.  
+- **Virtual desktop** – deliver Windows or Linux desktops over RDP/VNC.  
+- **Container platforms** – run Kubernetes, Nomad, or Docker Swarm with full kernel control.  
+- **Telecom workloads** – softswitches, SIP routers, or PBX platforms needing precise networking.  
+- **Data processing** – Python, Go, or Rust data pipelines with predictable CPU availability.
 
 ---
 
-EDIS Global operates in **50+ locations worldwide**, giving you global reach with low latency and reliable infrastructure.
+## Common Questions
+
+**Is a KVM VPS comparable to bare metal?**  
+Yes—each VM gets dedicated resources and direct access to CPU features, while storage and networking remain virtualized for flexibility.
+
+**Can I install my own OS?**  
+Upload an ISO/qcow2 through the portal or mount one of EDBB’s library images and launch the installer.
+
+**Does it support VPN protocols?**  
+Absolutely. TUN/TAP and dedicated CPU instructions make OpenVPN, WireGuard, and IPsec efficient.
+
+**What about control panels?**  
+Plesk, cPanel, DirectAdmin, or any Linux/Windows management stack runs normally on KVM.
+
+---
+
+<CtaButton label="Compare EDBB VPS plans" link="https://www.edbb.com/vps-hosting" openInNewTab={true} />

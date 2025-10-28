@@ -1,67 +1,54 @@
 ---
-title: "Change IP Address"
-description: "Customers can change their VPS’s IP address within 24 hours free; after that, a service fee applies."
+title: "Change Your VPS IPv4"
+sidebarTitle: "* Change IP"
+description: "Swap the primary IPv4 on your EDBB VPS for free within 24 hours, or purchase a standard or bespoke change later on."
 ---
 
-import { CtaButton } from "/snippets/cta-button.mdx";
+## Free Change Within 24 Hours
 
-## How to Change Your IP Address
+Every new VPS includes a one-time IP change at no cost during the first 24 hours.
 
-### Free IP Change (Within 24 Hours)
+Steps:
 
-You’re eligible for one **free IP change** if requested within the first 24 hours of your VPS purchase.
+1. Sign in to the [EDBB dashboard](https://my.edbb.com/clientarea.php).  
+2. Open the VPS under **Services**.  
+3. Click the ♻️ icon next to the current IPv4 to request the change.
 
-**Steps:**
+Once processed, reinstall the VPS or configure the new address manually—the previous IP stops responding immediately.
 
-1. Log in to your EDIS Global [dashboard](https://manage.edisglobal.com/clientarea.php).
-2. Navigate to **Services** and locate your VPS.
-3. Click the ♻️ recycle icon next to your current IP to request the change.
-
-> **Note:** After the IP change, you will need to **reinstall your system or manually configure** the new IP using VNC. Once the new IP is activated, your old IP stops working immediately.
-
-![IP Change Recycle Icon](/assets/vps-change-ip-recycle-symbol.webp)
+![Recycle icon for IP change](/assets/vps-change-ip-recycle-symbol.webp)
 
 ---
 
-## IP Change After 24 Hours (Paid Options)
+## Paid Changes After 24 Hours
 
-If more than 24 hours have passed, IP changes incur a fee. You have two options:
+If the free window has passed, choose one of two add-ons:
 
-| Option | Price | Description |
-|---|---|---|
-| **Standard IP Change** | **€5** | A new IP is automatically assigned (random subnet; no selection). |
-| **Bespoke IP Change** | **€10** | You choose an IP from a provided list of available addresses. |
+| Option | Price | Notes |
+|--------|-------|-------|
+| Standard change | **€5** | Random IPv4 from the available pool |
+| Bespoke change | **€10** | Pick an address from a curated list |
 
-### Standard IP Change
+### Standard IPv4 Change
 
-After payment, the system assigns a random IP from a /24 subnet. You cannot influence the subnet selection.
-> **Note:** “Random” means you cannot pick the subnet or guarantee its prefix.
+The system assigns the next available address automatically. Subnet or prefix cannot be preselected.
 
-<CtaButton label="Order Standard IP Change" link="https://manage.edisglobal.com/cart.php?gid=addons" />
+<CtaButton label="Order Standard Change" link="https://my.edbb.com/cart.php?gid=addons" />
 
-### Bespoke IP Change
+### Bespoke IPv4 Change
 
-You will receive a list of available IPs (from varying prefixes) and can choose one.
-> **Note:** If you previously had an IP and it’s still unassigned, you may see it in this list.
+Review the list of eligible addresses presented after ordering and choose the one that fits your needs.
 
-<CtaButton label="Order Bespoke IP Change" link="https://manage.edisglobal.com/cart.php?gid=addons" />
+<CtaButton label="Order Bespoke Change" link="https://my.edbb.com/cart.php?gid=addons" />
 
 ---
 
-## Configure New IP After Change (for ALL cases)
+## Don’t Forget to Apply the New IP
 
-> **Important:** Once the new IP is assigned, the **old IP immediately stops working**. You must activate the new IP by either:
->
-> • **Reinstalling your VPS**, or
-> • **Manually configuring** it using VNC
+After the change completes:
 
-<CtaButton label="(Re-) Install Linux/Windows" link="../../vps-management/autoinstall-reinstall-install-vps-linux-windows" />
-<CtaButton label="Enable VNC server" link="../../vps-management/enable-vnc-server" />
+- Reinstall the VPS, **or**  
+- Configure the new IPv4 through the console or operating system tools.
 
----
-
-## Summary & Recommendations
-
-- If within 24 hours → use the **free IP change**.
-- After 24 hours → choose **Standard** or **Bespoke**.
-- **Always** follow up by reinstalling or configuring your new IP (see above).
+<CtaButton label="(Re)install OS" link="../../vps-management/autoinstall-reinstall-install-vps-linux-windows" />
+<CtaButton label="Enable VNC" link="../../vps-management/enable-vnc-server" />

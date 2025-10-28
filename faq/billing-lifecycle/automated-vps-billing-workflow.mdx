@@ -1,54 +1,32 @@
 ---
-title: "VPS Billing Workflow"
-description: "The document outlines the automated billing procedure for EDIS Global VPS services, including invoice generation, credit card captures, friendly and overdue reminders, service suspension, termination and data deletion."
+title: "Automated VPS Billing Workflow"
+sidebarTitle: "* Billing Timeline"
+description: "Review EDBB’s invoice timeline, reminders, suspension, and deletion schedule for overdue VPS services." 
 ---
 
-## ⏳ Simplified VPS Billing Workflow
+## Invoice & Reminder Schedule
 
-This timetable shows when we send invoices, reminders, when we suspend services, terminate plans, and when we delete VPS from our disks if an invoice does not receive its payment.
+| Day | Event |
+|-----|-------|
+| -7  | Invoice issued |
+| -6  | Automatic card capture attempt |
+| -2  | Reminder email |
+| 0   | Due date |
+| +1  | Overdue reminder 1 |
+| +2  | Overdue reminder 2 |
+| +3  | Overdue reminder 3 |
+| +7  | Service suspended |
+| +14 | Contract terminated (instance powered off, data still on disk) |
+| +20 | Data deleted permanently |
 
-| **Day** | **Event**             | **Action**                                                        |
-| ------- | --------------------- | ----------------------------------------------------------------- |
-| -7d     | 🟢 Invoice Created    | Invoice is generated and sent                                     |
-| -6d     | 🟢 Credit Card Charge | Automatic attempt to charge your card                             |
-| -2d     | 🟢 Friendly Reminder  | First unpaid reminder sent                                        |
-| 0       | 🟡 Due Date           | Payment is due                                                    |
-| \+1d    | 🟡 Overdue Reminder 1 | First overdue reminder                                            |
-| \+2d    | 🟡 Overdue Reminder 2 | Second overdue reminder                                           |
-| \+3d    | 🟡 Overdue Reminder 3 | Third overdue reminder                                            |
-| \+7d    | 🟠 Service Suspension | VPS service powers down                                           |
-| \+14d   | 🔴 Termination        | VPS agreement ends (service no longer active, data still present) |
-| \+20d   | 🔴 Data Deletion      | All VPS data permanently removed (and invoice is cancelled)       |
+## Reactivating a Suspended VPS
 
-## 🛠 Service Recovery Options
+Pay the outstanding invoice before day +20.  
+Once the processor confirms payment, the VPS powers back on automatically.
 
-### **✅ Your Invoice shows Unpaid**
+## After Data Deletion
 
-**Service recovery is possible!**
+If the invoice reached **Cancelled** status and data was purged, the service cannot be restored.  
+Order a new VPS and restore from your own backups.
 
-Proceed with the payment of your invoice, your service will reactivate automatically. <img src="/assets/invoice-status-unpaid-cropped.webp" alt="Billing WorkflowInvoice timing, payment reminders,..." />
-
-### **❌ If Your Invoice is Cancelled**
-
-#### Service Recovery is Not Available
-
-If your invoice shows as **CANCELLED**, **recovery is NOT possible**.
-
-Your VPS and **all data have been deleted** **(6 days after termination)**
-
-![Billing WorkflowInvoice timing, payment reminders,...](/assets/invoice-status-cancelled-cropped.webp)
-
----
-
-<Note>
-  ## **Client Responsibility Notice**
-
-  VPS customers are solely responsible for:
-
-  - Managing their virtual machines
-  - Creating regular backups of their servers
-  - Securing all important data
-  - Keeping payment methods updated to avoid suspension and deletion
-
-  EDIS Global strongly recommends maintaining backups of all critical information.
-</Note>
+Keep payment methods current and maintain regular backups to avoid downtime or data loss.

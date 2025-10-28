@@ -1,21 +1,21 @@
 ---
 title: "Power Cycle or Reboot a VPS"
-sidebarTitle: "Reboot VPS"
-description: "The document explains how to power-cycle or reboot a Virtual Private Server (VPS) through the KVM management portal or using a shutdown command followed by a power on through the portal."
+sidebarTitle: "* Reboot VPS"
+description: "Learn how to reboot or power-cycle your EDBB VPS via the portal controls or from within the operating system."
 ---
 
 ## Clean & Safe Shutdown (and Start)
 
-You can trigger a shutdown with **"shutdown -h now"** or **"halt"** at the command prompt of your OS, followed by a **"START"** through the KVM management portal. This should be your preferred way to give your machine a clean cold-boot.
+You can trigger a shutdown with **`shutdown -h now`** or **`halt`** inside the OS, then click **Start** in the EDBB portal to power it back on. This is the preferred method for a clean cold boot.
 
 ## Start / Stop and Restart Buttons
 
-If your service is currently in **SHUTDOWN** state, you can **Start** your VPS.
+If your service is currently in **SHUTDOWN** state, you can **Start** your VPS from the portal.
 Regardless of the current state, you always have the option to **Restart** your VPS.
 
 ![Reboot VPS](/assets/vps-start-restart.webp)
 
-If your service is currently in **RUNNING** state, you can **Stop** (Shutdown) your VPS.
+If your service is currently in **RUNNING** state, you can **Stop** (shut down) your VPS.
 You always have the option to **Restart** your VPS.
 
 ![Reboot VPS](/assets/vps-stop-restart.webp)

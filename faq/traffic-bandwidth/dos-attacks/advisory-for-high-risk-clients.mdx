@@ -1,43 +1,18 @@
 ---
-title: "Advisory Notice: Clients at High Risk of DDoS Attacks"
-description: An advisory notice for potential EDIS Global customers who are aware of their vulnerability to frequent denial-of-service attacks.
+title: "Advisory for High-Risk DDoS Workloads"
+sidebarTitle: "* High-Risk Advisory"
+description: "Services that attract frequent DDoS attacks should deploy specialized mitigation outside the standard EDBB VPS platform." 
 ---
 
-import { CtaButton } from "/snippets/cta-button.mdx";
+## Assess Your Risk Profile
 
-## **Advisory Notice for Potential Clients at High Risk of DDoS Attacks**
+If your application is routinely targeted by DDoS attacks, consider whether a standard VPS platform meets your needs.  
+EDBB safeguards shared infrastructure, but we do not deliver per-customer scrubbing or bespoke mitigation.
 
-At EDIS Global, we prioritize the safety, reliability, and integrity of our infrastructure and services for all clients. With this in mind, we'd like to offer guidance to potential clients who are known to be at high risk of frequent denial-of-service attacks.
+## Recommended Approach
 
-### **Understanding Your Risk**
+- Use providers that specialize in absorbing sustained attacks (e.g., CDN/scrubbing services).  
+- Place EDBB instances behind reverse proxies or filtering stacks when possible.  
+- Maintain incident response plans and upstream contacts for rapid mitigation.
 
-Before considering our services, we urge potential clients to evaluate their vulnerability to cyber-attacks, specifically Distributed Denial of Service (DDoS) attacks. If you are aware that:
-
-1. Your services or platforms have historically been a target of attacks,
-2. Your industry or specific business attracts frequent cyber threats,
-3. You've regularly received DDoS or other denial-of-service attacks in the past,
-
-Please read the following recommendation carefully.
-
-### **EDIS Global's Stance on High-Risk Clients**
-
-For the collective benefit of our clientele and to maintain the stability of our infrastructure:
-
-**We strongly advise clients who know they are prone to frequent attacks or who anticipate becoming targets of denial-of-service attacks not to purchase our services and to look for providers specialized in handling such challenges.**
-
-### **Why This Advisory?**
-
-1. **Infrastructure Impact:** Even with DDoS protection, continuous attacks on a particular client can strain our resources and potentially impact our services for other clients.
-2. **Limited Service-Specific Protection:** As stated in our DDoS Protection Overview, our protection primarily safeguards EDIS Global's infrastructure. We do not offer service-specific DDoS protection.
-3. **Shared Responsibility:** We believe in a shared responsibility model. While we offer tools and protection for our clients, it's crucial for clients to understand their risk profile and act accordingly.
-
-<CtaButton
-  label="EDIS Global's DDoS Protection Overview"
-  link='./edis-global-ddos-protection-overview'
-/>
-
-### **Conclusion**
-
-Ensuring the security and reliability of our services for all clients is paramount to us. If you are aware of your elevated risk to cyber threats, we ask for your understanding and cooperation in considering alternative providers tailored to high-risk scenarios. This is to ensure that EDIS Global can maintain the highest level of service integrity for our broader client base.
-
-If you have questions or concerns regarding this advisory or any other aspect of our services, please reach out to the EDIS Global Support Team. We're always here to assist and provide clarity.
+Choosing the right architecture helps protect your project and ensures the EDBB network stays stable for all customers.

@@ -1,23 +1,47 @@
 ---
 title: "VPS IP Address Settings & Network Info"
-description: "EDS KVM management portal allows users to view and manage their VPS's IP address settings, including IPv4 and IPv6 addresses, gateway, subnet, and DNS servers."
-sidebarTitle: "VPS IP Settings"
+description: "Use the EDBB portal to review IPv4/IPv6 assignments, gateways, and DNS settings for your VPS."
+sidebarTitle: "* VPS IP Settings"
 ---
 
-## IP settings, Network Info
+# Review VPS Networking Details
 
-You can view and manage your VPS's IP address settings in the KVM management portal. This is where you will find the IPv4 and IPv6 addresses, gateway, subnet, and DNS servers.
+Need the exact IP assignments or gateways for your VPS? The EDBB portal keeps everything in one panel so you always know how the server is configured.
+
+---
+
+## Check the Network Info Card
 
 <Steps>
-  <Step title="Log in to your">
-    [VPS Management Portal](https://manage.edisglobal.com/clientarea.php)
+  <Step title="Log in to the portal">
+    Visit <a href="https://my.edbb.com/clientarea.php" target="_blank">my.edbb.com</a> and open <strong>Services</strong>.
   </Step>
-  <Step title="Locate your VPS in the Services tab">
-    
+  <Step title="Select your VPS">
+    Click the target service to bring up the management dashboard.
   </Step>
-  <Step title='Click "Network info"'>
-    
+  <Step title="Open the Network Info section">
+    Scroll to <strong>IP Settings</strong>. Expand the card to see every assigned address and gateway.
   </Step>
 </Steps>
 
 ![IP Address Settings](/assets/vps-network-info.webp)
+
+---
+
+## What You’ll See
+
+- **Primary IPv4** plus any additional addresses that belong to the VPS  
+- **Dedicated /64 IPv6** block, including the auto-configured address currently active on the NIC  
+- **Default gateways** for IPv4 and IPv6 so you can configure static routes inside the OS  
+- **Reverse DNS status** with quick links to edit PTR records  
+- **Nameserver entries** that match the configuration supplied by the hypervisor
+
+Use this view as the source of truth whenever you reconfigure networking inside the guest operating system.
+
+---
+
+## Related Tasks
+
+- Need to swap the main IPv4? Follow the <a href="/faq/ip-addresses/change-ip-address">Change IP guide</a>.  
+- Looking for more addresses? See <a href="/faq/ip-addresses/order-additional-ip-address">Order Additional IPv4</a>.  
+- Troubleshooting IPv6 reachability? Start with <a href="/vps-management/basic-ipv6-troubleshooting">IPv6 quick checks</a>.

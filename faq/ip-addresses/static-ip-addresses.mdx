@@ -1,17 +1,13 @@
 ---
-title: Static IP Addresses
-description: The IP addresses assigned to a VPS, both IPv4 and IPv6, are static and will not change for the duration of the virtual server. Even if the server is reinstalled, the IP addresses will remain the same.
+title: "Are EDBB VPS IPs Static?"
+sidebarTitle: "* Static IPs"
+description: "Every EDBB VPS includes a static IPv4 and /64 IPv6 allocation that stays assigned for the lifetime of the service."
 ---
 
-## Are VPS IP Addresses Static or Dynamic?
+## Static by Default
 
-<Note>
-  Both the **IPv4 address and the IPv6 /64 prefix** assigned to your VPS **are
-  "static".**
-</Note>
+Each VPS receives:  \n
+- One dedicated IPv4  \n
+- A /64 IPv6 subnet
 
-This means that they will not change for as long as you have the virtual server.
-
-The IP addresses also remain unchanged in case you need to reinstall your KVM virtual server, no matter how long the reinstall will take you.
-
-**Bottomline:** An IP address assigned to your VPS remains yours till you cancel your server.
+These assignments do not rotate or change automatically.  \n+They persist through reboots, reinstalls, and plan upgrades until you cancel the service or request an IP change.

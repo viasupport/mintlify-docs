@@ -1,33 +1,18 @@
 ---
-title: How to Change VPS Server Location
-description: It is not possible to move an existing server from one location to another
+title: "Can I Move My VPS to Another Location?"
+sidebarTitle: "* Change Location"
+description: "EDBB cannot relocate an existing VPS between locations; provision a new instance in the target region and cancel the old one."
 ---
 
-import { CtaButton } from "/snippets/cta-button.mdx";
+## Relocation Policy
 
-### Understanding VPS Server Location Changes
+Each EDBB VPS is bound to a specific data center and IP allocation.  
+We cannot migrate the same instance to another city or country because routing, storage, and compliance differ per location.
 
-IP addresses are tied to specific server locations and cannot be transferred between geographical regions. Due to this technical limitation, changing the location of an existing server (relocating a server) is not feasible.
+## How to Switch Regions
 
-### Steps to Change VPS Server Location:
+1. Order a new VPS in the desired facility via the EDBB portal.  
+2. Migrate data and services to the new instance.  
+3. Cancel the original VPS once the move is completed.
 
-<Steps>
-  <Step title='Cancellation:'>
-    Cancel the VPS in the location you no longer need.
-  </Step>
-  <Step title='New Order:'>
-    Order a VPS in any other location you need.
-  </Step>
-</Steps>
-
-<CtaButton
-  label='Order VPS'
-  link='https://www.edisglobal.com'
-  openInNewTab={true}
-/>
-
-<CtaButton
-  label='Cancel VPS'
-  link='../billing-lifecycle/cancel-a-service'
-/>
-
+Choose the target site carefully to align with latency, compliance, or GeoIP requirements going forward.

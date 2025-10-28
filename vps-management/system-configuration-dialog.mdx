@@ -1,12 +1,12 @@
 ---
-title: Understanding the System Configuration Dialog in Your EDIS Global VPS
-sidebarTitle: System Configuration
-description: Learn how to configure CPU, disk, network, video, and VLAN settings in your EDIS VPS for optimal performance and compatibility
+title: "Understand the System Configuration Dialog"
+sidebarTitle: "* System Configuration"
+description: "Tune CPU, disk, network, video, and VLAN settings for your EDBB VPS using the system configuration dialog."
 ---
 
 ## ⚙️ System Configuration Dialog in VPS Panel
 
-The **System Configuration** dialog in your VPS management interface allows you to customize important hardware emulation settings. These options help optimize performance and ensure compatibility with your operating system and workloads.
+The **System Configuration** dialog in the EDBB portal lets you customize hardware emulation settings. Adjust these options to optimize performance and ensure compatibility with your operating system and workloads.
 
 Below you'll find a detailed explanation of each setting:
 
@@ -33,7 +33,7 @@ This setting controls how CPU resources are presented to your VPS (only valid if
 - **Multiple Sockets**: Emulates multiple physical CPUs. Useful for certain legacy systems but can introduce overhead.
 - **Multiple Cores**: Emulates multiple cores within a single CPU socket. This is more efficient and recommended for most modern systems.
 
-📖 [Learn more about CPU cores vs. sockets](https://docs.edisglobal.com/faq/upgrades-downgrades/cpu-cores-vs-cpu-sockets-in-vps-environments/understanding-cpu-cores-vs-sockets-in-vps).
+📖 [Learn more about CPU cores vs. sockets](https://docs.edbb.com/faq/upgrades-downgrades/cpu-cores-vs-cpu-sockets-in-vps-environments/understanding-cpu-cores-vs-sockets-in-vps).
 
 ---
 
@@ -70,7 +70,7 @@ The disk driver determines how your VPS’s storage device is presented to the g
 
 > **For Mikrotik RouterOS**:  
 > Set **Disk Driver** to **IDE** to ensure compatibility.  
-> 📖 [Mikrotik CHR installation guide](https://docs.edisglobal.com/advanced-setup-guides/script-based-mikrotik-router-os-installation-guide-winbox)
+> 📖 [Mikrotik CHR installation guide](https://docs.edbb.com/advanced-setup-guides/script-based-mikrotik-router-os-installation-guide-winbox)
 
 ---
 
@@ -84,7 +84,7 @@ Controls the emulated network interface:
 
 > **For Mikrotik RouterOS**:  
 > Set **Network Driver** to **E1000** for the best compatibility.  
-> 📖 [Mikrotik CHR installation guide](https://docs.edisglobal.com/advanced-setup-guides/script-based-mikrotik-router-os-installation-guide-winbox)
+> 📖 [Mikrotik CHR installation guide](https://docs.edbb.com/advanced-setup-guides/script-based-mikrotik-router-os-installation-guide-winbox)
 
 ---
 
@@ -98,7 +98,7 @@ The VNC Keymap ensures that the keyboard layout in your remote VNC session match
 
 Select the layout that corresponds to your local keyboard.
 
-📖 [Learn more about VNC](https://docs.edisglobal.com/vps-management/enable-vnc-server#understanding-vnc).
+📖 [Learn more about VNC](https://docs.edbb.com/vps-management/enable-vnc-server#understanding-vnc).
 
 ---
 
@@ -114,13 +114,10 @@ Example: pro-webserver-ffm
 
 If you have purchased the **Private VLAN** option, this dropdown lets you assign your VPS to a private VLAN. This provides secure, isolated networking between your VPS instances on the same host.
 
-The dropdown will show the VLAN IDs available to your account.
-
-📖 [Learn more about the private VLAN option](https://docs.edisglobal.com/faq/upgrades-downgrades/private-vlan-option)
+The dropdown shows any VLAN IDs provisioned for your account. Contact support if you need VLAN availability extended to additional services.
 
 ---
 
 ## ⚠️ Important Notes:
 - Changing any of these settings requires a **power-cycle** of your VPS to apply the changes.
 - Use the recommended drivers for best performance unless specific compatibility (like with Mikrotik) is required.
-

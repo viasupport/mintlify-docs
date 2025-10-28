@@ -1,0 +1,30 @@
+---
+title: Backup Responsibilities
+sidebarTitle: "* Backup Policy"
+description: Understand your role in safeguarding VPS data and learn how to request image exports when needed.
+---
+
+## You're in Charge of Backups
+
+EDBB prioritizes infrastructure stability, but by design we **do not include snapshot or backup services** for VPS plans built on KVM virtualization.  
+That means you control how, where, and when your data is protected.
+
+### What This Implies
+
+- 🛡 **You’re responsible** for backing up operating systems, configuration files, and application data.
+- 🛡 Schedule backups on a routine cadence so recovery isn’t left to chance.
+
+### Why Routine Backups Matter
+
+Hardware issues, accidental deletions, and security incidents happen.  
+With a reliable backup strategy, you can restore quickly, limit downtime, and avoid permanent data loss.
+
+### How to Back Up and Restore
+
+Our guide, [Backup and Restore Data on Linux](https://docs.edbb.com/backup-restore-data-linux), covers practical approaches including `tar`, `rsync`, `dd`, and `rclone` for off-site storage. Follow the step-by-step instructions that fit your tooling preferences.
+
+### Need a .qcow2 Image?
+
+While instant snapshots aren’t part of the service, you can request a downloadable `.qcow2` image of your virtual disk. A processing fee of **EUR 25** applies.
+
+Details on the request workflow: [Requesting a Downloadable .qcow2 Image Backup](https://docs.edbb.com/faq/upgrades-downgrades/requesting-qcow2-image-backup).

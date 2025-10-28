@@ -1,42 +1,63 @@
 ---
-title: "Upload a Custom ISO image"
-sidebarTitle: Upload Custom ISO
-description: "EDIS allows users to bring their own .ISO files like custom distributions, basically any i386 or AMD64 compatible operating systems or appliances."
+title: "Upload a Custom ISO Image"
+sidebarTitle: "* Upload Custom ISO"
+description: "EDBB lets you mount your own ISO images—install custom OS builds, appliances, or bare-metal backups directly from the portal."
 ---
 
-## EDIS allows you to upload and install your own .ISO
+# Bring Your Own ISO
 
-Boot up a bare-metal backup of any server on your KVM. You can also provide custom distributions. Any i386 or AMD64 compatible operating systems can be run on your KVM.
-
-Use your own custom ISO file to manually install your VPS from the KVM management panel.
+Have a custom installer, recovery toolkit, or bare-metal backup? Upload the ISO directly to the EDBB platform and boot it just like a local image.
 
 ![Upload Custom ISO](/assets/vps-upload-iso.webp)
 
-## Let's do it
+---
+
+## Before You Begin
+
+- Confirm the ISO is accessible via a direct HTTP or HTTPS download URL (no redirects, login prompts, or temporary links).  
+- Large images can take several minutes to copy into the platform—plan a maintenance window.  
+- Keep the VNC console handy; you’ll need it to interact with the installer once the VPS boots from your ISO.
+
+---
+
+## Upload the ISO to EDBB
 
 <Steps>
-  <Step title="Log in to your">
-    [VPS Management Portal](https://manage.edisglobal.com/clientarea.php)
+  <Step title="Open the service dashboard">
+    Sign in at <a href="https://my.edbb.com/clientarea.php" target="_blank">my.edbb.com</a>, go to <strong>Services</strong>, and select the VPS.
   </Step>
-
-  <Step title="Locate your VPS in the Services tab" />
-
-  <Step title="Click &#x22;Mount ISO&#x22;..." />
-  <Step title="Enter a valid (non redirecting) download URL ">
-  Please enter a direct HTTP or HTTPS link to your ISO file. <br />
-  For example: https://example.com/image.iso <br />
-  Non-Redirecting Link: This means the address points straight to the ISO file itself and does not redirect through any other pages or links. Using a direct link ensures a faster, more reliable download and easier verification.
+  <Step title="Launch the custom ISO workflow">
+    Click <strong>ISO Images</strong> &rarr; <strong>Custom ISO</strong>, then choose <strong>Download ISO</strong>.
   </Step>
-  <Step title="Process to download">
-  Click “**Download ISO**” to start and wait until the download finishes completely.
+  <Step title="Paste the direct download link">
+    Provide the full URL to your ISO (for example, <code>https://example.com/images/my-appliance.iso</code>) and confirm.
   </Step>
-
-  
+  <Step title="Wait for the download to finish">
+    The portal shows a progress bar. Leave the page open until the status switches to <strong>Ready</strong>.
+  </Step>
 </Steps>
 
-Once the download is completed, your .iso will be available and can be mounted from the "**Mount ISO**" dialogue. Please pay particular attention to the fact that the uploaded file changes its name and will be provided to you as **xxxx/iso/KVM\_xxxxx\_xxxxxx.iso.**
+Uploaded files are stored under an internal name (e.g., `xxxx/iso/KVM_xxxxx.iso`). That filename is what you’ll see when mounting the image.
+
+---
+
+## Mount and Boot From the ISO
+
+1. Head to the **Mount ISO** tab and pick your newly uploaded file.  
+2. Tick **Force reset & boot from the selected ISO**, then press **Mount ISO**.  
+3. Launch the noVNC console to watch the boot sequence and interact with the installer.  
+4. When you’re finished, return to the portal and unmount the ISO so the VPS boots from disk on the next restart.
+
+Need a refresher on the mounting workflow? See <a href="./mount-iso-image">Mount an ISO Image</a>.
+
+---
+
+## Retention & Housekeeping
+
+- Custom ISOs remain on the platform for **24 hours**. Re-upload them if you need to reuse the image later.  
+- Delete the ISO manually after installation if it contains sensitive software or licensing data.  
+- Make sure you have a backup copy—ISOs are removed automatically when they expire.
 
 <Note>
-  A custom ISO file will be available for 24 hours and will then be removed from
-  your account.
+  If the download fails to complete, verify that the link is direct (no query redirects) and publicly reachable from the internet. You can host ISOs on any HTTPS-capable object storage bucket or web server.
 </Note>

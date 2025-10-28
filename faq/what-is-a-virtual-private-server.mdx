@@ -1,41 +1,52 @@
 ---
-title: "What is a Virtual Private Server (VPS)?"
-description: "A Virtual Private Server (VPS) is a powerful hosting solution with dedicated resources, root access, and full control—ideal for websites, apps, gaming, VPNs, mail servers, and private clouds."
-sidebarTitle: What is a VPS?
+title: "What Is a Virtual Private Server?"
+sidebarTitle: "* VPS Basics"
+description: "Learn how an EDBB VPS differs from shared hosting, what workloads it supports, and why dedicated resources matter."
 ---
 
-## What is a VPS?
+## VPS Fundamentals
 
-A **Virtual Private Server (VPS)** is a type of hosting that gives you your own **dedicated share of a physical server**, with guaranteed resources such as CPU, RAM, and storage. Unlike shared hosting, a VPS offers **isolation, root access, and full customization**—all at a fraction of the cost of a dedicated server.  
+An EDBB **Virtual Private Server (VPS)** is a virtual machine with dedicated CPU, RAM, and storage carved from enterprise hardware.  
+Unlike shared hosting, you receive isolated resources and full root access, so your applications run independently of other customers.
 
-With a VPS, you can install any software, run multiple services, and scale resources as your needs grow.
-
----
-
-### Common VPS Use Cases
-
-1. **Web Hosting** – Host multiple websites or resource-heavy e-commerce stores.  
-2. **Development & Testing** – Build apps, test code, or run isolated OS environments.  
-3. **Database Hosting** – Run MySQL, PostgreSQL, or MongoDB with reliable backups and fast performance.  
-4. **Game Servers** – Host multiplayer games like *Minecraft* or *CS:GO*.  
-5. **Private Cloud** – Create secure cloud storage or SaaS platforms.  
-6. **VPN Services** – Deploy your own VPN for privacy and security.  
-7. **Mail Servers** – Run your own email server with complete control.  
-8. **Customization** – Full root access lets you install, tweak, and configure anything.  
-9. **Dedicated Resources** – Guaranteed CPU, memory, and disk ensure stable performance.  
-10. **Scalability** – Easily upgrade your VPS as your project or business grows.  
+With a VPS you can install any operating system image we provide, customize services, and scale resources as your project grows.
 
 ---
 
-### Why Choose a VPS?
+## Typical Workloads
 
-- **Control**: Install and configure software your way.  
-- **Performance**: No noisy neighbors slowing you down.  
-- **Flexibility**: Run websites, apps, databases, or custom setups.  
-- **Value**: More power than shared hosting, at a lower cost than dedicated servers.  
+- **Web platforms** – host WordPress, headless CMS, or multi-tenant SaaS stacks.  
+- **Databases** – run MySQL, PostgreSQL, Redis, or MongoDB with predictable performance.  
+- **Application backends** – deploy APIs, microservices, or message brokers.  
+- **Game servers** – power Minecraft, Valheim, or CS:GO with low-latency networks.  
+- **Security tooling** – build VPN endpoints, intrusion detection, or honeypots.  
+- **Automation environments** – schedule jobs, run CI pipelines, or orchestrate infrastructure-as-code.  
+- **Learning labs** – practice Linux administration, networking, or certification scenarios in an isolated sandbox.
 
 ---
 
-With **EDIS Global VPS hosting**, you get fast setup, reliable infrastructure across 50+ global locations, and personal support from our expert team, so you can focus on building, not troubleshooting.
+## Why Choose VPS over Shared Hosting?
+
+| Capability | Shared Hosting | EDBB VPS |
+|------------|----------------|----------|
+| Root access | No | Yes |
+| Custom OS | No | Yes |
+| Dedicated resources | No | Yes |
+| Custom networking | Minimal | Full control (IPv4/IPv6, VLAN options) |
+| Performance isolation | Limited | Guaranteed |
+
+- **Performance** – CPU and RAM are reserved for your instance.  
+- **Control** – install packages, tweak kernel parameters, or run container runtimes.  
+- **Reliability** – live dashboards, rescue ISO access, and direct console support via EDBB portal.  
+- **Scalability** – upgrade cores, memory, or storage without rebuilding from scratch.
 
 ---
+
+## Getting Started
+
+1. Pick a location from EDBB’s global footprint.  
+2. Choose a plan that matches your CPU, RAM, and storage needs.  
+3. Add optional Cloud-Init scripts for automated setup.  
+4. Deploy instantly and connect via SSH or RDP (for Windows images).
+
+A VPS balances flexibility and cost, giving you near-dedicated performance without physical server complexity.

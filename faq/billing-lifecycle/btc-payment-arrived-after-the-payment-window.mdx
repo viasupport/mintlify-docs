@@ -1,12 +1,18 @@
 ---
-title: BTC payment arrived after the payment window
-description: A payment arrived late. Customers are advised to contact EDIS support team to get the payment resolved.
+title: "Crypto Payment Arrived After the Time Window"
+sidebarTitle: "* Late Crypto Payment"
+description: "If your crypto payment misses the quoted window, share the transaction details with EDBB so we can reconcile it manually." 
 ---
 
-You paid your EDIS pro-forma invoice with BTC and Coinbase states that
+## Why It Happens
 
-## Your BTC payment has arrived after the payment window.
+CoinPayments and Coinbase Commerce lock exchange rates for a limited time (typically 60 minutes).  
+If the transaction reaches the blockchain after the window, the gateway marks it as delayed and may not auto-match it to your invoice.
 
-​This means that your payment was received by Coinbase. Nevertheless, it was not reported to EDIS, because the payment arrived outside the reserved time window for this particular payment (and the exchange rate could have changed significantly during this timeframe). Coinbase monitors payments to the blockchain address for 60 minutes and marks payments "delayed" if they arrive after these 60 minutes.
+## What to Do
 
-Please get in touch with EDIS support and provide your Coinbase order code (example: 2ELGRYWQ) if it is available to you, or the number of the pro-forma invoice you attempted to pay, including the exact time and day when the payment was made. EDIS will try to resolve the transaction for you and assign the payment to your invoice manually.
+1. Collect the transaction hash (TXID) and, if available, the payment reference or order code shown in the gateway.  
+2. Open a support ticket with the invoice number, TXID, and timestamp.  
+3. EDBB will coordinate with the processor to assign the funds or arrange a refund if appropriate.
+
+Future tip: send the payment immediately after the checkout page displays the wallet and amount to avoid rate-lock expiration.

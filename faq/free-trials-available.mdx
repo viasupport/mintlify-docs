@@ -1,44 +1,40 @@
 ---
-title: "Free VPS Trials at EDIS Global?"
-description: "EDIS Global does not provide free VPS trials. Instead, you can try any VPS plan risk-free with our 24-hour refund policy."
-sidebarTitle: "Free VPS Trial Policy"
+title: "Do You Offer Free VPS Trials?"
+sidebarTitle: "* Free Trial Policy"
+description: "EDBB does not run free VPS trials, but you can evaluate any plan risk-free with a 24-hour refund window and public latency tools."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-## Does EDIS Global offer free VPS trials?
+## No Free Trials, But a Fast Refund Option
 
-No. EDIS Global does not offer free VPS hosting trials.
+EDBB does not provide complimentary VPS trials.  
+Provisioning infrastructure, software licenses, and payment processing costs make true “free tiers” impractical.
 
-However, you can sign up for any regular VPS plan and use our **24-hour refund policy** if the service is not what you expected. That way, you can still try our platform risk-free.
+Instead, every VPS order is backed by a **24-hour refund window**. Spin up any plan, test to your satisfaction, and cancel within the first day for a full refund if it isn’t the right fit.
 
-<CtaButton label="Read our Cancellation & Refund Policy" link="./billing-lifecycle/cancellation-and-refund-policy" openInNewTab={true} />
-
----
-
-## How to test before buying
-
-Even without a free trial, you can test performance and connectivity with our public tools:
-
-1. **Ping Gateways** – [Full list of pingable gateway IPs](http://manage.edis.at/whmcs/stgfefew_net_list.php).\
-   _(Note: not all ranges are available. Please confirm with our team.)_
-2. **Latency Test Utility** – [Measure latency to EDIS Global locations](https://latency.edis.global).\
-   Helps you find the best VPS location near you.
-3. **Looking Glass Servers** – [Worldwide Looking Glass list](https://www.edisglobal.com/blog/looking-glass#list-of-our-worldwide-looking-glass-servers).
-4. **Map View** – [EDIS Global VPS locations on Google Maps](https://www.google.com/maps/d/u/0/edit?mid=1OMZyb6w3t_MNEQ-XYb8QlFjwqio&usp=sharing).\
-   Includes Looking Glass links and many data center addresses.
+<CtaButton label="Cancellation & Refund Policy" link="/faq/billing-lifecycle/cancellation-and-refund-policy" />
 
 ---
 
-## FAQ: Free Trials
+## How to Evaluate Before You Buy
 
-**Why no free VPS trial?**\
-Hourly usage fees and payment provider costs make free trials impractical. Instead, we offer a 24-hour refund.
+1. **Latency Check** – run tests with the [EDBB latency tool](https://latency.edbb.com) to identify the best location.  
+2. **Looking Glass** – inspect routing paths from multiple regions via our [Looking Glass endpoints](https://www.edbb.com/blog/looking-glass#list-of-our-worldwide-looking-glass-servers).  
+3. **Pingable Gateways** – benchmark round-trip times using the [public gateway list](https://my.edbb.com/stgfefew_net_list.php).  
+4. **Network Map** – explore data center locations on [Google Maps](https://www.google.com/maps/d/u/0/edit?mid=1OMZyb6w3t_MNEQ-XYb8QlFjwqio&usp=sharing).
 
-**Can I test latency before purchase?**\
-Yes, use our [Latency Tool](https://latency.edis.global) or any of the [Looking Glass servers](https://www.edisglobal.com/blog/looking-glass#list-of-our-worldwide-looking-glass-servers).
-
-**What if I don’t like the VPS?**\
-Cancel within 24 hours for a full refund.
+These tools let you validate network performance without provisioning a server.
 
 ---
+
+## Frequently Asked
+
+**Why no free credits?**  
+KVM virtualization and global PoPs incur real costs even during evaluation. The refund approach keeps pricing fair for all customers.
+
+**Can I cancel after a few days?**  
+You can cancel whenever you like, but refunds are only guaranteed within 24 hours of initial provisioning.
+
+**What if I need long-term testing?**  
+Order the smallest plan, automate installation with Cloud-Init, and cancel once testing is complete. Monthly pricing remains only a few euros.

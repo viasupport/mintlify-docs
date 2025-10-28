@@ -1,68 +1,28 @@
 ---
-title: "Traffic Explained"
-description: "This article explains how to understand your VPS Traffic Information dashboard, how EDIS Global meters traffic, and what happens when you've used all your traffic."
+title: "Traffic Stats & Monthly Refills"
+sidebarTitle: "* Traffic Dashboard"
+description: "Track how EDBB meters VPS traffic, when usage resets, and what happens at 100% consumption." 
 ---
 
-## All about VPS Traffic, Metering and Refills
+## Where to Check Usage
 
-This document explains how to access and interpret traffic information for a VPS through the Management Portal. It includes details on total traffic used, available (remaining) traffic, and monthly reset/refills, as well as a chart showing cumulative traffic and days remaining until the next refill. Users can also view daily traffic data for every VPS.
+1. Log in to the EDBB client portal.  
+2. Select your VPS under **Services**.  
+3. Review the **Traffic Information** widget for:  
+   - Total traffic consumed this cycle  
+   - Remaining allocation  
+   - Days until the next monthly refill
 
-### Access Your VPS Traffic Information
+Daily charts provide an overview of inbound + outbound usage. Totals reset on the VPS renewal date.
 
-To access your VPS traffic information:
+## Metering & Alerts
 
-<Steps>
-  <Step title="Log in to your">
-    [VPS Management Portal](https://manage.edisglobal.com/clientarea.php)
-  </Step>
+Traffic is counted as the sum of ingress and egress on the virtual NIC.  
+Email warnings trigger at 80%, 90%, and 100% of the plan limit.
 
-  <Step title="Pick any VPS from the Services tab">
-    Review the "Traffic Information" window at the top right.
-  </Step>
-</Steps>
+## At 100% Usage
 
-![Detailed Traffic Information](/assets/cNp-aoYzm2d52KmDABp4u_traffic-info-edis-global.png)
+The interface throttles to roughly 64 kbit/s after a small 5% grace buffer.  
+There are no overage fees; service remains online at the reduced speed.
 
-### Total Traffic Used
-
-The total amount of traffic (GB and percentage) consumed since the beginning of the current **monthly** service timeframe.
-
-### Total Traffic Available
-
-The total amount of traffic included in your plan for a 1-month period.
-
-### Monthly Traffic Reset/Refill
-
-Days remaining for monthly VPS traffic reset. Countdown to when your VPS traffic metrics will be reset and the traffic allocation for your plan is replenished (refill).
-
-### How We Meter Traffic
-
-EDIS Global monitors traffic counters on the Ethernet interfaces of your Virtual Private Servers in real-time. The total traffic usage is determined by summing up the ingress (incoming) and egress (outgoing) traffic.
-
-$$Total Traffic  =  \sum (\text{IN} + \text{OUT})$$
-
-### What Happens When All Traffic is Consumed?
-
-Warnings are sent out at 80%, 90%, and at 100% traffic usage levels. When all traffic is used, your Ethernet interface is throttled to about 64kbit/s. We apply a **5% grace** amount, so the throttling only happens at roughly 105% usage.
-
-There's no overage charge, ensuring your server remains online even if all traffic has been used. There are several options for [restoration](https://docs.edisglobal.com/traffic-pool-global-and-premium-traffic-zone) when traffic has been used in full.
-
-![Detailed Traffic Information](/assets/-n9f9xXjqDwmY3XgFkQUn_daily-traffic-432a39609a.png)
-
-### Exponential Traffic Chart
-
-We have a chart showing the **total (cumulated) traffic** since the last refill. VPS traffic meters are reset and refilled monthly on your product's key (renewal) date.
-
-There is a small indicator (red arrow below) showing how many days until your VPS receives its next monthly traffic refill. This indicator helps you understand whether you should:
-- "Hydrate" your KVM with traffic from your <a href="https://docs.edisglobal.com/traffic-pool-global-and-premium-traffic-zone" target="_blank">Traffic Pool</a>
-- Upgrade to a higher tier
-- Wait for the next refill
-
-The red line represents the total amount of traffic available to your KVM. It usually shows the amount of traffic included in your plan. The line moves higher when you add traffic from the Traffic Pool.
-
-![Detailed Traffic Information](/assets/lHUScqmop6d5_TFXKZlHt_cumulative-traffic-bc46ac6118.png)
-
-<Note>
-  In the panel, hover the mouse over any particular day to get more insights from
-  the readings. Please note that the diagram is rendered exponentially and not linearly.
-</Note>
+To regain full throughput, either wait for the monthly refill or add capacity via the traffic pool or a plan upgrade.

@@ -1,41 +1,18 @@
 ---
-title: Exceeding Monthly Traffic Limit
-sidebarTitle: Exceeding Traffic Limit
-description: Discover what happens when you exceed your monthly traffic limit on EDIS Global and the steps you can take to restore full ethernet speed.
+title: "Exceeded Monthly Traffic"
+sidebarTitle: "* Over Limit"
+description: "When your VPS hits 100% of its traffic allocation, throughput is throttled; learn how to restore full speed." 
 ---
 
-import { CtaButton } from "/snippets/cta-button.mdx";
+## Throttle Behavior
 
-## What happens if I go beyond my traffic allowance?
+After your plan’s traffic allowance is fully consumed (with a 5% grace), the NIC is limited to approximately 64 kbit/s.  
+The VPS remains online but responses will be slow.
 
-### **Speed Limitation**
+## Restore Full Speed
 
-Your virtual private server's ethernet interface speed will be throttled down to approximately 64kbit/s. We apply a 5% grace, so the throttling will only kick in at roughly 105% usage. However, rest assured that your machine will continue to remain online, ensuring there's no complete disruption.
+- **Upgrade the plan** for a higher monthly allowance.  
+- **Assign pool traffic** manually or via auto hydration if you maintain a pool balance.  
+- **Wait for the next reset** on the service renewal date.
 
-### **Options for Restoration**
-
-**Plan Upgrade**: You can choose to upgrade to a higher tier/package. This is usually the most cost-effective solution to add more traffic to your current plan.
-
-<CtaButton
-  label='Upgrade a VPS'
-  link='../upgrades-downgrades/upgrading-a-vps-to-a-higher-tier'
-/>
-
-
-
-**Traffic Pool Top-Up**: If you don’t want to permanently upgrade, you have the option to augment your traffic quota by topping up your traffic pool and by assigning traffic to your service from that pool. An option for automatic refills ("auto-hydration") is available too. Auto-hydration automatically adds 100GB pool traffic to your VPS at 99% traffic usage level.
-
-<CtaButton
-  label='Traffic Pool'
-  link='./traffic-pool-global-and-premium-traffic-zone'
-/>
-
-
-
-**Wait it Out**: If neither of the above options is feasible or desired, you can simply wait. Your traffic will automatically reset and refill to its original limit on the server's monthly due date.
-
-<CtaButton label='Traffic explained' link='./traffic-stats-refill-explained' />
-
-### **Instant Restoration**
-
-Whether you choose to upgrade your plan or to top-up your traffic pool and assign traffic to your service, the imposed 64kbit/s speed limitation will be removed immediately, restoring your server's ethernet port to its original speed instantaneously.&#x20;
+Applying additional traffic or upgrading removes the throttle immediately.

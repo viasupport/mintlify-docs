@@ -1,6 +1,6 @@
 ---
 title: "Manually Resize Disk After Plan Upgrade on live Linux Systems"
-sidebarTitle: "Resize Linux Disk/Partition"
+sidebarTitle: "* Resize Linux Disk/Partition"
 description: "Learn how to manually resize disk space on a live Linux system after a VPS plan upgrade using SystemRescueCD. Follow this step-by-step guide to expand your root partition safely and efficiently. Always back up your data before proceeding."
 ---
 
@@ -10,7 +10,7 @@ description: "Learn how to manually resize disk space on a live Linux system aft
   Resizing disks and partitions on production Linux operating systems is a complex and potentially hazardous process that should only be undertaken by experienced system administrators. There are significant risks involved, including the possibility of data loss. It is imperative to perform a complete backup of all data on the drive before attempting any resizing operations. Additionally, be aware that the process might not work as intended, and unforeseen issues could arise. **Please proceed with caution and use this guide at your own risk.**
 </Warning>
 
-It is not always possible to reinstall the operating system to automatically add disk space. With this guide, you can manually resize your disk and expand the existing root partition.
+It is not always practical to reinstall the operating system just to add disk space. With this guide, you can manually resize your disk and expand the existing root partition.
 
 To resize disk space and unallocated space on your disk, use SystemRescueCD. The SystemRescueCD is a Linux system rescue disk available as a bootable CD-ROM.&#x20;
 
@@ -21,15 +21,15 @@ Here’s a general guide on how to resize disk space manually:
 
 After the Upgrade was confirmed ...
 
-* Login to your <a href="https://manage.edis.at/whmcs/clientarea.php" target="_blank">VPS Management Portal</a>
+* Log in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>
 
 * Locate your VPS from the Services tab
 
-* After confirming the upgrade, <a href="https://docs.edisglobal.com/power-cycle-or-reboot-a-vps" target="_blank">Initiate shutdown</a> (power-off) and turn on the VPS again. It is important to fully power off.
+* After confirming the upgrade, <a href="/vps-management/power-cycle-or-reboot-a-vps" target="_blank">initiate a shutdown</a> (power-off) and turn on the VPS again. It is important to fully power off.
 
 ## Mount System Rescue CD and Boot
 
-* Click <a href="https://docs.edisglobal.com/mount-iso-image" target="_blank">Mount ISO</a>
+* Click <a href="/vps-management/mount-iso-image" target="_blank">Mount ISO</a>
 
 * Select ***System-Rescue-CD-6-x86.iso*** image
 
@@ -37,7 +37,7 @@ After the Upgrade was confirmed ...
 
 * Finish mount by clicking "**Mount ISO**"
 
-* <a href="https://docs.edisglobal.com/enable-vnc-server" target="_blank">
+* <a href="/vps-management/enable-vnc-server" target="_blank">
     **Enable VNC Server**
   </a>
 
@@ -104,11 +104,11 @@ In the GParted window that opens, you will see several partitions. It will vda1 
 
 **Final Steps**:
 
-1. <a href="https://docs.edisglobal.com/mount-iso-image" target="_blank">
+1. <a href="/vps-management/mount-iso-image" target="_blank">
      **Unmount SystemRescueCD**
    </a>
 
-2. <a href="https://docs.edisglobal.com/enable-vnc-server" target="_blank">
+2. <a href="/vps-management/enable-vnc-server" target="_blank">
      **Disable VNC access**
    </a>
 

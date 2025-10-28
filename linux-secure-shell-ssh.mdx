@@ -1,0 +1,48 @@
+---
+title: Linux Secure Shell Overview
+sidebarTitle: "* SSH Basics"
+description: Learn what Secure Shell (SSH) is and how to open an encrypted session to your VPS.
+---
+
+import { CtaButton } from "/snippets/cta-button.mdx";
+
+## Understanding Secure Shell (SSH)
+
+Secure Shell, commonly abbreviated as **SSH**, provides encrypted remote access over untrusted networks.  
+When you connect to your VPS through SSH, both commands and responses are wrapped in cryptography, protecting credentials and data from interception.
+
+Using SSH is the recommended way to administer Linux servers because:
+
+- Authentication and traffic are encrypted end to end
+- Key pairs can enforce multi-factor-style security
+- Command-line automation becomes straightforward and secure
+
+---
+
+## Connect to Your VPS with SSH
+
+Follow these steps on your local machine:
+
+1. Open a terminal or command prompt.
+2. Run the `ssh` command with your VPS username (typically `root`) and public IPv4 address:
+
+```shell
+ssh root@<your-vps-ip>
+```
+
+3. On the first connection, confirm the remote host fingerprint by typing `yes`.
+4. Enter the password from your welcome email (or the password you set during reinstall).
+
+If the authentication succeeds, the remote shell appears and you can manage the server securely.  
+To end the session, type:
+
+```shell
+exit
+```
+
+Ensure SSH access is enabled on the VPS and that you’re using the correct credentials or keys.
+
+<CtaButton
+  label='Blog Post: Are SSH Connections Truly Secure?'
+  link='https://www.edbb.com/blog/are-ssh-connections-secure'
+/>

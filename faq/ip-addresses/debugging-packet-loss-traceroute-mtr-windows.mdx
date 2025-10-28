@@ -1,29 +1,38 @@
 ---
-title: Debugging Packet Loss
-description: Experience connectivity issues with your VPS? Learn how to generate a detailed MTR or TRACEROUTE report on Windows to identify packet loss and speed up the resolution process
+title: "Diagnose Packet Loss (Windows & Linux)"
+sidebarTitle: "* Packet Loss Tests"
+description: "Collect traceroute or MTR output from Windows or Linux to help EDBB support pinpoint connectivity issues between your network and the VPS."
 ---
 
-## Traceroute and MTR on Windows
+## When to Capture Diagnostics
 
-If you're experiencing packet loss or a slow connection between your home internet and your VPS, we would appreciate if you could provide us with an MTR or TRACEROUTE report. This will give us a detailed view of the network path between your home connection and your VPS, highlighting where the packet loss might be occurring.
+If you notice packet loss or unusual latency, share traceroute or MTR/WinMTR results with EDBB support.  
+These reports reveal where along the path traffic is delayed or dropped.
 
-**For Windows Users**:
-Windows does not come with MTR by default, but you can run a TRACEROUTE easily.
+## Windows: Built-in Traceroute
 
-1. **TRACEROUTE**:
-   - Press `Windows + R` to open the Run dialog.
-   - Type `cmd` and press Enter to open the Command Prompt.
-   - In the Command Prompt window, type: `tracert [Your VPS IP Address]`
-   - Wait for it to complete. This can take a few minutes.
-   - Once complete, right-click inside the Command Prompt window, select `Mark`, then highlight the entire result, and press `Enter` to copy.
-   - Paste the results in your reply to us.
-2. **MTR**:
-   - If you specifically want an MTR report, you would need a third-party tool like WinMTR.
-   - Download WinMTR from <a href="https://winmtr.net" target="_blank">here</a>.
-   - Install and open WinMTR.
-   - In the "Host" box, type your VPS IP address.
-   - Click "Start" and let it run for at least 5-10 minutes to gather sufficient data.
-   - After it's done, click on "Export TEXT" and save the report.
-   - Attach the saved report in your reply to us.
+1. Press `Windows + R`, type `cmd`, and press **Enter**.  
+2. Run `tracert <VPS IPv4>`.  
+3. Wait for the trace to finish.  
+4. Right-click the window title → **Edit** → **Mark**, highlight the full output, press **Enter**, then paste it into your ticket.
 
-Please share the results with us, and we'll promptly investigate where the issue might lie and work towards a resolution.
+## Windows: WinMTR
+
+1. Download and install WinMTR.  
+2. Launch the app and enter the VPS IPv4 in **Host**.  
+3. Click **Start** and let it run for 5–10 minutes.  
+4. Use **Export TEXT** to save the results and attach the file.
+
+## Linux (and macOS): traceroute & mtr
+
+1. Install the tools if needed:  
+   - Debian/Ubuntu: `sudo apt update && sudo apt install traceroute mtr`  
+   - RHEL/CentOS/Alma/Rocky: `sudo dnf install traceroute mtr`
+2. Run `traceroute <VPS IPv4>` to capture the hop list.  
+3. Run `mtr -w -c 100 <VPS IPv4>` for a summary, or `mtr -rwzbc 100 <VPS IPv4> > mtr-report.txt` to export a text file.  
+4. Attach the output or saved file when contacting support.
+
+## Submitting the Results
+
+Include the traceroute/WinMTR/MTR output, the time of the test, and the VPS IP in your ticket.  
+EDBB engineers use this hop-by-hop data to determine whether the issue is on your local network, an upstream carrier, or within the data center.

@@ -1,25 +1,17 @@
 ---
-title: Will I lose data when I upgrade?
-description: Information on what happens to your data/disk when you upgrade a plan.
+title: "Will I Lose Data When Upgrading?"
+sidebarTitle: "* Upgrade & Data"
+description: "Plan upgrades add resources but do not modify existing partitions; data stays intact unless you reinstall." 
 ---
 
-## We don't touch your partition when you upgrade
+## What Changes During an Upgrade
 
-EDIS DOES NOT touch/resize your partition!
+- Additional vCPUs, RAM, and monthly traffic allowance are provisioned  
+- The virtual disk size increases, but existing partitions are left untouched
 
-No files will be overwritten, deleted or touched.
+## Data Safety
 
-**Upgrading your plan**
+EDBB does not automatically resize or format your filesystem.  
+Your data remains in place; you can expand partitions manually after the upgrade or leave them as-is.
 
-- adds more RAM
-- adds additional vCPU cores
-- **changes the size of your virtual drive\*** (see note below) and
-- increases the monthly traffic commitment
-
-Upgrading your plan is the most affordable option to add more traffic to your plan.&#x20;
-
-<Note>
-  YOU decide IF you resize your partition manually after the upgrade or if you
-  leave it the way it is. The partition will be provisioned to the new plans'
-  specs only if you decide to reinstall. A reinstall WIPES ALL YOUR DATA.
-</Note>
+Only a full reinstall wipes the disk. Continue running regular backups to protect against accidental loss.
