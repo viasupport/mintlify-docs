@@ -1,92 +1,97 @@
 ---
-title: "Acceptable Use Standards"
+title: "Acceptable Use Policy"
 sidebarTitle: "* Usage Rules"
 description: "Review the conduct requirements for EDBB services, including disallowed content, security restrictions, and activities that lead to termination."
 ---
 
-## 🔒 Activities and Content That Are Not Allowed
+# Using EDBB Services Responsibly
 
-Our **Acceptable Use Policy (AUP)** defines how EDBB resources may be consumed.  
-Using the platform means you agree to operate legally and responsibly. Breaches may result in suspension, termination, or referral to law enforcement.
+<Info>
+  Every VPS order includes agreement to this Acceptable Use Policy (AUP). Breaches can lead to immediate suspension, data deletion, and—where required by law—reports to law-enforcement authorities.
+</Info>
 
-### 🚫 Child Sexual Abuse Material (CSAM)
-
-Hosting, transmitting, or linking to CSAM triggers an immediate shutdown of your services and will be reported to the appropriate authorities.
-
-### 📩 Unsolicited Messaging (Spam)
-
-Bulk unsolicited email is forbidden. Verified spam complaints lead to suspension, and repeated abuse results in cancellation without refund.
-
-### 🌐 Network Tampering
-
-Any attempt to interfere with EDBB or upstream network infrastructure results in instant termination.
-
-### 🐛 Malware or Phishing
-
-Running malware, phishing kit distribution points, or similar malicious resources is strictly prohibited and will be removed without notice.
-
-### 💥 DDoS and Network Attacks
-
-Launching, controlling, or facilitating DDoS tools or related reconnaissance (including unauthorized port scans) is not tolerated.
-
-### 🕸️ TOR and Similar Services
-
-- **TOR Entry Nodes:** allowed  
-- **TOR Middle Nodes and Bridges:** allowed  
-- **TOR Exit Nodes or I2P Outproxies:** forbidden
-
-### 💻 Malicious Software Infrastructure
-
-Command-and-control servers, botnet storage, dropzones, or similar tooling prompt immediate termination and notification of relevant authorities.
-
-### ⛏️ Cryptocurrency Mining
-
-Mining workloads of any type are disallowed on EDBB VPS plans.
-
-### 🏷️ Counterfeit Commerce
-
-Websites offering counterfeit or trademark-infringing goods (e.g., branded apparel replicas) are blocked and the associated services closed.
-
-### ⚖️ Otherwise Illegal Content
-
-If your VPS carries content that violates the law, it will be removed and the service disabled.
-
-### 🔢 IPv6 Usage Limits
-
-- Maximum of **20 IPv6 addresses** per VPS
-- Randomized or rapidly rotating IPv6 sessions that burden routing tables are considered flooding
-- Flooding the IPv6 Neighbor Discovery cache results in termination without reimbursement
-
-### 💬 IRC Hosting
-
-IRC workloads attract abuse. Review our  
-<a href="https://docs.edbb.com/advisory-for-high-risk-clients" target="_blank">Advisory for High-Risk Clients</a>  
-before operating an IRC service with us.
+We split the rules into three quick-reference sections so you can confirm compliance at a glance.
 
 ---
 
-## 🔐 Prohibited Conduct Toward Others
+## 1. Zero-Tolerance Offences
 
-Respect for users, partners, and third parties is mandatory. The following behavior will lead to service termination:
+<CardGroup cols={2}>
+  <Card title="🚨 CSAM & Exploitation">
+    Hosting, relaying, or linking to child sexual abuse material results in instant termination and a report to authorities.
+  </Card>
+  <Card title="🦠 Malware & Botnets">
+    Command-and-control servers, droppers, phishing kits, or similar tooling are removed on sight—no warnings.
+  </Card>
+  <Card title="🔓 Unauthorized Access">
+    Attempts to tamper with EDBB infrastructure or upstream carriers void your service agreement immediately.
+  </Card>
+  <Card title="🌪️ DDoS Operations">
+    Launching attacks, stress testing, or facilitating DDoS orchestration is prohibited.
+  </Card>
+  <Card title="🛍️ Counterfeit Commerce">
+    Storefronts selling fraudulent or trademark-infringing products are shut down.
+  </Card>
+  <Card title="⛏️ Cryptocurrency Mining">
+    CPU, GPU, FPGA, or ASIC mining is not permitted on EDBB VPS plans.
+  </Card>
+</CardGroup>
 
-### 📜 Intellectual Property Infringement
+---
 
-Uploading or distributing material that violates copyrights, trademarks, or patents.
+## 2. Network & Platform Safeguards
 
-### 🗨️ Defamation
+<CardGroup cols={2}>
+  <Card title="📨 Spam & Bulk Messaging">
+    Unsolicited email, SMS, or direct messages are disallowed. Verified complaints suspend the service; repeat offences result in cancellation without refund.
+  </Card>
+  <Card title="🧮 IPv6 Usage">
+    - Maximum of <strong>20 IPv6 addresses</strong> per VPS<br />
+    - Rapid rotation or randomized usage that stresses routing tables counts as abuse<br />
+    - Flooding the Neighbor Discovery cache triggers termination
+  </Card>
+  <Card title="🕵️ Recon Scans">
+    Unauthorized port scans, vulnerability probes, or lateral movement attempts against third-party infrastructure are treated as hostile behaviour.
+  </Card>
+  <Card title="🛡️ TOR & Anonymity">
+    Entry nodes and middle relays are allowed; TOR exit nodes, I2P outproxies, and similar egress services are forbidden.
+  </Card>
+  <Card title="💬 IRC Hosting">
+    IRC workloads attract abuse. Review the <a href="/faq/traffic-bandwidth/dos-attacks/advisory-for-high-risk-clients" target="_blank" rel="noreferrer">Advisory for High-Risk Clients</a> before deploying IRC infrastructure.
+  </Card>
+</CardGroup>
 
-Publishing knowingly false statements that damage the reputation of people or organizations.
+---
 
-### 🔒 Privacy Violations
+## 3. Content & Conduct Rules
 
-Sharing confidential information, doxxing, or posting private images without consent.
+<CardGroup cols={2}>
+  <Card title="📚 Intellectual Property">
+    Do not host or distribute copyrighted, patented, or trademarked materials without proper rights.
+  </Card>
+  <Card title="🗞️ Defamation">
+    Avoid knowingly false statements that damage the reputation of individuals or organisations.
+  </Card>
+  <Card title="🔐 Privacy">
+    No doxxing, non-consensual imagery, or publishing of personal data without permission.
+  </Card>
+  <Card title="💙 Self-Harm Advocacy">
+    Content that promotes, instructs, or glorifies self-harm or suicide is not allowed.
+  </Card>
+  <Card title="🚫 Extremist Content">
+    Propaganda that encourages violence, radicalisation, or discrimination is prohibited.
+  </Card>
+  <Card title="⚖️ Illegal Content">
+    Any material that breaches applicable laws must not be hosted on EDBB infrastructure.
+  </Card>
+</CardGroup>
 
-### ❤️ Self-Harm Content
+---
 
-Materials that encourage, instruct, or glorify self-harm or suicide.
+## Staying Compliant
 
-### ⚠️ Extremist or Hateful Content
+- Keep your contact details current so you can respond quickly to abuse notifications.
+- Apply strong passwords, MFA, and regular patching to prevent compromised workloads.
+- Unsure about an edge case? Contact EDBB Support for clarification before deploying.
 
-Propaganda or messages that promote violence, radicalization, or discrimination.
-
-Operate within these guidelines to keep your services active and our network safe for everyone.
+Following these guidelines keeps the network safe for everyone and ensures your services stay online without interruption.

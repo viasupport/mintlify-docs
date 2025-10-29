@@ -1,48 +1,73 @@
 ---
 title: "Provision EDBB VPS with Cloud-Init"
 sidebarTitle: "* Cloud-Init"
-description: "Learn how EDBB deploys cloud-init enabled images, where to provide user-data, and how to customize first-boot automation."
+description: "Upload a qcow2 image with Cloud-Init support, supply your user-data, and boot it via the EDBB Installation → Custom Image workflow."
 ---
 
-import { CtaButton } from "/snippets/cta-button.mdx";
+# Bring Your Own Cloud-Init Image
 
-## Why EDBB Uses Cloud-Init
+<Info>
+  Cloud-Init lets you boot a custom qcow2 image and execute first-boot automation (user creation, key injection, package installs) without touching the console. Make sure you keep independent backups—the upload process wipes the VPS disk.
+</Info>
 
-- **Automation** – configure hostnames, users, SSH keys, and services without touching the console.  
-- **Speed** – qcow2 templates boot quickly; first-boot scripts complete in minutes.  
-- **Consistency** – the same user-data file produces identical builds across regions.  
-- **Scalability** – perfect for provisioning fleets via the EDBB API or portal.
-
----
-
-## Provide User-Data During Deploy or Reinstall
-
-### New Orders
-
-1. In the order form, select a Cloud-Init ready Linux image.  
-2. Paste your `#cloud-config` content into the **Cloud-Init user-data** box.  
-3. Complete checkout—once payment clears, the VPS boots and applies the configuration.
-
-### Existing VPS (Reinstall Workflow)
-
-1. In the EDBB portal, open **Services → your VPS → Reinstall**.  
-2. Choose the target image and paste/replace the user-data.  
-3. Confirm the reinstall. The VPS wipes the disk, boots the new image, and runs your script.
-
-Need to adjust user-data later? Repeat the reinstall with updated YAML or switch to manual post-boot configuration.
+Cloud-Init is a lightweight framework baked into many Linux templates. On first boot it reads your <code>#cloud-config</code> instructions, creates users, injects SSH keys, installs packages, and runs commands so the server is ready without manual steps.
 
 ---
 
-## Understanding `cloudinit_user_data`
+## Why Use Cloud-Init?
 
-Cloud-Init consumes YAML documents that begin with `#cloud-config`.  
-During the first boot, the directives in that document are executed in order—covering everything from package installs to systemd service tweaks.
+- **Automated onboarding** – preconfigure users, passwords, SSH keys, and services.  
+- **Repeatable builds** – the same image and user-data produce identical environments across regions.  
+- **Custom stacks** – ship bespoke templates or vendor images instead of the standard automated installers.
 
-### Sample Scenario: Deploy a Python App Host
+---
+
+## Prepare Your Image
+
+<CardGroup cols={3}>
+  <Card title="🧰 Build & Clean">
+    Export a <strong>qcow2</strong> disk that already includes Cloud-Init. Remove SSH host keys and temporary data so the instance generates fresh credentials on first boot.
+  </Card>
+  <Card title="📝 Bring user-data">
+    Keep your <code>#cloud-config</code> YAML handy. You’ll paste it in <strong>Expert mode</strong> if you want to run custom tasks on first boot.
+  </Card>
+  <Card title="🔒 Verify & checksum">
+    Confirm the image boots locally and note its checksum. This helps you detect corruption before uploading and keeps reinstalls predictable.
+  </Card>
+</CardGroup>
+
+---
+
+## Upload & Provision (Existing VPS)
+
+<Steps>
+  <Step title="Open the Installation tab">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, choose your VPS, and switch to the <strong>Installation</strong> tab.
+  </Step>
+  <Step title="Select Custom Image">
+    Choose the <strong>Custom Image</strong> sub-tab to reveal the Cloud-Init upload interface.
+  </Step>
+  <Step title="Upload the qcow2 file">
+    Drag & drop your qcow2 (or click <em>browse</em>). The portal stores the image temporarily for this reinstall.
+  </Step>
+  <Step title="Configure Expert mode (optional)">
+    Toggle <strong>Expert mode</strong> if you want to paste Cloud-Init user-data or SSH keys. Supply a strong password—or rely on keys only—and tick the confirmation acknowledging that the disk will be erased.
+  </Step>
+  <Step title="Start the installation">
+    Click <strong>Proceed</strong>. The VPS is rebuilt from your qcow2 image and executes the supplied Cloud-Init directives on first boot.
+  </Step>
+</Steps>
+
+<Note>
+  Uploading a qcow2 image removes the existing disk content permanently. Keep an external backup and verify the checksum of your image before you begin.
+</Note>
+
+---
+
+## Sample `#cloud-config`
 
 ```yaml
 #cloud-config
-hostname: app-node-01
 users:
   - default
   - name: deploy
@@ -53,61 +78,27 @@ users:
 package_update: true
 package_upgrade: true
 packages:
-  - python3-venv
   - nginx
+  - fail2ban
 write_files:
-  - path: /etc/systemd/system/app.service
-    owner: root:root
+  - path: /etc/motd
     permissions: "0644"
+    owner: root:root
     content: |
-      [Unit]
-      Description=Gunicorn Application
-      After=network.target
-
-      [Service]
-      User=deploy
-      WorkingDirectory=/opt/app
-      ExecStart=/opt/app/.venv/bin/gunicorn wsgi:app --bind 0.0.0.0:8000
-      Restart=always
-
-      [Install]
-      WantedBy=multi-user.target
+      Welcome to your automated VPS!
 runcmd:
-  - [mkdir, -p, /opt/app]
-  - [chown, -R, deploy:deploy, /opt/app]
-  - [runuser, -l, deploy, -c, "python3 -m venv /opt/app/.venv"]
-  - [systemctl, daemon-reload]
-  - [systemctl, enable, --now, app.service]
+  - [systemctl, enable, --now, nginx]
+  - [ufw, allow, "OpenSSH"]
 power_state:
   mode: reboot
 ```
 
-#### Highlights
-
-- `hostname` – sets the server name for logs and prompts.  
-- `users` – provisions a `deploy` account with sudo access and SSH key authentication.  
-- `package_update` / `package_upgrade` – ensure the instance begins with current patches.  
-- `packages` – installs Python and NGINX immediately after first boot.  
-- `write_files` – drops a systemd unit that manages your Gunicorn app.  
-- `runcmd` – prepares the app directory, ownership, virtual environment, and starts the service.  
-- `power_state` – triggers a reboot once provisioning finishes so services start clean on subsequent boots.
-
 ---
 
-## Validate and Troubleshoot
+## Validate & Troubleshoot
 
-- **Log review** – after boot, run `sudo cloud-init status` or check `/var/log/cloud-init.log` for detailed output.  
-- **Redeploy** – if something misfires, edit the YAML, reinstall, and Cloud-Init replays from scratch.  
-- **Version control** – store your user-data files in Git to track changes across environments.
-
----
-
-## Additional Tips
-
-- Combine Cloud-Init with EDBB’s API to generate instances programmatically.  
-- Use multipart MIME format if you need to supply scripts alongside `#cloud-config`.  
-- For images that do not include Cloud-Init, reinstall with a supported template before providing user-data.
+- Run `sudo cloud-init status --wait` after first boot to confirm success.  
+- Check `/var/log/cloud-init.log` for detailed logs if tasks fail.  
+- Re-upload a revised image or update the YAML and rerun the installation if you need adjustments.
 
 ---
-
-<CtaButton label="Official Cloud-Init Documentation" link="https://cloudinit.readthedocs.io/en/latest/" openInNewTab={true} />

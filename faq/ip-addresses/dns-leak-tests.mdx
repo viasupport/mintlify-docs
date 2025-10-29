@@ -4,22 +4,30 @@ sidebarTitle: "* DNS Leak Tests"
 description: "Learn why DNS leak tools may show resolvers outside the VPS location when using EDBB’s anycast DNS, and how to adjust resolvers if needed."
 ---
 
-## Why Leak Tests Show Other Countries
+## What a DNS Leak Test Really Shows
 
-EDBB VPS images ship with anycast resolvers.  \n+When you run a DNS leak test, the tool reports the location of the resolver that answered—not the VPS itself.  \n+Because anycast routes each query to the closest available PoP, the resolver can sit in a neighboring country even though the VPS remains in its original data center.
+<Info>
+  DNS leak tools report the location of the **resolver** that handled your query, not the location of your VPS. EDBB ships anycast resolvers, so the nearest point of presence may live in a neighboring country.
+</Info>
 
-## Does This Affect Geo-IP?
+When you run a test, expect to see the city of the resolver PoP that answered. The VPS itself still resides in the data center you selected.
 
-No. Geo-location checks rely on the VPS public IPv4/IPv6, not on the DNS resolver.  \n+Changing resolvers has no impact on where services perceive the VPS to be hosted.
+## Does This Change Geo-IP Results?
 
-## Changing Resolvers (Optional)
+No—Geo-IP lookups track the public IPv4/IPv6 assigned to your VPS. Switching resolvers has no impact on how websites geolocate your service.
 
-If you want tests to reference a specific DNS service, update `/etc/resolv.conf` or your OS network configuration to point at your preferred resolvers.  \n+Common choices include public resolvers or custom DNS servers you operate yourself.
+## Prefer a Different Resolver?
 
-## Purpose of a DNS Leak Test
+Updating the resolver is optional, but easy:
 
-- Confirms requests stay inside a secure tunnel (e.g., VPN).  \n
-- Highlights unintended fallback to local ISP resolvers.  \n
-- Provides transparency about which organizations handle your DNS lookups.
+- Linux: adjust `/etc/resolv.conf`, netplan, or NetworkManager to use your chosen DNS servers.  
+- Windows: open the adapter properties → **Internet Protocol Version 4/6** → specify custom DNS servers.  
+- Custom resolvers (Unbound, Pi-hole, etc.) can be hosted on the VPS or elsewhere if you need total control.
 
-Use the results to validate that the resolvers configured on your VPS match your privacy or compliance needs.
+## Why Run DNS Leak Tests at All?
+
+- Verify VPN tunnels keep DNS traffic inside the encrypted path.  
+- Confirm the system isn’t falling back to an ISP resolver.  
+- Understand which organizations see your DNS requests.
+
+Use the results to validate that your resolver configuration matches your privacy and compliance goals.

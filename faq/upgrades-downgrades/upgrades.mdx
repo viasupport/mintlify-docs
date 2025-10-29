@@ -1,30 +1,38 @@
 ---
-title: "How to Upgrade Your EDBB VPS"
+title: "Upgrade Paths for Your EDBB VPS"
 sidebarTitle: "* VPS Upgrades"
-description: "Explore the two upgrade paths for EDBB VPS plans: move to a larger tier or add individual resources on demand."
+description: "Decide whether to move to a larger plan or boost individual resources—see how each upgrade path works and when to use it."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-## 🔼 How to Upgrade Your VPS (Plans & Resources)
+## Choose the Right Upgrade Strategy
 
-We offer **two types of upgrades** to improve your VPS performance:
+<Info>
+  EDBB offers two flexible upgrade paths: jump to a larger VPS plan in one click, or bolt on extra resources without changing tiers. Both options are prorated and complete without reinstalling your OS.
+</Info>
+
+<CardGroup cols={2}>
+  <Card title="🚀 Full Plan Upgrade">
+    <ul>
+      <li>Move to the next plan for more vCPU, RAM, disk, and traffic allowance.</li>
+      <li>Ideal when you consistently max out multiple resources.</li>
+      <li>Billing difference is prorated for the current cycle.</li>
+    </ul>
+    <CtaButton label="Upgrade to a bigger plan" link="../upgrades-downgrades/upgrade-plan" />
+  </Card>
+  <Card title="🧩 Individual Resource Upgrades">
+    <ul>
+      <li>Add RAM, vCPU, disk, or IP addresses individually.</li>
+      <li>Keep your existing plan while scaling only what you need.</li>
+      <li>Combine with traffic pool assignments for bursty workloads.</li>
+    </ul>
+    <CtaButton label="Increase individual resources" link="../upgrades-downgrades/upgrade-resources" />
+  </Card>
+</CardGroup>
 
 ---
 
-## A. Upgrade to a Higher VPS Plan
-Move to a larger, predefined plan with more RAM, vCPUs, and traffic.
-
-<CtaButton label="Learn how to upgrade your VPS plan" link="../upgrades-downgrades/upgrade-plan" />
-
----
-
-## B. Upgrade Individual Resources
-Stay on your current plan but add more RAM, vCPU, disk, or IP addresses as needed.
-
-<CtaButton label="Learn how to upgrade resources" link="../upgrades-downgrades/upgrade-resources" />
-
----
-
-Upgrades are fast, affordable (prorated), and done without reinstalling your system.
-Kindly be informed that we are currently not accepting downgrades — only upgrades are possible.
+<Note>
+  Downgrades aren’t available at the moment. If you’re experimenting with larger plans, capture snapshots or backups before upgrading so you can redeploy on a smaller instance later if needed.
+</Note>

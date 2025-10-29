@@ -6,13 +6,22 @@ description: "If your crypto payment misses the quoted window, share the transac
 
 ## Why It Happens
 
-CoinPayments and Coinbase Commerce lock exchange rates for a limited time (typically 60 minutes).  
-If the transaction reaches the blockchain after the window, the gateway marks it as delayed and may not auto-match it to your invoice.
+<Info>
+  CoinPayments and Coinbase Commerce lock the FX rate for a short window (usually around 60 minutes). Payments that land on-chain after the timer can’t be auto-matched to your invoice without manual review.
+</Info>
 
 ## What to Do
 
-1. Collect the transaction hash (TXID) and, if available, the payment reference or order code shown in the gateway.  
-2. Open a support ticket with the invoice number, TXID, and timestamp.  
-3. EDBB will coordinate with the processor to assign the funds or arrange a refund if appropriate.
+<Steps>
+  <Step title="Collect the details">
+    Save the transaction hash (TXID) and any order reference the gateway displayed.
+  </Step>
+  <Step title="Share with Support">
+    Contact us via messenger or email with the invoice number, TXID, timestamp, and amount sent.
+  </Step>
+  <Step title="Wait for processor review">
+    We liaise with the gateway to apply the payment or trigger a refund, then confirm the outcome.
+  </Step>
+</Steps>
 
 Future tip: send the payment immediately after the checkout page displays the wallet and amount to avoid rate-lock expiration.

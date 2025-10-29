@@ -1,60 +1,73 @@
 ---
 title: "VPS Control Panel | EDBB Portal"
 sidebarTitle: "* VPS Control Panel"
-description: "Explore the tools available in the EDBB portal—power cycle your VPS, reinstall OS images, mount custom ISOs, manage rDNS, review traffic, and more."
+description: "Tour the refreshed EDBB portal: manage power, reinstalls, traffic pools, upgrades, and network settings in one place."
 ---
 
 # Meet the EDBB VPS Portal
 
-The EDBB portal is the control plane for everything related to your VPS fleet. From reinstalls to rDNS changes, every day-to-day task lives under one interface.
-
 <Info>
-  Bookmark <a href="https://my.edbb.com/clientarea.php" target="_blank">my.edbb.com</a> for direct access. Multi-factor authentication is available—enable it from <strong>Account &rarr; Security Settings</strong>.
+  Bookmark the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>. After signing in, open the top-right <strong>Account</strong> menu, choose <strong>Security Settings</strong>, and switch on multi-factor authentication to lock down access.
 </Info>
 
-![Management Portal](/assets/edis-global-management-portal.webp)
+The redesigned service view splits daily tasks into tabs across the top—**Dashboard, Installation, Traffic, Settings, rDNS, Network, Upgrades**—while a quick-action column on the left keeps power and console controls one click away.
 
 ---
 
-## What You’ll Find on the Service Dashboard
+## Quick Actions & Console Access
 
-- **Status & console controls** – power on/off, soft reboot, live screenshots, and a launch button for the built-in noVNC console.  
-- **System configuration dialog** – adjust CPU topology (cores vs. sockets), BIOS type, boot sequence, and NIC model without opening a ticket.  
-- **ISO management** – mount helper images, <a href="./mount-iso-image">boot recovery tools</a>, or <a href="./bring-your-own-iso">upload a custom ISO</a>.  
-- **Automated reinstalls** – redeploy Linux and Windows templates in minutes with Cloud-Init or unattended setups.  
-- **Network information** – review IPv4/IPv6 assignments, request <a href="../faq/ip-addresses/setting-up-reverse-pointers">reverse DNS changes</a>, and inspect traffic usage.  
-- **Support credentials** – copy the Support PIN before opening a chat so our engineers can verify ownership quickly.
-
----
-
-## Power & Recovery
-
-- Trigger graceful reboots or emergency power-off commands if the guest OS stops responding.  
-- Enable temporary VNC access for console-level troubleshooting.  
-- Mount password-reset or rescue ISOs to recover access without reinstalling.  
-- Schedule reinstalls with your own Cloud-Init user-data or post-install scripts.
-
-Refer to:
-- <a href="./power-cycle-or-reboot-a-vps">Power cycle or reboot a VPS</a>  
-- <a href="./reset-root-password-linux">Reset root password (Linux)</a>  
-- <a href="./reset-windows-admin-password">Reset Administrator password (Windows)</a>
+<CardGroup cols={3}>
+  <Card title="⚡ Power Menu">
+    The green <strong>Server On</strong> button handles graceful starts and reboots. Open the dropdown to issue hard resets if the guest OS is frozen.
+  </Card>
+  <Card title="🖥️ VNC Toggle">
+    Flip <strong>VNC</strong> on only when you need it. The button turns red while VNC is enabled, reminding you to disable it once troubleshooting is finished.
+  </Card>
+  <Card title="🔗 Open Console">
+    Launch the embedded noVNC viewer instantly—no extra navigation. Perfect for watching reinstalls, entering rescue environments, or capturing screenshots.
+  </Card>
+</CardGroup>
 
 ---
 
-## Billing & Traffic Insights
+## Dashboard Highlights
 
-- See the next renewal date and open invoices for the selected service.  
-- Track monthly bandwidth, hydration events, and remaining pool balance.  
-- Order additional resources—IPv4 addresses, RAM, CPU upgrades—without leaving the portal.
+<CardGroup cols={2}>
+  <Card title="📋 Service Summary">
+    The right-hand sidebar lists status, location, primary IPv4/IPv6 (with copy buttons), installed OS, Support PIN, billing cycle, and renewal dates.
+  </Card>
+  <Card title="📸 Live Screenshot">
+    Check the latest desktop image before connecting via RDP or VNC. Use it to confirm installs completed or login prompts are ready.
+  </Card>
+</CardGroup>
 
-For full billing workflows, visit the <a href="/faq/billing-lifecycle/automated-vps-billing-workflow">automated billing guide</a>.
+<CardGroup cols={2}>
+  <Card title="📊 Traffic Dial">
+    Monitor consumed vs. allocated bandwidth. The dial shows percentage used, remaining quota, and the next refill date so you can plan ahead.
+  </Card>
+  <Card title="🌊 Traffic Pool Ledger">
+    See global pool balances, hydration history, and trigger manual <strong>TopUp</strong> events. An info banner warns when auto hydration isn’t configured.
+  </Card>
+</CardGroup>
+
+<CardGroup cols={2}>
+  <Card title="🛠️ Fast Maintenance">
+    Shortcut buttons for <strong>Reinstall</strong> and <strong>IP Change</strong> now sit beneath the dashboard cards. Use them to rebuild or shuffle addresses without leaving the page.
+  </Card>
+  <Card title="⬆️ Upgrades & Cancellation">
+    The green <strong>Upgrade Plan</strong> button starts resource upgrades; the red <strong>Request Cancellation</strong> button opens the guided termination flow.
+  </Card>
+</CardGroup>
 
 ---
 
-## Stay Organized
+## Tabs for Installation & Networking
 
-- Use the tagging and notes fields to document the role of each VPS.  
-- Export traffic reports for compliance or chargeback purposes.  
-- Manage contact details so the right people receive downtime or invoice alerts.
+- **Installation** – start AutoInstall for Linux or Windows, mount helper ISOs, review Cloud-Init status, or upload custom media.  
+- **Traffic** – inspect per-service usage graphs, refill timers, and the traffic pool ledger.  
+- **Settings** – adjust CPU sockets vs. cores, BIOS type, boot order, NIC model, and keyboard layout.  
+- **rDNS** – manage IPv4/IPv6 PTR records with instant validation.  
+- **Network** – copy your IPv4/IPv6 assignments and gateways at a glance.  
+- **⭐ Upgrades** – order add-on IPv4 addresses, RAM/CPU boosts, or full plan upgrades directly—no need to message Support.
 
-When you’re ready to remove a server, the portal also handles the entire cancellation workflow—see <a href="/faq/billing-lifecycle/cancel-a-service">Cancel an EDBB VPS</a> for the checklist.
+![EDBB VPS Portal Dashboard](/assets/edbb-management-portal.png)

@@ -1,41 +1,48 @@
 ---
 title: "Quick Checks for IPv6 Issues"
 sidebarTitle: "* IPv6 Troubleshooting"
-description: "Diagnose common IPv6 connectivity problems on your EDBB VPS with a repeatable checklist, useful commands, and verification steps." 
+description: "Run through portal and OS-level checks to resolve IPv6 reachability problems on your EDBB VPS."
 ---
 
-IPv6 adds reachability to modern networks, but longer addresses and dual-stack setups can make troubleshooting feel unfamiliar.  
-Use this checklist whenever IPv6 stops responding on your EDBB VPS.
+# IPv6 Troubleshooting Playbook
+
+<Info>
+  IPv6 relies on the address, gateway, and DNS values shown on the Network tab. Confirm those details first, then follow these quick checks to restore connectivity.
+</Info>
 
 ---
 
-## 1. Confirm the Assigned Details
+## Step 1 – Confirm Assigned Values
 
-1. Open the [EDBB VPS Portal](https://my.edbb.com) and verify the `/64` prefix, gateway, and DNS servers under **IP Settings**.  
-2. On the server, inspect the current configuration:
+<Steps>
+  <Step title="Check the Network tab">
+    Open the <strong>Network</strong> tab in the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>. Note the IPv6 assignment, gateway, and recommended DNS resolvers.
+  </Step>
+  <Step title="Inspect the running config">
+    On the VPS, run:
 
 ```bash
 ip -6 addr show
 ip -6 route show
 ```
 
-Ensure the address belongs to your `/64` and that the default route points to the location-specific gateway.
+    Ensure the assigned address matches your /64 range and that the default route points to the gateway from the portal.
+  </Step>
+</Steps>
 
 <Warning>
-Typos are the #1 cause of IPv6 outages. Double-check each segment when manually editing addresses.
+  Typos (especially missing `/48`) are the most common cause of IPv6 outages. Double-check each segment when editing addresses.
 </Warning>
 
 ---
 
-## 2. Validate the Interface State
-
-Run the following to confirm the interface is up and accepting traffic:
+## Step 2 – Verify Interface State
 
 ```bash
 ip link show dev eth0
 ```
 
-Replace `eth0` with the correct interface name. Look for `state UP` and flags such as `LOWER_UP`. If the interface is down, re-enable it:
+Replace `eth0` with the correct interface. Look for <code>state UP</code> and <code>LOWER_UP</code>. If the interface is down:
 
 ```bash
 sudo ip link set eth0 up
@@ -43,52 +50,45 @@ sudo ip link set eth0 up
 
 ---
 
-## 3. Test Local Connectivity
-
-1. Ping the assigned IPv6 address from the VPS itself:
+## Step 3 – Test Local Connectivity
 
 ```bash
 ping6 -c 3 ::1
-ping6 -c 3 2a03:f80:xxxx:xxxx::1   # replace with your address
-```
-
-2. Confirm neighbor discovery sees the gateway:
-
-```bash
+ping6 -c 3 2a03:f80:xxxx:xxxx::10   # replace with your address
 ip -6 neigh show
 ```
 
-If the gateway entry is `FAILED`, restart networking or manually clear the neighbor cache with `ip -6 neigh flush all` before retrying.
+If the neighbor entry for the gateway shows `FAILED`, flush it and retry:
+
+```bash
+sudo ip -6 neigh flush all
+```
 
 ---
 
-## 4. Probe External Reachability
-
-Use reliable destinations to check outbound traffic:
+## Step 4 – Probe External Reachability
 
 ```bash
-ping6 -c 3 2a03:f80:ed15::1   # example gateway
+ping6 -c 3 2a03:f80:ed15::1        # example gateway
 ping6 -c 3 ipv6.google.com
 traceroute -6 ipv6.google.com
 ```
 
-If gateway pings succeed but public hosts fail, review firewall rules (both inside the VPS and in any external appliances) and confirm DNS has AAAA records for your target.
+Gateway pings succeed but public hosts fail? Review firewalls (both inside the VPS and upstream) and confirm DNS AAAA records exist for your targets.
 
 ---
 
-## 5. Inspect Application Bindings
+## Step 5 – Check Application Bindings
 
-Applications often bind to specific interfaces or addresses. After an address change:
-
-- Restart web servers, database listeners, or proxies so they pick up the new IPv6.  
-- Verify configuration files reference hostnames or `::` rather than a hard-coded old address.  
-- Check `ss -ltnp` or `netstat -ltnp` to confirm services are listening on the expected IPv6 sockets.
+- Restart services that bind to specific addresses or interfaces (web servers, databases, proxies).  
+- Update config files to reference hostnames or `::` rather than a hard-coded old address.  
+- Use `ss -ltnp` to confirm listeners are bound to the expected IPv6 socket.
 
 ---
 
-## 6. Collect Diagnostics for Support
+## Step 6 – Gather Diagnostics for Support
 
-If issues persist, gather the following output before contacting EDBB support or your network administrator:
+If problems persist, collect this output before messaging Support (via the portal messenger or email):
 
 ```bash
 ip -6 addr show
@@ -97,15 +97,15 @@ ip -6 neigh show
 mtr -6 -r ipv6.google.com
 ```
 
-Attach the results along with the VPS ID and datacenter location. This information speeds up investigations by confirming whether the problem is local to your VM or upstream.
+Include the VPS ID and datacenter location. This confirms whether the issue is local or upstream.
 
 ---
 
 ## Preventive Tips
 
-- Save a copy of your working network configuration before making edits.  
-- Limit the number of simultaneously active IPv6 addresses to avoid tripping flood protection on the router.  
-- Monitor dual-stack services to ensure both IPv4 and IPv6 remain healthy—Grafana, Prometheus, or simple cron scripts can alert you before customers notice an outage.  
-- Review the [IPv6 configuration primer](https://docs.edbb.com/vps-management/ipv6-configuration) whenever you deploy a new VPS.
+- Save known-good network configs before editing.  
+- Limit active IPv6 addresses to avoid router flood protection.  
+- Monitor dual-stack services so both IPv4 and IPv6 remain healthy.  
+- Need a refresher? Review the <a href="/vps-management/ipv6-configuration">IPv6 configuration guide</a> first.
 
-Following these steps resolves most IPv6 problems in minutes and gives you the data needed for deeper analysis when necessary.
+With these checks you can resolve most IPv6 issues quickly—and have the right data ready if you need escalation.

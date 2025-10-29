@@ -1,77 +1,71 @@
 ---
 title: "Enable IPv6 on Your EDBB VPS"
 sidebarTitle: "* IPv6 Configuration"
-description: "Learn how your EDBB VPS receives IPv6 connectivity, how to inspect the assigned /64, and how to adjust addresses and routes manually."
+description: "Find your IPv6 range and gateway in the Network tab, then add addresses and routes to your VPS."
 ---
 
-## Understand Your IPv6 Allocation
+# IPv6 on EDBB VPS
 
-Every EDBB VPS ships with a dedicated `/64` IPv6 subnet. One address from that range is preloaded on your main interface, so you can begin using IPv6 immediately.
+<Info>
+  Every VPS includes a dedicated <strong>/64 equivalent</strong> IPv6 range. Routing to the gateway requires configuring addresses with a <strong>/48 prefix</strong> inside your operating system.
+</Info>
 
-You can view the full allocation, gateway, and DNS servers in the **IP Settings** card inside the [EDBB VPS Portal](https://my.edbb.com). That information is also available inside the server under `/etc/network/` or `/etc/netplan/`, depending on your distribution.
+---
 
-If you want to assign additional IPv6 addresses or swap to a different address within your `/64`, configure them manually inside the guest OS. The exact commands vary by distribution; the examples below use standard Linux tooling.
+## Step 1 – Grab the Details from the Portal
 
-In Debian and Ubuntu releases, the `ip` command offers the quickest way to test address changes at runtime before making them persistent.
+<Steps>
+  <Step title="Open the Network tab">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, select your VPS, and open the <strong>Network</strong> tab. Copy the IPv6 assignment and gateway.
+  </Step>
+  <Step title="Note the DNS entries">
+    The Network tab also lists recommended IPv4/IPv6 resolvers—use them if you want dual-stack name resolution.
+  </Step>
+</Steps>
 
-<Note>
-  When adding extra addresses, set the prefix length to `/48` as shown in the examples.
-</Note>
+![Network Tab](/assets/vps-network-tab.png)
 
-Configure an IPv6 address at runtime:
+---
+
+## Step 2 – Add an IPv6 Address (Linux example)
 
 ```bash
-ip -6 addr add 2a03:f80:ed15:435a::1/48 dev eth0
+# Pick an address from your /64 equivalent
+sudo ip -6 addr add 2a03:f80:ed15:82ca::10/48 dev eth0
+
+# Add the default route using the gateway from the portal
+sudo ip -6 route add default via 2a03:f80:ed15::1
 ```
 
-Display configured IPv6 addresses:
+Verify the configuration:
 
 ```bash
-ip -6 addr show
-```
-
-Persist the change by adding the address to `/etc/network/interfaces`, a Netplan YAML file, or the relevant NetworkManager profile, depending on your distro.
-
-## Set the IPv6 Default Route
-
-To enable external IPv6 communication, a default route or default gateway must be configured.
-
-Configure an IPv6 default route:
-
-```bash
-ip -6 route add default via 2a03:f80:ed15::1
-```
-
-<Note>
-  The default gateway differs by location. Replace the example address with the gateway listed for your VPS in the EDBB VPS Portal.
-</Note>
-
-Display the active IPv6 routes:
-
-```bash
+ip -6 addr show dev eth0
 ip -6 route show
 ```
 
-Persist the gateway in the same configuration file you used for the address so the route survives reboots.
+Persist the settings using your distro’s network tooling (Netplan, NetworkManager, or <code>/etc/network/interfaces</code>).
+
+<Callout type="warning">
+  Always use the <strong>/48 prefix</strong> when configuring addresses so traffic can reach the gateway. Using /64 in the OS will prevent routing.
+</Callout>
 
 ---
 
-## Verify Connectivity
-
-After updating addresses and routes, confirm that IPv6 traffic flows as expected:
+## Step 3 – Test Connectivity
 
 ```bash
-ping6 2a03:f80:ed15::1
+ping6 2a03:f80:ed15::1         # Ping the gateway
 ping6 ipv6.google.com
 ```
 
-If the ping to the gateway succeeds but external hosts fail, double-check firewall rules and DNS configuration.
+If gateway pings work but external hosts fail, review firewall rules or DNS configuration.
 
 ---
 
-## Good Practices
+## Best Practices
 
-- Store your `/64` details and gateway in your documentation for quick reference.  
-- Limit the number of active IPv6 addresses to what you actually need to avoid hitting flood protection.  
-- Combine IPv6 with IPv4 wherever possible so services remain reachable for clients without IPv6 support.  
-- Review the [EDBB IPv6 troubleshooting guide](https://docs.edbb.com/vps-management/basic-ipv6-troubleshooting) if you encounter packet loss or routing issues.
+- Document the assigned /64 range and gateway for quick reference.  
+- Limit the number of active IPv6 addresses to avoid triggering flood protection.  
+- Combine IPv6 with IPv4 so services stay reachable for clients without IPv6.  
+- If routing issues persist, follow the <a href="/vps-management/basic-ipv6-troubleshooting">IPv6 troubleshooting guide</a>.

@@ -4,8 +4,16 @@ sidebarTitle: "* IP Persistence"
 description: "Your assigned IPv4/IPv6 stays the same when you reinstall the OS or change plans on EDBB VPS instances."
 ---
 
-## IP Allocation Policy
+## What Happens to Your IPs?
 
-Reinstalling the operating system or upgrading/downgrading a plan **does not** trigger a new IP assignment.  \n+The IPv4/IPv6 allocated to your VPS remains attached for the life of the service.
+<Info>
+  Reinstalling the operating system or changing your VPS plan does <strong>not</strong> rotate the assigned IPv4 or IPv6. The addresses stay linked to the service for as long as it remains active.
+</Info>
 
-Only a voluntary cancellation or an explicit paid IP change will replace the address.
+---
+
+### The Exceptions
+
+- Cancelling or letting the VPS expire releases the IPs back into EDBB’s pool.  
+- Ordering a free (first 24 hours) or paid IP change assigns a fresh address.  
+- Adding secondary IPs appends new addresses but leaves the primary untouched.

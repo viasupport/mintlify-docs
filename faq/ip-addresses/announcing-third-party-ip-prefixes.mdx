@@ -4,14 +4,19 @@ sidebarTitle: "* Third-Party Prefixes"
 description: "EDBB announces customer-owned prefixes only on dedicated servers. VPS plans use provider IP space."
 ---
 
-## Availability
+## Can VPS Plans Announce Customer Prefixes?
 
-EDBB does **not** announce third-party IP ranges for VPS instances.  \n+If you need to advertise your own prefix, migrate the workload to an EDBB dedicated server.
+<Info>
+  VPS offerings use EDBB-owned IP space. Customer-owned prefixes require BGP capabilities that aren’t exposed on shared virtualization platforms.
+</Info>
+
+If you need to announce your own IPv4/IPv6 blocks, plan a move to an EDBB dedicated server.
 
 ## Dedicated Server Requirements
 
-- One-time NRC for BGP announcement: **USD 250**  \n
-- No recurring fee for maintaining the route advertisement  \n
-- Prefix must comply with all EDBB policies, including the prohibition on unsolicited email
+- One-time non-recurring charge (NRC) for the BGP setup: **USD 250**.  
+- No ongoing fee once the announcement is active.  
+- Prefix must comply with EDBB’s policies (for example, no unsolicited email).  
+- You must provide your ASN, a current LOA, and routing details.
 
-Submit a ticket through the portal with your ASN, LOA, and prefix details to begin the process.
+Submit the documentation via Support to schedule the announcement window.

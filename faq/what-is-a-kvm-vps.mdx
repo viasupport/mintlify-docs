@@ -1,56 +1,69 @@
 ---
 title: "What Is a KVM VPS?"
 sidebarTitle: "* KVM Explained"
-description: "See how EDBB KVM virtualization delivers full hardware access, custom OS installs, and advanced networking features."
+description: "See how EDBB uses KVM virtualization to deliver bare-metal style performance, OS freedom, and networking options."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-## Kernel-based Virtual Machines (KVM)
+# Understanding KVM Virtualization
 
-EDBB VPS instances run on **KVM**, a Linux hypervisor that exposes virtual hardware directly to each guest.  
-This approach, often called “full virtualization,” behaves much like a dedicated server while retaining the flexibility of cloud resources.
-
-You can boot Linux, BSD, or Windows images, upload your own ISO, or restore qcow2 backups—all from the EDBB VPS Portal.
-
----
-
-## Feature Highlights
-
-- **Host CPU passthrough** – guest systems see modern CPU extensions (AES-NI, AVX2) for high-speed encryption and compute tasks.  
-- **TUN/TAP support** – required for VPN servers and advanced tunneling solutions.  
-- **Multiple NICs** – attach extra virtual network interfaces for segmentation or routing labs.  
-- **VLAN tagging** – enable private layer-2 networks between VPSs in the same facility.  
-- **Console access** – troubleshoot with noVNC even if SSH is down.  
-- **Bring-your-own-image** – boot custom installers, recovery tools, or tailored qcow2 snapshots.
+<Info>
+  Kernel-based Virtual Machine (KVM) turns the Linux kernel into a type-1 hypervisor. Each VPS runs as an isolated virtual machine with direct access to CPU features, so it behaves much like a dedicated server while retaining cloud flexibility.
+</Info>
 
 ---
 
-## Use Cases Beyond Web Hosting
+## Why KVM Matters at EDBB
 
-- **Network appliances** – firewalls, BGP routers, or SD-WAN controllers.  
-- **Security labs** – penetration testing platforms or malware analysis sandboxes.  
-- **Virtual desktop** – deliver Windows or Linux desktops over RDP/VNC.  
-- **Container platforms** – run Kubernetes, Nomad, or Docker Swarm with full kernel control.  
-- **Telecom workloads** – softswitches, SIP routers, or PBX platforms needing precise networking.  
-- **Data processing** – Python, Go, or Rust data pipelines with predictable CPU availability.
+<CardGroup cols={3}>
+  <Card title="⚡ Host CPU Passthrough">
+    Guests see modern CPU extensions (AES-NI, AVX2, etc.) for encryption and compute-heavy workloads.
+  </Card>
+  <Card title="🧰 Bring Your Own OS">
+    Boot Linux, BSD, or Windows images—or upload custom ISOs and qcow2 snapshots directly in the portal.
+  </Card>
+  <Card title="🔗 Advanced Networking">
+    Create TUN/TAP interfaces, attach additional NICs, or place VPSs on private VLANs.
+  </Card>
+  <Card title="🖥️ Console Access">
+    noVNC provides full console control even if SSH or RDP is unreachable.
+  </Card>
+  <Card title="🛡️ Isolation & Security">
+    Each VPS gets dedicated resources and hardware-level isolation, reducing noisy neighbor issues.
+  </Card>
+  <Card title="🔄 Automation Friendly">
+    Snapshot, reinstall, or restore with Cloud-Init and API workflows.
+  </Card>
+</CardGroup>
 
 ---
 
-## Common Questions
+## Typical KVM Use Cases
 
-**Is a KVM VPS comparable to bare metal?**  
-Yes—each VM gets dedicated resources and direct access to CPU features, while storage and networking remain virtualized for flexibility.
+- Network appliances (firewalls, BGP routers, VPN concentrators)
+- Security labs and malware analysis sandboxes
+- Container platforms and orchestration clusters
+- Game and voice servers requiring low latency
+- Virtual desktops (Windows or Linux) delivered over RDP/VNC
+- Dev/test environments for CI pipelines
 
-**Can I install my own OS?**  
-Upload an ISO/qcow2 through the portal or mount one of EDBB’s library images and launch the installer.
+---
+
+## Frequently Asked Questions
+
+**Is KVM close to bare metal performance?**  
+Yes. With CPU passthrough and Virtio drivers, performance is near-native while disk and network remain virtualized for flexibility.
+
+**Can I install any OS?**  
+Upload your ISO or qcow2 image and mount it from the portal. You can also use EDBB’s library of Linux and Windows templates.
 
 **Does it support VPN protocols?**  
-Absolutely. TUN/TAP and dedicated CPU instructions make OpenVPN, WireGuard, and IPsec efficient.
+Absolutely—TUN/TAP interfaces are available for OpenVPN, WireGuard, IPsec, and other tunneling solutions.
 
-**What about control panels?**  
-Plesk, cPanel, DirectAdmin, or any Linux/Windows management stack runs normally on KVM.
+**Can I run hosting control panels?**  
+Yes. Plesk, cPanel, DirectAdmin, or any similar stack functions normally on a KVM VPS.
 
----
+KVM gives you the control of a dedicated server with the convenience of EDBB’s portal and automation tools.
 
-<CtaButton label="Compare EDBB VPS plans" link="https://www.edbb.com/vps-hosting" openInNewTab={true} />
+<CtaButton label="Review VPS Management Features" link="/vps-management/vps-management-portal" />

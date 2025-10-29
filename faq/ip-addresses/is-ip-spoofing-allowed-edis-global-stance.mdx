@@ -6,8 +6,11 @@ description: "EDBB enforces source validation across its network. IP spoofing is
 
 ## Policy
 
-EDBB does not permit IP spoofing on any service.  
-Edge filters enforce source validation so packets with forged addresses are discarded before they leave the network.
+<Info>
+  EDBB enforces source validation (BCP 38/84) across all platforms. Packets must leave the network with the IPs that belong to your service.
+</Info>
+
+IP spoofing is blocked on every VPS and dedicated server. Edge filters drop traffic with forged source addresses before it reaches upstream carriers.
 
 ## Rationale
 

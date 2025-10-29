@@ -4,21 +4,51 @@ sidebarTitle: "* Incorrect GeoIP"
 description: "Third-party GeoIP sites may display outdated locations for EDBB IPs. Learn why and how to request corrections."
 ---
 
-## Why the Location Looks Wrong
+import { CtaButton } from "/snippets/cta-button.mdx";
 
-GeoIP services use aggregated databases that may lag behind registry updates.  \n+If a provider has not refreshed its dataset since EDBB deployed your VPS, the lookup can point to a previous city or country.
+## Why WhatIsMyIPAddress Shows the Wrong City
 
-## Steps to Verify
+<Info>
+  WhatIsMyIPAddress.com aggregates data from commercial GeoIP feeds. If those feeds have not refreshed since EDBB updated its registry and geofeed records, your address may still point to an old city or country.
+</Info>
 
-1. Compare results across several GeoIP tools to determine whether the issue is isolated to one provider.  \n
-2. Check the WHOIS output for the subnet to confirm the registered location.  \n
-3. Review the [GeoIP database overview](./geolocation-geoip-databases) for more context on how data propagates.
+- Registry entries (WHOIS) and geofeed files are authoritative, but each provider decides when to ingest them.  
+- Some lookups crowdsource corrections; an inaccurate user submission can temporarily override the official data.  
+- CDN caches can serve stale results until their refresh cycle completes.
 
-## Requesting a Fix
+## Confirm the Actual Location
 
-When opening a ticket with EDBB Support, include:  \n
-- VPS identifier (primary IPv4 or KVM ID)  \n
-- The GeoIP service showing the wrong data  \n
-- Screenshot or link to the incorrect lookup
+<Steps>
+  <Step title="Check the authoritative data">
+    Run a WHOIS lookup on the prefix (for example, via <a href="https://www.ripe.net/ripe-db/support/querying-the-ripe-database" target="_blank" rel="noreferrer">RIPEstat</a>). Confirm the country code and organization match EDBB.
+  </Step>
+  <Step title="Compare other databases">
+    Test a few GeoIP services (MaxMind checker, ipinfo.io, DB-IP). If only WhatIsMyIPAddress disagrees, the issue is localised to their feed.
+  </Step>
+  <Step title="Collect evidence">
+    Take a screenshot of the incorrect result and note the date/time. This helps both EDBB Support and third-party providers verify the discrepancy quickly.
+  </Step>
+</Steps>
 
-We will confirm that our registry and geofeed entries are accurate and, if necessary, contact the provider or advise you on how to submit a correction request directly.
+## Submit a Correction to WhatIsMyIPAddress
+
+WhatIsMyIPAddress offers a public correction form. Fill it out with the authoritative data:
+
+1. Visit <a href="https://whatismyipaddress.com/location-feedback" target="_blank" rel="noreferrer">their location feedback page</a>.  
+2. Enter the IP address, choose the correct country/region, and paste the WHOIS evidence or geofeed link.  
+3. Mention that EDBB has already published the updated information via the relevant RIR.  
+4. Submit the form and keep the confirmation email for your records.
+
+They typically process requests within a few business days, depending on their data provider’s update cycle.
+
+## When to Contact EDBB Support
+
+If the listing remains incorrect after you file the correction—or if multiple providers disagree—reach out to EDBB Support with:
+
+- Your VPS identifier (primary IPv4 or KVM ID)  
+- Links or screenshots of each lookup result  
+- The correction request reference number (if you received one)
+
+Our team will double-check registry/geofeed records and liaise with the data vendor if needed.
+
+<CtaButton label="Learn how GeoIP databases refresh" link="./geolocation-geoip-databases" />

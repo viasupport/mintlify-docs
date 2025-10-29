@@ -1,71 +1,81 @@
 ---
 title: "Mount an ISO Image"
 sidebarTitle: "* Mount ISO"
-description: "Use the EDBB portal to mount ISO images, boot custom installers, or recover your VPS."
+description: "Load recovery tools or custom installers by mounting an ISO directly from the EDBB portal."
 ---
 
-import { CtaButton } from "/snippets/cta-button.mdx";
+# Mount ISO Images from the Portal
 
-# Mount ISO Images from the EDBB Portal
-
-Mounting an ISO lets you boot live recovery environments, run custom installers, or access vendor-provided utilities without wiping your VPS. The EDBB portal exposes the full workflow—no out-of-band tools required.
-
----
-
-## Before You Mount Anything
-
-- Sign in to the [EDBB VPS Portal](https://my.edbb.com/clientarea.php).  
-- Confirm the VPS is powered on and that you have console access (enable noVNC if it is currently disabled).  
-- Keep downtime in mind: forcing an ISO boot will reboot the instance immediately.
-
-<CtaButton label="Enable VNC / noVNC" link="./enable-vnc-server" />
+<Info>
+  Mounting an ISO temporarily changes the boot order. Be ready for the VPS to reboot and save any work before you proceed.
+</Info>
 
 ---
 
-## Option 1 — Use the EDBB ISO Library
+## Before You Start
+
+<CardGroup cols={3}>
+  <Card title="🔐 Portal Access">
+    Confirm you can sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a> and open the service dashboard.
+  </Card>
+  <Card title="🕒 Maintenance Window">
+    Plan a short outage—the VPS restarts when the ISO is attached.
+  </Card>
+  <Card title="🖥️ Console Ready">
+    Enable VNC via the quick actions (Server On column) or follow the <a href="https://docs.edbb.com/enable-vnc-server">VNC enable guide</a> if it is currently disabled.
+  </Card>
+</CardGroup>
+
+---
+
+## Use the EDBB ISO Library
 
 <Steps>
-  <Step title="Open the service record">
-    Go to **Services → Your VPS → ISO Images**.
+  <Step title="Open the Installation tab">
+    From your VPS dashboard, switch to <strong>Installation</strong>, then the <strong>ISO Boot</strong> sub-tab.
   </Step>
-  <Step title="Pick an ISO from the list">
-    Choose the Linux or Windows helper image you need.
+  <Step title="Pick an ISO">
+    Choose from the built-in helper images (Linux rescue tools, Windows password helper, etc.).
   </Step>
-  <Step title="Force the reboot">
-    Tick **Force reset & boot from the selected ISO** and press **Mount ISO**.
+  <Step title="Mount & reboot">
+    Tick <strong>Force reset & boot from the selected ISO</strong>, then click <strong>Mount ISO</strong>. The VPS reboots automatically into that image.
   </Step>
 </Steps>
 
-The portal reboots the VPS and attaches the ISO as the primary boot device.
+![EDBB ISO library selection](/assets/vps-mount-iso.png)
 
 ---
 
-## Option 2 — Mount Your Own ISO
+## Work from the Console
 
-Need a custom installer or vendor toolkit? Upload it via the custom ISO workflow, then return here to mount it.
-
-<CtaButton label="Upload a Custom ISO" link="./bring-your-own-iso" />
-
-Once uploaded, the file appears alongside the standard images—select it and mount as described above.
-
----
-
-## Boot from the ISO and Work in the Console
-
-1. Launch the web console (noVNC) or your preferred VNC client.  
-2. Watch the boot order; most images prompt you to press a key within a few seconds.  
-3. Complete your install, recovery, or diagnostic tasks as needed.  
-4. If the ISO requires multiple reboots, leave it mounted until you finish.
+<Steps>
+  <Step title="Launch the console">
+    Click <strong>Open Console</strong> to open the portal console (or connect with your VNC client).
+  </Step>
+  <Step title="Follow boot prompts">
+    Most ISOs ask you to press a key quickly—watch the console so you don't miss the prompt.
+  </Step>
+  <Step title="Finish your tasks">
+    Complete the installer or recovery steps. Leave the ISO mounted if you need multiple restarts.
+  </Step>
+</Steps>
 
 ---
 
-## Detach the ISO When You Are Done
+## Unmount When Finished
 
-1. Return to the portal’s **ISO Images** panel.  
-2. Click **Unmount ISO** (or switch back to **Boot from local disk** if available).  
-3. Reboot one final time so the VPS starts from its virtual disk.  
-4. Disable VNC access again if you do not need an interactive console.
+<Steps>
+  <Step title="Return to ISO Boot">
+    Go back to <strong>Installation → ISO Boot</strong>.
+  </Step>
+  <Step title="Unmount">
+    Click <strong>Unmount</strong> (or switch to <strong>Boot from local disk</strong>) so the VPS boots normally next time.
+  </Step>
+  <Step title="Reboot if needed">
+    Use the <strong>Server On</strong> menu to restart the VPS from disk and disable VNC if you no longer need console access.
+  </Step>
+</Steps>
 
-Unmounting ensures the VPS boots normally on the next restart and closes any lingering live environments.
+Unmounting ensures the VPS returns to its local disk on the next restart.
 
-![Mount ISO](/assets/vps-mount-iso.webp)
+![Unmount ISO option in the portal](/assets/un-mount-new.png)

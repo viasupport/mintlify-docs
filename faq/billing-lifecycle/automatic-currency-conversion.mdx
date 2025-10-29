@@ -4,19 +4,26 @@ sidebarTitle: "* Currency Conversion"
 description: "EDBB invoices are issued in EUR. Card and crypto gateways handle conversion automatically based on their prevailing rates." 
 ---
 
-## Base Currency
+## EDBB Bills in EUR
 
-All EDBB products and invoices are denominated in **EUR (€)**.  
-If you pay in another currency, the payment provider performs the conversion at its own exchange rate.
+<Info>
+  All invoices are denominated in euro. When you pay with another currency, the conversion happens automatically through your bank, wallet, or crypto gateway.
+</Info>
 
-## Cards
+## Paying with Cards
 
-Your card issuer converts the EUR amount to your billing currency.  
-Check your bank’s statement or online banking for the final rate and any fees.
+- Stripe charges your card in EUR.  
+- Your bank converts the amount to your billing currency using its daily rate and fees.  
+- Check the statement or online banking for the final converted value.
 
-## Cryptocurrency
+## Paying with Crypto
 
-Using CoinPayments or Coinbase Commerce, you choose the coin or token.  
-The gateway locks in the EUR-to-crypto rate at the time you initiate the transaction, then provides a wallet address for payment.
+- CoinPayments/Coinbase Commerce quote the EUR → crypto rate at checkout.  
+- The rate is locked for a short window—send the exact amount before the timer expires.  
+- If the payment arrives late, the gateway may request a top-up or refund the transfer.
 
-Review the quote presented by the provider before confirming to see the final converted amount.
+## Tips
+
+- Review the conversion summary shown by the provider before approving the transaction.  
+- Some cards add FX surcharges; consider wallets or crypto if you want to avoid bank fees.  
+- For large payments, confirm limits with your bank or exchange in advance.

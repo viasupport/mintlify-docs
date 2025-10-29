@@ -4,13 +4,16 @@ sidebarTitle: "* IP vs Location"
 description: "EDBB assigns IP space per data center. To receive an IP in a different country, deploy the VPS in that region."
 ---
 
-## Geographic Binding
+## How Location Works
 
-IP addresses are allocated in blocks (prefixes) and announced from specific data centers.  \n+Routing policy and registry rules require that a prefix be advertised only from the region where it is physically hosted.
+<Info>
+  Each EDBB data center advertises its own IP prefixes. Routing policy and registry rules mean those prefixes must be announced from the facility where the hardware lives.
+</Info>
 
-## Practical Outcome
+## What This Means for You
 
-- A VPS in Vienna cannot use an IP from Madrid, and vice versa.  \n
-- To obtain an address in another country, provision the VPS or dedicated server in that locale.
+- A VPS provisioned in Vienna keeps an Austrian IP. You can’t borrow one from Madrid without moving the workload.  
+- Need a different country? Deploy the VPS (or migrate via snapshot) to that region in the EDBB portal.  
+- For multi-region presence, run multiple VPSs and dispatch traffic with DNS, load balancing, or tunneling tools.
 
 Consult the location selector in the EDBB portal to pick the facility that matches your geo-IP and latency requirements.

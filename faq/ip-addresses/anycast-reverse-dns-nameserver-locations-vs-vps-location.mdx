@@ -4,24 +4,27 @@ sidebarTitle: "* rDNS vs VPS"
 description: "EDBB’s anycast DNS answers PTR lookups from the closest PoP, so the rDNS location shown in tests may differ from your VPS site."
 ---
 
-## Why Test Tools Show Different Locations
+## Why PTR Lookups Show Varied Locations
 
-When a website checks the reverse DNS (PTR) for your VPS IP, the query is answered by the nearest EDBB anycast nameserver.  \n+The result reflects the DNS PoP used, **not** the location of your VPS.
+<Info>
+  EDBB operates anycast nameservers. They share identical IPs worldwide, so each query is answered by the closest point of presence (PoP)—that location, not your VPS, is what test tools display.
+</Info>
 
-- UK tester → UK nameserver responds  \n
-- US tester → US nameserver responds  \n
-- Asia tester → Asian nameserver responds
+- A UK tester hits a UK PoP.  
+- A US tester hits a US PoP.  
+- An Asian tester hits the nearest Asian PoP.
 
-The VPS stays in the data center you selected; only the DNS reply point changes.
+Your VPS remains in the data center you chose—only the reply location shifts.
 
 ## How EDBB Anycast Works
 
-- Dozens of DNS PoPs announce the same nameserver IPs  \n
-- Internet routing directs each query to the closest active PoP  \n
-- If a PoP goes offline, queries shift automatically to the next nearest site
+- Multiple PoPs worldwide advertise the same nameserver IPs.  
+- Border Gateway Protocol (BGP) steers queries to the closest available PoP.  
+- If a PoP goes offline, traffic automatically reroutes to the next closest site.
 
 This design keeps PTR lookups fast and resilient worldwide.
 
 ## Key Takeaway
 
-Reverse DNS location ≠ VPS location.  \n+PTR requests follow anycast routing, so expect geographic variance in test outputs even though your VPS remains fixed in its chosen facility.
+- Reverse DNS location ≠ VPS location.  
+- If you need to prove hosting location, provide the VPS IP itself or reference the EDBB portal, not the resolver’s PoP.

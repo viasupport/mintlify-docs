@@ -4,15 +4,19 @@ sidebarTitle: "* Data Retention"
 description: "EDBB removes VPS data six days after cancellation; qcow2 exports stay available for 30 days."
 ---
 
-## VPS Data Deletion
+## VPS Retention Timeline
 
-When a VPS is cancelled, the associated storage is wiped **six days** after the termination date.  
-Back up important data before you submit the cancellation request—restoration is not possible once deletion occurs.
+<Info>
+  Once a VPS is cancelled (immediate or end-of-term), the instance stays in the platform for **six days**. After that, storage is wiped and recovery is impossible.
+</Info>
 
-## Downloadable qcow2 Backups
+- Use the window to collect final backups or confirm your migration succeeded.  
+- Ensure snapshots, ISO mounts, and secondary IPs are no longer needed before the timer expires.
 
-- Fee: **€25** per export  
-- Download link expires after **30 days**  
-- Links are password-protected and removed automatically once the window closes
+## qcow2 Export Availability
 
-Plan your download schedule accordingly so the qcow2 file is archived to your systems before the link expires.
+- A downloadable `.qcow2` image costs **€25** per export.  
+- Download links remain active for **30 days** and are password-protected.  
+- Links are deleted automatically after the window closes for security.
+
+Plan your archival workflow so exports are downloaded to your storage before the link expires.

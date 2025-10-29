@@ -1,90 +1,89 @@
 ---
 title: "Update the IPv4 Address in Windows Server"
 sidebarTitle: "* Change IP (Windows)"
-description: "Change the primary IPv4 address, gateway, and DNS settings on a Windows Server VPS hosted with EDBB using the graphical tools." 
+description: "Collect the new IPv4 details from the Network tab, change them in Windows Server, and verify connectivity."
 ---
 
-Need to swap the public IPv4 address on your Windows Server VPS?  
-The process only takes a few minutes through the Windows GUI or PowerShell. Follow the steps below while connected through RDP or the EDBB VNC console.
+# Change the IPv4 Address in Windows Server
 
----
-
-## 1. Collect the New Network Settings
-
-1. Sign in to the [EDBB VPS Portal](https://my.edbb.com).  
-2. Open your VPS and expand **IP Settings** to view the assigned IPv4 address, subnet mask, gateway, and DNS servers.  
-3. Keep this data handy; you will enter it exactly as shown inside Windows.
+<Info>
+  Before editing Windows networking, note the IPv4 address, subnet, gateway, and DNS values from the EDBB portal. Changing settings interrupts connectivity—plan a brief maintenance window.
+</Info>
 
 ---
 
-## 2. Connect to the Server Console
+## Step 1 – Collect the New Settings
 
-- Use a normal RDP session if the current IP is still reachable.  
-- If you are mid-migration or the IP was already removed, enable the [VNC console](https://docs.edbb.com/vps-management/enable-vnc-server) from the portal and authenticate using the Windows credentials.
-
-Once you see the desktop, continue with the graphical instructions below.
+<Steps>
+  <Step title="Open the Network tab">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a> and open the <strong>Network</strong> tab on your VPS. Record the IPv4 details exactly as shown.
+  </Step>
+  <Step title="Decide on additional IPs">
+    If multiple addresses are assigned, choose which will be primary (outbound) and which will be secondary.
+  </Step>
+</Steps>
 
 ---
 
-## 3. Open Network Adapter Settings
+## Step 2 – Connect to the Server
 
-1. Press `Win + R`, type `ncpa.cpl`, and press **Enter**. This opens the **Network Connections** window.  
-2. Right-click your primary adapter (typically **Ethernet**) and choose **Properties**.
+- Use an RDP session if the current address is reachable.  
+- If the old IP is already removed, enable VNC in the quick actions and click <strong>Open Console</strong> to work from the portal console.
+
+---
+
+## Step 3 – Open Adapter Properties
+
+1. Press `Win + R`, type `ncpa.cpl`, and press **Enter**. The **Network Connections** window opens.  
+2. Right-click your main adapter (typically **Ethernet**) and choose **Properties**.
 
 ![Windows Network Adapter](/assets/1sSq3fI0sZJj8Zc4RoSr4-9mrOC1yNl1bI3VFtxq2NR-20241106-143431.png)
 
 ---
 
-## 4. Apply the New IPv4 Address
+## Step 4 – Enter the New IPv4 Values
 
 1. Highlight **Internet Protocol Version 4 (TCP/IPv4)** and click **Properties**.  
-2. Select **Use the following IP address** and enter the values collected from the portal:
-   - **IP address**: `203.0.113.50`
-   - **Subnet mask**: `255.255.255.0`
-   - **Default gateway**: `203.0.113.1`
-3. If DNS servers are provided, choose **Use the following DNS server addresses** and add them (for example, `203.0.113.2` and `8.8.8.8`).
+2. Select **Use the following IP address** and input the data from the portal (IP, subnet mask, default gateway).  
+3. If DNS servers are listed, choose **Use the following DNS server addresses** and add them.
 
 ![Windows IPv4 Properties](/assets/1sSq3fI0sZJj8Zc4RoSr4-7e4qsQlMtqcneRYQoPZQp-20241106-143711.png)
 
-Click **OK**, then **Close** to apply the changes.
+Click **OK**, then **Close** to apply the configuration.
 
 <Tip>
-If you need to add a secondary IP, click **Advanced…** inside the IPv4 properties dialog and append additional addresses in the **IP Settings** tab.
+Need to assign secondary IPs? Click **Advanced…** in the IPv4 properties dialog and add them under <strong>IP settings</strong>.
 </Tip>
 
 ---
 
-## 5. Verify with PowerShell
+## Step 5 – Verify with PowerShell
 
-Open **PowerShell** as Administrator (`Start` > search for PowerShell > **Run as administrator**) and confirm the new values:
+Open PowerShell as Administrator and confirm the new values:
 
 ```powershell
 Get-NetIPAddress -AddressFamily IPv4 | Format-Table InterfaceAlias,IPAddress,PrefixLength
 Get-NetIPConfiguration | Format-List InterfaceAlias,IPv4DefaultGateway,DNSServer
 ```
 
-If anything looks incorrect, reopen the adapter properties and adjust accordingly.
+If something looks wrong, reopen the adapter properties and correct it.
 
 ---
 
-## 6. Test Connectivity
-
-- Run `ping` against the default gateway and a public host:
+## Step 6 – Test Connectivity
 
 ```powershell
-ping 203.0.113.1
+ping 203.0.113.1       # replace with your gateway
 ping edbb.com
 ```
 
-- Launch the applications or services that rely on the new address to ensure they bind correctly. Restart services if required.
-
-Once confirmed, disable the VNC console in the portal to close the maintenance window.
+Reconnect via RDP using the new IPv4 address once pings succeed. Disable VNC if you only enabled it for this change.
 
 ---
 
-## Optional: Use PowerShell for Scripted Changes
+## Automation Option
 
-Prefer automation? The following commands replace the existing IPv4 address and gateway in one pass. Update the interface name and networking values first:
+Use PowerShell for scripted changes (update values before running):
 
 ```powershell
 $iface = 'Ethernet'
@@ -93,14 +92,12 @@ New-NetIPAddress -InterfaceAlias $iface -IPAddress '203.0.113.50' -PrefixLength 
 Set-DnsClientServerAddress -InterfaceAlias $iface -ServerAddresses @('203.0.113.2','8.8.8.8')
 ```
 
-This approach is especially helpful when preparing scripts for multiple servers.
-
 ---
 
 ## Final Checklist
 
-- [ ] Document the change and update monitoring or firewall rules.  
-- [ ] Ensure scheduled tasks, backup jobs, or licensing tools that reference the IP are refreshed.  
-- [ ] Remove any temporary firewall allowances or VNC sessions used during the update.
+- Update firewalls, monitoring, and documentation with the new IP.  
+- Restart services that bind to the old address (IIS sites, databases, etc.).  
+- Confirm scheduled tasks or backup jobs that reference the IP have been refreshed.
 
-You’ve successfully migrated the Windows Server IPv4 configuration to the new values supplied by EDBB.
+Your Windows Server now uses the new IPv4 settings supplied by EDBB.

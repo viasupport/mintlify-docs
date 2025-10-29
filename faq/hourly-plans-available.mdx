@@ -1,28 +1,45 @@
 ---
 title: "Do You Offer Hourly VPS Billing?"
 sidebarTitle: "* Hourly Pricing"
-description: "EDBB bills monthly rather than hourly; learn why and how the entry plan still delivers near-hourly economics."
+description: "EDBB bills monthly instead of hourly—learn why and how to make the most of the pricing model."
 ---
 
-## Monthly Plans Instead of Hourly
+import { CtaButton } from "/snippets/cta-button.mdx";
 
-EDBB does not provide per-hour billing.  
-Our entry KVM VPS plans start at **€4.99 per month**, which equates to roughly €0.0068 per hour—comparable to pay-as-you-go rates without micro-transactions.
+# Monthly Billing Instead of Hourly
+
+<Info>
+  EDBB uses monthly billing for all VPS plans. The entry plan starts at €4.99/month—roughly €0.0068 per hour—so you get near-hourly economics without micro-transactions.
+</Info>
 
 ---
 
-## Why We Skip Hourly Billing
+## Why We Skip Hourly Invoicing
 
-- **Processor fees** – payment gateways charge fixed fees that exceed the value of small, hourly invoices.  
-- **Operational overhead** – hourly accounting, suspensions, and reinstatements add complexity without benefiting most customers.  
-- **Transparent pricing** – monthly billing keeps budgets predictable while still offering a low effective hourly cost.
+<CardGroup cols={2}>
+  <Card title="💳 Gateway Fees">
+    Payment processors charge fixed fees that exceed the value of tiny hourly invoices.
+  </Card>
+  <Card title="🧾 Operational Overhead">
+    Hourly suspensions, reinstatements, and accounting add complexity without benefiting most customers.
+  </Card>
+  <Card title="📘 Predictable Costs">
+    Monthly billing keeps budgeting simple while still delivering a low effective hourly rate.
+  </Card>
+  <Card title="⚙️ Same Feature Set">
+    You still get Cloud-Init, API hooks, and instant deployment—only billing differs.
+  </Card>
+</CardGroup>
 
 ---
 
 ## Working Within Monthly Billing
 
-- Order the smallest plan, use it for the duration you need, then cancel before the next renewal.  
-- Take advantage of the 24-hour refund option to evaluate the platform risk-free.  
-- Use Cloud-Init or automation scripts to spin environments up and down quickly even though billing is monthly.
+- Order the smallest plan, use it for as long as needed, then cancel before the next renewal.  
+- Take advantage of the 24-hour refund window to evaluate the platform risk-free.  
+- Use automation (Cloud-Init, Ansible, Terraform) to spin environments up and down quickly even though billing is monthly.  
+- Track costs per project by tagging VPSs and exporting invoices from the portal.
 
-With monthly billing, you still gain access to EDBB’s global network, rescue tools, and support without watching the clock.
+Monthly pricing still unlocks EDBB’s global network, rescue tools, and support—without watching the clock.
+
+<CtaButton label="Compare VPS Plans" link="https://www.edbb.com/vps" openInNewTab={true} />

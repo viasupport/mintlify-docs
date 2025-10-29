@@ -6,41 +6,54 @@ description: Learn what Secure Shell (SSH) is and how to open an encrypted sessi
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-## Understanding Secure Shell (SSH)
+## Why SSH Matters
 
-Secure Shell, commonly abbreviated as **SSH**, provides encrypted remote access over untrusted networks.  
-When you connect to your VPS through SSH, both commands and responses are wrapped in cryptography, protecting credentials and data from interception.
+<Info>
+  SSH gives you an encrypted command-line tunnel into your VPS. Bring the server’s IPv4 address, your username (usually <code>root</code>), and the password you set during provisioning or reinstall.
+</Info>
 
-Using SSH is the recommended way to administer Linux servers because:
-
-- Authentication and traffic are encrypted end to end
-- Key pairs can enforce multi-factor-style security
-- Command-line automation becomes straightforward and secure
+<CardGroup cols={3}>
+  <Card title="🔐 Encrypted Channel">
+    Commands, output, and credentials travel inside a secure tunnel so they cannot be intercepted on the network.
+  </Card>
+  <Card title="🗝️ Strong Authentication">
+    Combine passwords with SSH keys to add an extra factor without complicating your workflow.
+  </Card>
+  <Card title="⚙️ Automation Ready">
+    Script routine tasks, deploy code, or manage configuration tools over a reliable CLI connection.
+  </Card>
+</CardGroup>
 
 ---
 
-## Connect to Your VPS with SSH
+## Connect to Your VPS
 
-Follow these steps on your local machine:
+<Steps>
+  <Step title="Open a terminal on your local machine">
+    macOS, Linux, and Windows (PowerShell) all ship with an SSH client by default.
+  </Step>
+  <Step title="Run the SSH command">
+    ```bash
+    ssh root@<your-vps-ip>
+    ```
+  </Step>
+  <Step title="Trust the fingerprint once">
+    On the first login, type <code>yes</code> to store the host key so future sessions can verify the server’s identity.
+  </Step>
+  <Step title="Enter your password or unlock your key">
+    Provide the welcome-password (or the credential you set in the portal). A successful authentication drops you into the remote shell.
+  </Step>
+</Steps>
 
-1. Open a terminal or command prompt.
-2. Run the `ssh` command with your VPS username (typically `root`) and public IPv4 address:
+To close the session at any time, type `exit` or press **Ctrl + D**.
 
-```shell
-ssh root@<your-vps-ip>
-```
+---
 
-3. On the first connection, confirm the remote host fingerprint by typing `yes`.
-4. Enter the password from your welcome email (or the password you set during reinstall).
+## Quick Safety Checks
 
-If the authentication succeeds, the remote shell appears and you can manage the server securely.  
-To end the session, type:
-
-```shell
-exit
-```
-
-Ensure SSH access is enabled on the VPS and that you’re using the correct credentials or keys.
+- Disable password logins and rely on SSH keys once you are comfortable.  
+- Keep the package updated (`apt update && apt upgrade -y` or `dnf update -y`).  
+- Limit root access by creating a sudo-capable user for daily administration.
 
 <CtaButton
   label='Blog Post: Are SSH Connections Truly Secure?'

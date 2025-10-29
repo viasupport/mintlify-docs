@@ -1,18 +1,33 @@
 ---
-title: "Downgrading a VPS"
+title: "Is Downgrading an EDBB VPS Possible?"
 sidebarTitle: "* Downgrade Policy"
-description: "EDBB does not offer in-place downgrades; deploy a smaller plan and migrate data if you need fewer resources." 
+description: "Learn why in-place downgrades aren’t supported and how to move to a smaller plan safely." 
 ---
 
-## Why Downgrades Aren’t Supported
+## Why Downgrades Are Disabled
 
-KVM VPS disks behave like physical drives.  
-Shrinking a virtual disk risks data loss, so EDBB only supports plan upgrades.
+<Info>
+  Shrinking a virtual disk is just as risky as shrinking a physical drive—partitions must be resized perfectly or data can be lost. To avoid accidental corruption, EDBB only allows upgrades.
+</Info>
 
-## Recommended Approach
+- VPS storage is provisioned at the plan’s full size.  
+- Lowering disk size mid-flight doesn’t guarantee consistency.  
+- Other resources (CPU/RAM) are tied to the plan profile, so rolling back would require reprovisioning anyway.
 
-1. Order the smaller plan you want.  
-2. Migrate applications and data manually.  
-3. Cancel the original VPS once migration is complete.
+---
 
-Always maintain current backups before making plan changes.
+## Safe Path to a Smaller Footprint
+
+<Steps>
+  <Step title="Deploy the new plan">
+    Order the smaller VPS tier alongside your current service.
+  </Step>
+  <Step title="Migrate workloads">
+    Move data using backups, rsync, snapshots, or application-level exports. Test the new instance thoroughly.
+  </Step>
+  <Step title="Retire the original VPS">
+    Once satisfied, cancel the old service. This avoids disk resizing risks and keeps downtime minimal.
+  </Step>
+</Steps>
+
+Keep routine backups (or qcow2 exports) so you can revert quickly if the smaller plan doesn’t meet expectations.

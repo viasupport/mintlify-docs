@@ -4,11 +4,28 @@ sidebarTitle: "* Reverse DNS"
 description: "Set or remove PTR records for your EDBB VPS IPv4/IPv6 directly in the management portal."
 ---
 
+## Before You Start
+
+<Info>
+  Make sure the forward (A/AAAA) record for your hostname already points to the IP you plan to configure. Reverse PTRs should match the hostname that answers forward lookups to avoid mail reputation issues.
+</Info>
+
 ## Update PTR Records in the Portal
 
-1. Sign in to the [EDBB dashboard](https://my.edbb.com/clientarea.php).  \
-2. Open **Services** → select the VPS.  \n
-3. Choose **Reverse DNS**.  \n
-4. Click **Set** to assign a hostname or **Unset** to remove the record.
+<Steps>
+  <Step title="Open the rDNS tab">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a>, pick your VPS from <strong>Services</strong>, and switch to the <strong>rDNS</strong> tab.
+  </Step>
+  <Step title="Set the IPv4 hostname">
+    Replace the placeholder with your FQDN, then press <strong>set</strong>. Use <code>unset</code> if you need to remove the record.
+  </Step>
+  <Step title="Add IPv6 entries">
+    Enter the desired suffix (for example <code>:1</code>) and hostname, then click <strong>add</strong>. Repeat for additional IPv6 addresses in your /64.
+  </Step>
+</Steps>
 
-Changes propagate through EDBB’s anycast DNS within minutes.  \n+Use a DNS lookup tool to confirm the new PTR once caching expires.
+---
+
+## Verify the Change
+
+EDBB pushes PTR updates instantly, but DNS caching can take a few minutes. Test with an external lookup tool (such as `dig -x`) to confirm the new record.

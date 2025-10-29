@@ -4,15 +4,24 @@ sidebarTitle: "* Transfer Between Accounts"
 description: "EDBB VPS instances remain bound to the account they were created under; transfers to other client accounts are not supported."
 ---
 
-## Transfer Policy
+## Why Services Can't Be Moved
 
-KVM VPS services are permanently tied to the client account that created them.  
-We cannot reassign the KVM ID or billing record to a different account without breaking backend links and access controls.
+<Info>
+  Every VPS is linked to the customer account that ordered it—billing history, Support PIN, and access controls all depend on that relationship. Moving a live service to another account would break those records, so EDBB treats migrations as new deployments.
+</Info>
 
-## Alternatives
+## How to Hand Over a Service
 
-- Provision a new VPS under the destination account.  
-- Migrate data and configuration manually.  
-- Cancel the original service once the migration is complete.
+<Steps>
+  <Step title="Order under the destination account">
+    The recipient should deploy a VPS with the required specs in their own EDBB account.
+  </Step>
+  <Step title="Migrate workloads">
+    Transfer data using backups, snapshots, or configuration management tools. Update DNS, firewall rules, and monitoring to point at the new instance.
+  </Step>
+  <Step title="Retire the original service">
+    Once verification is complete, cancel the old VPS so billing, credentials, and support ownership stay in sync.
+  </Step>
+</Steps>
 
-This approach keeps credentials, billing history, and support ownership aligned with the intended customer.
+Keeping each service tied to the correct account maintains a clean audit trail for payments, support requests, and compliance checks.

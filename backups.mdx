@@ -4,27 +4,54 @@ sidebarTitle: "* Backup Policy"
 description: Understand your role in safeguarding VPS data and learn how to request image exports when needed.
 ---
 
-## You're in Charge of Backups
+# Protecting Your VPS Data
 
-EDBB prioritizes infrastructure stability, but by design we **do not include snapshot or backup services** for VPS plans built on KVM virtualization.  
-That means you control how, where, and when your data is protected.
+<Info>
+  EDBB keeps the hypervisor stable but does <strong>not</strong> ship VPS plans with automatic snapshots or backups. You decide how, where, and how often to protect your own data.
+</Info>
 
-### What This Implies
+---
 
-- 🛡 **You’re responsible** for backing up operating systems, configuration files, and application data.
-- 🛡 Schedule backups on a routine cadence so recovery isn’t left to chance.
+## Why It Matters
 
-### Why Routine Backups Matter
+<CardGroup cols={3}>
+  <Card title="🛡️ You Own the Recovery Plan">
+    Operating system files, application configs, and customer data are your responsibility. Schedule backups before you need them.
+  </Card>
+  <Card title="⚡ Incidents Happen">
+    Hardware faults, accidental deletes, or security breaches can strike without warning. Prepared backups mean rapid recovery.
+  </Card>
+  <Card title="🌍 Off-Site Saves the Day">
+    Keep at least one copy outside the VPS—object storage, another data centre, or your own infrastructure.
+  </Card>
+</CardGroup>
 
-Hardware issues, accidental deletions, and security incidents happen.  
-With a reliable backup strategy, you can restore quickly, limit downtime, and avoid permanent data loss.
+---
 
-### How to Back Up and Restore
+## Build a Backup Routine
 
-Our guide, [Backup and Restore Data on Linux](https://docs.edbb.com/backup-restore-data-linux), covers practical approaches including `tar`, `rsync`, `dd`, and `rclone` for off-site storage. Follow the step-by-step instructions that fit your tooling preferences.
+<Steps>
+  <Step title="Choose your tooling">
+    Decide between snapshot-like full images (<code>dd</code>, <code>qemu-img</code>), file-level backups (<code>tar</code>, <code>rsync</code>), or sync tools (<code>rclone</code>, <code>restic</code>).
+  </Step>
+  <Step title="Automate the cadence">
+    Use cron jobs or orchestration pipelines so backups run daily or weekly without manual steps.
+  </Step>
+  <Step title="Verify and rotate">
+    Test restores periodically and prune old archives so you always have a clean, recent copy.
+  </Step>
+</Steps>
 
-### Need a .qcow2 Image?
+---
 
-While instant snapshots aren’t part of the service, you can request a downloadable `.qcow2` image of your virtual disk. A processing fee of **EUR 25** applies.
+## Requesting a Downloadable Image
 
-Details on the request workflow: [Requesting a Downloadable .qcow2 Image Backup](https://docs.edbb.com/faq/upgrades-downgrades/requesting-qcow2-image-backup).
+<Info>
+  Instant snapshots are not included, but you can request a downloadable <code>.qcow2</code> image of your VPS disk. Each export costs <strong>€25</strong> to cover handling.
+</Info>
+
+- Contact Support via the portal messenger or by email with the VPS ID and timeframe.  
+- We prepare the image and provide a secure download link.  
+- Download promptly—links expire to keep data safe.
+
+Full instructions live in [Requesting a Downloadable .qcow2 Image Backup](https://docs.edbb.com/faq/upgrades-downgrades/requesting-qcow2-image-backup).

@@ -1,43 +1,68 @@
 ---
 title: "Enable VNC on Your VPS"
 sidebarTitle: "* VPS VNC Access"
-description: "Enable VNC from the EDBB portal to reach your VPS console via noVNC or a desktop VNC client."
+description: "Turn VNC on or off from the EDBB portal so you can reach the console via Open Console or a desktop VNC client."
 ---
 
-## VNC, remote console with graphical interface
+# Enable VNC for Console Access
 
-### Understanding VNC
+<Info>
+  VNC provides a screen-and-keyboard view of your VPS even when SSH or RDP is unavailable. Enable it only while you need interactive console access and turn it off afterward.
+</Info>
 
-Imagine if you could sit in front of a remote computer from anywhere in the world and use it as if you're right there. That's VNC. It lets you see and interact with your VPS even if the normal ways of connecting (like SSH or RDP) are broken.
+---
 
-### Understanding noVNC (Console)
+## What You’ll Need
 
-noVNC provides a convenient way to access VNC servers from any device through almost any modern web browser, eliminating the need for dedicated client software (has limitations vs desktop VNC client though).
+<CardGroup cols={3}>
+  <Card title="🔐 Portal Access">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a> and open the VPS you want to manage.
+  </Card>
+  <Card title="🕒 Maintenance Window">
+    Plan a brief window—it’s best to enable VNC only when you’re actively using it.
+  </Card>
+  <Card title="🖥️ Modern Browser or VNC Client">
+    You can use the built-in <strong>Open Console</strong> button (browser-based) or a desktop VNC client such as RealVNC/TightVNC.
+  </Card>
+</CardGroup>
 
-### How to activate VNC in the control panel
+---
 
-Through the EDBB portal, you can enable VNC for each VPS individually. Once VNC is turned on, **noVNC** or a **desktop VNC client** can be used to connect.
+## Step 1 – Toggle VNC
 
 <Steps>
-  <Step title="Step 1">
-    Start VNC 
+  <Step title="Open the quick action menu">
+    In the service dashboard, locate the quick action panel. Click the arrow next to the red <strong>VNC Off</strong> button and choose <strong>Enable VNC</strong>.
   </Step>
-  <Step title="Step 2">
-    Open Console once button turns green (and click into the window to set focus\!)
+  <Step title="Wait for VNC to turn on">
+    The button turns green and displays <strong>VNC On</strong>. The panel now shows the VNC hostname and password for desktop clients.
   </Step>
 </Steps>
 
-![Enable VNC](/assets/vps-start-vnc-open-console.webp)
+![VNC Enabled](/assets/vnc-enabled-panel.png)
 
-### **noVNC Console Instructions**
+---
 
-This opens a **virtual console** for your server. The VNC password is for Desktop VNC Client connections only. The VNC password is not required for noVNC Console access. Click into the noVNC window to set focus. Use your OS username & password to log in to your OS once you are presented with the login-screen. 
+## Step 2 – Open the Console
 
-### **Desktop VNC Client Instructions**
+- Click <strong>Open Console</strong> to launch the browser-based console. No password is required for this view—just click inside the window to capture keyboard and mouse input.  
+- Prefer a desktop client? Copy the VNC hostname and password shown in the panel and connect using RealVNC, TightVNC, or any compatible viewer.
 
-Open a connection with your preferred Desktop VNC Client: RealVNC Viewer, TightVNC Viewer, UltraVNC, ...\
-Use the password indicated in Step 1 (Start VNC)\
-Use VNC Server hostname and port from the Information window on the right side.\
-Establish your connection.
+---
 
-![Enable VNC](/assets/vnc-stop-open-console-hostname.webp)
+## Step 3 – Disable VNC When Finished
+
+<Steps>
+  <Step title="Toggle VNC off">
+    Open the dropdown beside <strong>VNC On</strong> and choose <strong>Disable VNC</strong> once you’re done troubleshooting or installing software.
+  </Step>
+  <Step title="Confirm access paths">
+    After disabling VNC, reconnect using SSH or RDP as normal. The console will no longer be accessible until you enable VNC again.
+  </Step>
+</Steps>
+
+<Callout type="warning">
+  Leaving VNC enabled exposes an additional attack surface. Disable it when you’re finished to keep the VPS secure.
+</Callout>
+
+You can now confidently toggle VNC on and off whenever you need direct console access to your EDBB VPS.

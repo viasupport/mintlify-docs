@@ -1,130 +1,118 @@
 ---
 title: "Manually Update IPv4 Settings on Ubuntu (18.04–24.04)"
 sidebarTitle: "* Ubuntu IP Change"
-description: "Adjust the IPv4 address, gateway, or add secondary addresses on Ubuntu VPS instances hosted with EDBB using Netplan." 
+description: "Use Netplan to change IPv4 addresses, gateways, or DNS entries on Ubuntu VPS instances running on EDBB."
 ---
 
-Changing the public IPv4 address inside Ubuntu does not require a reinstall.  
-This guide walks through the process for Ubuntu 18.04, 20.04, 22.04, and 24.04 using **Netplan**, the default network configuration tool across those releases.
-
----
-
-## 1. Gather Network Details
-
-- Sign in to the [EDBB VPS Portal](https://my.edbb.com) and open the VPS card.  
-- Note the IPv4 address, subnet mask (prefix), gateway, and DNS servers listed under **IP Settings**.  
-- If you plan to add multiple addresses, decide which ones should be primary versus secondary.
+# Update IPv4 Settings via Netplan
 
 <Info>
-Keep the portal tab open—you may need to reference the gateway or revert changes quickly.
+  Netplan is the default network configuration tool on Ubuntu 18.04 through 24.04. Always grab the latest IP details from the EDBB portal before editing configuration files.
 </Info>
 
 ---
 
-## 2. Open a Console Session
+## Step 1 – Collect Network Information
 
-- Connect via SSH if the current IP is still reachable, or use the [VNC console](https://docs.edbb.com/vps-management/enable-vnc-server) from the portal for out-of-band access.  
-- Once logged in, confirm the active network interface:
+<Steps>
+  <Step title="Open the Network tab">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, open your VPS, and switch to <strong>Network</strong>. Note the IPv4 address, subnet, gateway, and DNS servers.
+  </Step>
+  <Step title="Plan primary vs secondary IPs">
+    Decide which addresses should be primary (first in the list) and which should be secondary.
+  </Step>
+</Steps>
+
+---
+
+## Step 2 – Access the Server
+
+- Connect via SSH if the current IP is reachable. Otherwise, enable VNC in the quick actions and click <strong>Open Console</strong>.  
+- Identify the network interface name:
 
 ```bash
 ip link show
 ```
 
-Typical interface names include `ens3`, `ens18`, or `eth0`—note the correct value for later steps.
+Record the correct interface (for example `ens3`, `ens18`, or `eth0`).
 
 ---
 
-## 3. Review Existing Netplan Files
-
-Netplan configuration lives in `/etc/netplan/`. List the files to identify the one in use:
+## Step 3 – Locate the Netplan File
 
 ```bash
 ls /etc/netplan/
 ```
 
-Common filenames are `50-cloud-init.yaml` or `01-netcfg.yaml`. Open the appropriate file with your editor of choice:
+Common filenames include `50-cloud-init.yaml` or `01-netcfg.yaml`. Open the relevant file with your editor:
 
 ```bash
 sudo nano /etc/netplan/50-cloud-init.yaml
 ```
 
-<Note>
-If the file name differs, adjust the command accordingly.
-</Note>
+(Adjust the filename if it differs.)
 
 ---
 
-## 4. Update IPv4 Addresses and Routes
-
-Inside the YAML file:
-
-1. Locate the `addresses` list beneath your interface. Replace the existing entry with the new primary IP using CIDR notation, for example `203.0.113.10/24`.
-2. Update the `gateway4` value so it matches the IPv4 gateway from the portal.  
-3. Add or update DNS servers under `nameservers`:
+## Step 4 – Edit IPv4 Addresses and DNS
 
 ```yaml
-eth0:
-  addresses:
-    - 203.0.113.10/24
-    - 203.0.113.11/24   # optional secondary
-  gateway4: 203.0.113.1
-  nameservers:
-    addresses:
-      - 203.0.113.2
-      - 8.8.8.8
+network:
+  version: 2
+  ethernets:
+    ens3:
+      addresses:
+        - 203.0.113.10/24      # Primary IPv4
+        - 203.0.113.11/24      # Optional secondary
+      gateway4: 203.0.113.1
+      nameservers:
+        addresses:
+          - 203.0.113.2
+          - 1.1.1.1
 ```
 
-Maintain proper indentation—YAML is sensitive to spacing.
+- Replace `ens3` with your interface name.  
+- Update addresses, gateway, and DNS values using the portal data.  
+- Maintain spacing—YAML is indentation-sensitive.
 
 ---
 
-## 5. Apply and Validate
-
-1. Save the file and exit the editor.  
-2. Test the configuration with Netplan’s dry-run command:
+## Step 5 – Apply the Configuration
 
 ```bash
-sudo netplan try
-```
-
-If the preview succeeds, press **Enter** to accept. Otherwise, Netplan will roll back automatically.  
-
-3. Apply the configuration persistently:
-
-```bash
+sudo netplan try   # dry-run with rollback
 sudo netplan apply
 ```
 
-4. Confirm the new settings:
+If `netplan try` reports errors, press <strong>Esc</strong> to cancel, fix the file, and retry.
+
+Verify the changes:
 
 ```bash
-ip addr show dev eth0
+ip addr show dev ens3
 ip route show default
 ```
 
-Replace `eth0` with your interface name if required.
+(Substitute your interface name if different.)
 
 ---
 
-## 6. Connectivity Checks
-
-- Ping the gateway and a public host to verify routing:
+## Step 6 – Confirm Connectivity
 
 ```bash
-ping -c 3 203.0.113.1
+ping -c 3 203.0.113.1       # gateway
 ping -c 3 edbb.com
 ```
 
-- If the SSH session was interrupted, reconnect using the new IPv4 address.  
-- Once confirmed, disable the VNC console in the portal to close the out-of-band session.
+Reconnect via SSH using the new address once the pings succeed. Disable VNC in the portal if you no longer need the console.
 
 ---
 
-## Tips for Smooth Transitions
+## Best Practices
 
-- Keep a backup copy of the original Netplan file (`cp 50-cloud-init.yaml 50-cloud-init.yaml.bak`) before editing.  
-- When configuring multiple addresses, designate the primary IP as the first entry so the system uses it for outbound traffic.  
-- Update firewall rules and application bindings to match the new IP if necessary.  
-- Document the change for your internal records, noting the date and the person who performed the update.
+- Back up the original Netplan file before editing: `sudo cp 50-cloud-init.yaml 50-cloud-init.yaml.bak`.  
+- List the primary IPv4 first so Ubuntu uses it for outbound connections.  
+- Update firewall rules and application bindings to reflect the new IP.  
+- Document the change (date, technician, new IPs) for your internal records.
 
-With these steps complete, your Ubuntu VPS now uses the updated IPv4 configuration provided by EDBB.
+Your Ubuntu VPS now uses the updated IPv4 configuration supplied by EDBB.

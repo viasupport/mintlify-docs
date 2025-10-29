@@ -6,8 +6,9 @@ description: "EDBB marks crypto invoices paid after the blockchain reaches the r
 
 ## Confirmation Basics
 
-Invoices paid via crypto are created in EUR and routed through CoinPayments or Coinbase Commerce.  
-Once the payment gateway receives the transaction, it waits for a predefined number of on-chain confirmations before automatically flagging the invoice as paid.
+<Info>
+  Crypto invoices are priced in EUR, but the gateway waits for the blockchain to reach a set number of confirmations before releasing the funds to EDBB.
+</Info>
 
 ## Typical Thresholds
 
@@ -19,17 +20,24 @@ Once the payment gateway receives the transaction, it waits for a predefined num
 
 Exact requirements may change as gateways adjust for network conditions. The gateway checkout page always shows the live requirement before you send funds.
 
-## How to Track Progress
+## Track Your Payment
 
-1. Copy the transaction hash (TXID) from your wallet or the payment page.  
-2. Paste it into a blockchain explorer for the relevant network.  
-3. Compare the reported confirmation count with the threshold shown during checkout.  
-4. Once the target is met, the invoice status updates automatically—no manual ticket needed.
+<Steps>
+  <Step title="Copy the TXID">
+    Grab the transaction hash from your wallet or the gateway’s receipt page.
+  </Step>
+  <Step title="Use a blockchain explorer">
+    Paste the TXID into an explorer for that network and watch the confirmation counter.
+  </Step>
+  <Step title="Match the requirement">
+    Compare the explorer’s confirmation count with the threshold shown during checkout. The invoice closes automatically once it hits the target.
+  </Step>
+</Steps>
 
 ## If the Timer Expires
 
 - Most gateways lock the exchange rate for a limited window.  
 - If the payment arrives late or with too few confirmations, the gateway may auto-refund or request a top-up.  
-- Include the TXID when contacting EDBB Support so we can investigate with the processor.
+- Include the TXID when contacting EDBB Support via the messenger or by email so we can investigate with the processor.
 
 Understanding these steps ensures a smooth crypto payment experience for your EDBB services.

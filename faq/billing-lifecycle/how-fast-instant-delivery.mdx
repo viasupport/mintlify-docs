@@ -4,20 +4,48 @@ sidebarTitle: "* Delivery Time"
 description: "EDBB provisions VPS orders within minutes after payment clears; installation time depends on the OS image." 
 ---
 
-## Standard Provisioning Timeline
+## Instant Deployment Highlights
 
-As soon as the invoice is marked paid, an automated provisioning cycle runs.  
-- Credit cards: typically within minutes  
-- Cryptocurrency: triggered once the required confirmations are reached
+<Info>
+  The moment your payment is confirmed, EDBB’s automation builds the VPS. In most cases you can log in within minutes—no manual approval queue.
+</Info>
 
-## OS Installation Time
+## Payment Speed Snapshot
 
-- Linux templates complete in roughly **5 minutes**  
-- Windows templates need up to **15 minutes** to finish imaging and first boot
+<CardGroup cols={3}>
+  <Card title="💳 Card Payments">
+    Stripe clears successful card transactions in under a minute. Provisioning begins immediately afterward.
+  </Card>
+  <Card title="🪙 Crypto Gateways">
+    CoinPayments/Coinbase Commerce trigger deployment as soon as the required confirmations hit the blockchain.
+  </Card>
+  <Card title="💼 Account Credit">
+    Using preloaded credit? The order starts as soon as you click <strong>Complete Order</strong>.
+  </Card>
+</CardGroup>
 
-You will receive an email with credentials as soon as the VM is ready to access.
+---
 
-## Delays & Compliance Checks
+## From Payment to Login
 
-If additional verification is required, EDBB Support will contact you.  
-In rare cases where the order cannot proceed, we’ll issue a refund promptly.
+<Steps>
+  <Step title="Provisioning (≈1 minute)">
+    Hypervisor resources are reserved, networking is assigned, and the installation image is mounted.
+  </Step>
+  <Step title="OS Imaging">
+    Linux templates usually finish within **5 minutes**; Windows images can take up to **15 minutes** as Sysprep completes.
+  </Step>
+  <Step title="Credentials Delivered">
+    As soon as first boot finishes, we email your console/SSH/RDP details and unlock the portal dashboard.
+  </Step>
+</Steps>
+
+---
+
+## What Can Slow Things Down?
+
+- **Payment verification** – crypto transfers waiting on confirmations or card payments flagged for fraud checks.  
+- **Out-of-stock configurations** – rare during maintenance windows; we’ll notify you if extra time is needed.  
+- **Compliance review** – if we need to verify account information, Support will reach out via messenger or email.
+
+If an order cannot proceed, we arrange a prompt refund or credit so you can choose an alternative plan.

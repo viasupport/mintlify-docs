@@ -1,103 +1,104 @@
 ---
-title: Windows Remote Desktop Access
+title: "Windows Remote Desktop Access"
 sidebarTitle: "* RDP How-To"
-description: Step-by-step instructions for connecting from Windows and macOS to a Windows VPS using Remote Desktop Protocol.
+description: "Launch Remote Desktop from Windows or macOS to reach your EDBB Windows VPS in a secure graphical session."
 ---
 
-## Connect to Your Windows VPS from Windows or macOS
+import { CtaButton } from "/snippets/cta-button.mdx";
 
-Remote Desktop Protocol (RDP) lets you manage a Windows VPS with a full graphical session.  
-Follow the instructions below for your operating system. Need Windows on your VPS? You can [reinstall the OS](https://docs.edbb.com/autoinstall-reinstall-install-vps-linux-windows) at any time from the control panel.
+# Connect to Your Windows VPS
 
----
+<Info>
+  Remote Desktop Protocol (RDP) delivers full graphical control of your Windows VPS. Bring the server’s IPv4 address, the <code>Administrator</code> password you set in the portal, and a stable network connection.
+</Info>
 
-## Windows Clients
-
-**Launch Remote Desktop Connection**
-
-Press the **Windows key**, type **Remote Desktop Connection**, and open the desktop app.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-E6s05O4r7d3ThHTglgxfu-20241202-110408.png)
-
-Alternatively, press **Win + R**, enter `mstsc`, and hit **Enter**.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-bK1b1GLgdtW_w6OVCJZ1g-20241202-111515.png)
-
-**Enter Connection Details**
-
-In the Remote Desktop Connection window, type the VPS IPv4 address or hostname you received in your welcome email.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-eE8Z7tBNfWJaa74qfI7Qv-20241202-112004.png)
-
-**Reveal Additional Options**
-
-Select **Show Options** for extra configuration choices.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-XU501hk-qwMSPi1Y5nSs0-20241202-112710.png)
-
-**Set Username and Prompts**
-
-Use **Administrator** unless you created another user. Enable the option to request credentials every time if you prefer a fresh prompt.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-K1RXNa_wHwVjBcGOvTw4K-20241202-112943.png)
-
-**Authenticate**
-
-Click **Connect**, provide your VPS password, and optionally tick **Remember me**.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-mlWVL7VFqr35TTENbhrJz-20241202-113311.png)
-
-**Trust the Certificate**
-
-Confirm the identity prompt and check the box to suppress future warnings, then hit **Yes**.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-AGGOxauevnKCyRuSL3vFW-20241202-113527.png)
-
-**Connect**
-
-The secure desktop session initializes and hands you control.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-fD_b3Cld9Oj602nZoB_1k-20241202-113847.png)
-
-You now have access to your Windows VPS desktop.
-
-![Remote Desktop (RDP)](/assets/1sSq3fI0sZJj8Zc4RoSr4-I-qET7hMnYy7aStuDfr5A-20241202-114409.png)
+Need to deploy Windows first? Reinstall from the EDBB portal with the <a href="/vps-management/autoinstall-reinstall-install-vps-linux-windows">OS reinstall guide</a>.
 
 ---
 
-## macOS Clients
+## Why Use RDP?
 
-**Install Microsoft's Windows App**
+<CardGroup cols={3}>
+  <Card title="🖥️ Full Desktop">
+    Interact with the VPS as if you were sitting in front of the console—perfect for GUI apps, MMC tools, and quick configuration checks.
+  </Card>
+  <Card title="🔐 Secure Transport">
+    RDP sessions are encrypted end-to-end. Combine it with the portal’s one-time console access for password resets or emergency recovery.
+  </Card>
+  <Card title="🪟 Cross-Platform Clients">
+    Microsoft ships native clients for Windows and macOS, and open-source alternatives exist for Linux—use whichever device you prefer.
+  </Card>
+</CardGroup>
 
-Download the latest version (formerly Microsoft Remote Desktop) from the [Mac App Store](https://itunes.apple.com/ru/app/microsoft-remote-desktop-10/id1295203466?mt=12).
+---
 
-**Open Windows App**
+## Connect from Windows Desktop
 
-Launch the application after installation.
+<Steps>
+  <Step title="Open Remote Desktop Connection">
+    Press the Windows key, type <strong>Remote Desktop Connection</strong>, and launch the desktop app. Prefer a shortcut? Press <code>Win + R</code>, enter <code>mstsc</code>, then click <strong>OK</strong>.
 
-![Remote Desktop is now Windows App](/assets/huaNpFAxK5PVCl_NLo3ID-QlQORqnbwx4sd8x4KCHOl-20241202-160326.png)
+    ![Open RDP client on Windows desktop](/assets/1sSq3fI0sZJj8Zc4RoSr4-E6s05O4r7d3ThHTglgxfu-20241202-110408.png)
+  </Step>
+  <Step title="Enter the VPS address">
+    In the <strong>Computer</strong> field, paste the IPv4 address (or hostname) from your welcome email. Click <strong>Show Options</strong> to expand the dialogue before you connect.
 
-**Create a New Connection**
+    ![Enter the VPS IPv4 in the Computer field](/assets/1sSq3fI0sZJj8Zc4RoSr4-eE8Z7tBNfWJaa74qfI7Qv-20241202-112004.png)
+  </Step>
+  <Step title="Use the Administrator account">
+    Unless you created a custom user, type <strong>Administrator</strong>. Leave “Ask for credentials every time” enabled if multiple people share the workstation.
 
-1. Press the **+** symbol to add a new PC.
-2. Enter the VPS IP address in **PC name** and choose a descriptive **Friendly Name**.
-3. Select **Administrator** for credentials or supply the account you use.
-4. Save the entry.
+    ![Enter Administrator as the username](/assets/1sSq3fI0sZJj8Zc4RoSr4-K1RXNa_wHwVjBcGOvTw4K-20241202-112943.png)
+  </Step>
+  <Step title="Connect and authenticate">
+    Click <strong>Connect</strong>, enter the VPS password, and accept the certificate warning. Tick “Don’t ask me again” once you trust the fingerprint so the prompt stays hidden next time.
 
-![Remote Desktop (RDP)](/assets/huaNpFAxK5PVCl_NLo3ID-rbCU-h7FzGiJeIcW7xO1y-20241202-160642.png)
+    ![Password prompt and certificate warning](/assets/1sSq3fI0sZJj8Zc4RoSr4-AGGOxauevnKCyRuSL3vFW-20241202-113527.png)
+  </Step>
+</Steps>
 
-Double-click the tile to initiate the session and accept the certificate prompt (**Continue**).
+Once authenticated, the Windows desktop loads and you can begin managing your VPS. Close the session any time via **Start → Sign out** or by closing the RDP window.
 
-![Remote Desktop (RDP)](/assets/bYb9Hny4tfRDK5FcumtQA_screenshot-2024-12-02-at-171013.png)
+---
 
-Enter your password and choose **Continue**.
+## macOS Client (Microsoft Windows App)
 
-![Remote Desktop (RDP)](/assets/vI9GQIvvP61Ayho-Uhrnj_screenshot-2024-12-02-at-171118.png)
+<Steps>
+  <Step title="Install Microsoft Windows App">
+    Download the free client (formerly Microsoft Remote Desktop) from the <a href="https://apps.apple.com/app/microsoft-remote-desktop/id1295203466" target="_blank" rel="noreferrer">Mac App Store</a>.
 
-If macOS asks about keychain access, click **Continue** to proceed.
+    ![Microsoft Windows App listing in the Mac App Store](/assets/huaNpFAxK5PVCl_NLo3ID-QlQORqnbwx4sd8x4KCHOl-20241202-160326.png)
+  </Step>
+  <Step title="Add your VPS">
+    Open the app, click the <strong>+</strong> button, choose <strong>Add PC</strong>, and enter the VPS IPv4 address. Give it a friendly name so you recognise it later.
 
-![Remote Desktop (RDP)](/assets/QxA-hYPd04kMS6eAOPuZD_screenshot-2024-12-02-at-171343.png)
+    ![Add PC window showing IP entry and friendly name](/assets/huaNpFAxK5PVCl_NLo3ID-rbCU-h7FzGiJeIcW7xO1y-20241202-160642.png)
+  </Step>
+  <Step title="Store credentials or prompt each time">
+    Select <strong>Administrator</strong> (or your custom user). Save the connection and double-click the tile to launch it.
 
-You should now see the Windows desktop for final configuration and daily use.
+    ![Saved connection tile ready to launch](/assets/bYb9Hny4tfRDK5FcumtQA_screenshot-2024-12-02-at-171013.png)
+  </Step>
+  <Step title="Approve prompts and sign in">
+    macOS will ask about certificates and optionally keychain storage—press <strong>Continue</strong>. Enter the password and you’ll land on the Windows desktop.
 
-![Remote Desktop (RDP)](/assets/huaNpFAxK5PVCl_NLo3ID-W0EeJBw1Um2ua4QWM6--f-20241202-161319.png)
+    ![Certificate prompt during first RDP connection on macOS](/assets/vI9GQIvvP61Ayho-Uhrnj_screenshot-2024-12-02-at-171118.png)
+  </Step>
+</Steps>
+
+Pro tip: If you’re using a MacBook, enable “Fit session to window” in the connection settings for a smoother Retina experience.
+
+![Windows desktop reached via Microsoft Windows App on macOS](/assets/huaNpFAxK5PVCl_NLo3ID-W0EeJBw1Um2ua4QWM6--f-20241202-161319.png)
+
+---
+
+## Keep RDP Secure
+
+- Rotate the Administrator password regularly and store it in a password manager.  
+- Use the portal VNC console to disable/enable RDP if you ever need to lock access quickly.  
+- Maintain Windows Updates (`Settings → Windows Update`) so security patches install promptly.
+
+<CtaButton
+  label="Reset the Windows Admin Password"
+  link="/vps-management/reset-windows-admin-password"
+/>

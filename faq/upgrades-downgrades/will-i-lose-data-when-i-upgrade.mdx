@@ -1,17 +1,29 @@
 ---
 title: "Will I Lose Data When Upgrading?"
 sidebarTitle: "* Upgrade & Data"
-description: "Plan upgrades add resources but do not modify existing partitions; data stays intact unless you reinstall." 
+description: "Understand what happens to your disk when you upgrade an EDBB VPS and how to keep data safe." 
 ---
 
-## What Changes During an Upgrade
+## Upgrade Impact at a Glance
 
-- Additional vCPUs, RAM, and monthly traffic allowance are provisioned  
-- The virtual disk size increases, but existing partitions are left untouched
+<Info>
+  Plan upgrades add CPU, RAM, storage capacity, and traffic allowance—but they do <strong>not</strong> reimage your VPS. Existing partitions remain exactly as they were before the upgrade.
+</Info>
 
-## Data Safety
+| Resource | What the upgrade does | What it doesn’t do |
+|----------|----------------------|--------------------|
+| vCPU / RAM | Hot-adds the new allocation (reboot may be advised for the guest OS to detect it) | Doesn’t wipe memory disks or reset configs |
+| Disk size | Expands the virtual disk capacity | Doesn’t resize partitions or filesystems automatically |
+| Traffic allowance | Boosts monthly quota | Doesn’t reset usage mid-cycle |
 
-EDBB does not automatically resize or format your filesystem.  
-Your data remains in place; you can expand partitions manually after the upgrade or leave them as-is.
+---
 
-Only a full reinstall wipes the disk. Continue running regular backups to protect against accidental loss.
+## Keeping Data Safe
+
+- Filesystems remain untouched; extend partitions with your preferred tool (`growpart`, `lsblk`, Disk Management) if you want to use the new space.  
+- Snapshots and qcow2 exports stay available after the upgrade.  
+- Only a reinstall or manual destructive action removes data—plan normal backups as you would for any production system.
+
+<Note>
+  Best practice: take a backup before major changes. Upgrades are non-destructive, but backups protect against unrelated user mistakes or software issues during post-upgrade tuning.
+</Note>

@@ -1,27 +1,43 @@
 ---
-title: "CPU Cores vs Sockets in VPS"
+title: "CPU Cores vs Sockets in an EDBB VPS"
 sidebarTitle: "* Cores vs Sockets"
-description: "Learn how EDBB exposes vCPUs to your VPS and when to switch between multi-core and multi-socket presentation." 
+description: "Understand how vCPUs are mapped to sockets and cores, why it matters for licensing/performance, and how to change the topology in the portal." 
 ---
 
-## Definitions
+## Core vs Socket Basics
 
-- **Core** – individual processing unit within a CPU.  
-- **Socket** – physical CPU slot; each socket may host multiple cores.
+<Info>
+  In KVM virtualization, each vCPU can be exposed as a “core” on a virtual socket. You decide whether to pack all cores into one socket or spread them across multiple sockets, depending on OS and licensing requirements.
+</Info>
 
-In virtualization, a vCPU can be presented as multiple cores on a single socket or split across virtual sockets to satisfy guest OS limits.
+| Term | Definition |
+|------|------------|
+| **Core** | The individual processing unit within a CPU. |
+| **Socket** | The physical (or virtual) CPU package; can host multiple cores. |
+| **vCPU** | A virtual CPU presented to the guest OS—mapped to cores/sockets based on your topology. |
 
-## Why Presentation Matters
+---
 
-- Windows editions typically recognize up to two sockets but many cores per socket.  
-- Some licensing models count sockets instead of cores.  
-- Certain software may perform better when cores are exposed as a single socket.
+## Why the Topology Matters
 
-## Adjusting in the Portal
+- **Operating system limits** – Many Windows editions recognize only two sockets but support dozens of cores per socket. Linux is generally flexible.  
+- **Licensing models** – Some software counts sockets (SQL Server Standard, certain hypervisor licenses) while others count cores.  
+- **NUMA-aware workloads** – Apps optimized for multi-socket systems may benefit from spreading cores across sockets, while cache-sensitive workloads often prefer a single socket packed with cores.
 
-1. Open the VPS in the EDBB portal.  
-2. Go to **KVM Settings** → **CPU Topology**.  
-3. Select the desired combination of sockets and cores.  
-4. Shut down the VPS, apply the change, and power it back on.
+---
 
-Choose the topology that matches your operating system and licensing requirements for optimal behavior.
+## Change the CPU Topology in the Portal
+
+<Steps>
+  <Step title="Open CPU settings">
+    In the EDBB VPS Portal, go to <strong>Settings → System Configuration</strong> (or **KVM Settings**), then locate <strong>CPU Topology</strong>.
+  </Step>
+  <Step title="Choose sockets & cores">
+    Select how many sockets and how many cores per socket you want. The total cores × sockets must equal your vCPU allocation.
+  </Step>
+  <Step title="Apply cleanly">
+    Shut down the VPS, apply the change, and power the machine back on so the guest OS detects the new layout.
+  </Step>
+</Steps>
+
+> Tip: Before adjusting topology, confirm your OS and application licensing terms to avoid unintended compliance issues.

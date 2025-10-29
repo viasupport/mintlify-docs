@@ -1,42 +1,54 @@
 ---
 title: "SMTP Port 25 Rate Limit"
 sidebarTitle: "* Port 25 Policy"
-description: "EDBB keeps outbound SMTP port 25 open with an 8 pps rate limit to protect IP reputation while supporting normal mail workloads."
+description: "Learn how EDBB handles outbound SMTP traffic on port 25 and what limits apply to protect IP reputation."
 ---
 
-## Outbound SMTP Availability
+import { CtaButton } from "/snippets/cta-button.mdx";
 
-EDBB leaves **TCP port 25 open** for customers who run their own mail infrastructure.  
-To prevent abuse and maintain deliverability, outbound traffic is rate-limited to **8 packets per second** with an **initial burst of 16 pps**.
+# Outbound SMTP Policy
 
-This policy strikes a balance between legitimate transactional email and the need to protect shared IP ranges from spam activity.
-
----
-
-## Why the Limit Exists
-
-- **IP reputation protection** – throttling reduces the risk of our ranges appearing on blocklists used by Gmail, Outlook, and other providers.  
-- **Fair usage** – ensures one tenant cannot monopolize outbound SMTP bandwidth.  
-- **Abuse deterrence** – makes the platform less attractive for spammers while keeping it practical for real businesses.  
-- **Consistent policy** – the same rules apply to every VPS created after 24 February 2025, regardless of payment method.
+<Info>
+  EDBB keeps TCP port 25 open so you can run your own mail services. To protect shared IP reputation, outbound traffic is rate-limited to <strong>8 packets per second</strong> with an initial burst of 16 pps.
+</Info>
 
 ---
 
-## Impact on Your Mail Flow
+## Why We Rate-Limit Port 25
 
-- Regular business email, admin alerts, or transactional workloads are unaffected.  
-- Bulk mailing or newsletter campaigns should use specialized providers (SendGrid, Mailgun, Amazon SES, etc.).  
-- The limit cannot be lifted or customized per account.
-
-Remember that EDBB enforces a strict **no-spam policy**. Verified spam reports may lead to immediate suspension without refund.
+<CardGroup cols={2}>
+  <Card title="🛡️ IP Reputation">
+    Throttling prevents sudden spam bursts that could land shared IP ranges on blocklists.
+  </Card>
+  <Card title="⚖️ Fair Usage">
+    Keeps one VPS from monopolizing outbound SMTP bandwidth.
+  </Card>
+  <Card title="🚫 Abuse Deterrence">
+    Makes the platform less attractive for spammers while staying practical for legitimate email.
+  </Card>
+  <Card title="📅 Consistent Policy">
+    Applies to every VPS created after 24 February 2025. The limit is not adjustable per account.
+  </Card>
+</CardGroup>
 
 ---
 
-## Recommendations
+## What This Means for You
 
-1. Configure SPF, DKIM, and DMARC records to improve inbox placement.  
-2. Monitor mail queues and bounce rates—most issues originate from application misconfiguration rather than the rate limit.  
-3. For high-volume campaigns, integrate with a dedicated SMTP relay service.  
-4. Keep abuse contacts up to date in WHOIS/RDAP so you can address complaints quickly.
+- Transactional email, server alerts, and admin notifications operate normally.  
+- Bulk campaigns or newsletters should use dedicated providers (SendGrid, Mailgun, Amazon SES, etc.).  
+- Exceeding the limit will slow delivery but won’t block single messages outright.  
+- EDBB enforces a strict no-spam policy—verified abuse leads to suspension without refund.
 
-If you have specific compliance questions, open a ticket with EDBB Support before deploying a new mail workload.
+---
+
+## Best Practices
+
+1. Configure SPF, DKIM, and DMARC to improve deliverability.  
+2. Monitor mail queues and bounce reports; most issues stem from application misconfiguration rather than the rate limit.  
+3. Keep abuse contacts current in WHOIS/RDAP so you can respond quickly to complaints.  
+4. For high-volume sending, integrate with a reputable SMTP relay service.
+
+Need clarifications for compliance requirements? Reach out to EDBB Support via the messenger or by email before launching your mail workload.
+
+<CtaButton label="Contact EDBB Support" link="https://my.edbb.com/clientarea.php" openInNewTab={true} />

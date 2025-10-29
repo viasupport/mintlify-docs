@@ -6,16 +6,19 @@ description: "Understand why a card authorization may appear without a charge an
 
 ## Authorization (Reservation)
 
-When you start a card payment, the processor places an authorization hold.  
-- Funds are earmarked on your card but **not** transferred to EDBB yet.  
-- Holds expire automatically (typically within 7 days) if the checkout session is interrupted.  
-- Because no money changes hands, authorizations cannot be refunded.
+<Info>
+  When you begin checkout, Stripe places an authorization hold. It checks the card balance but does not transfer funds.
+</Info>
+
+- Holds usually expire within seven days if the payment isn’t captured.  
+- Because no money moves, authorizations cannot be refunded—they simply drop from the statement.
 
 ## Captured Payment
 
-After a successful checkout, the authorization is captured and the charge posts to your statement.  
+After a successful checkout, the authorization is captured and the charge posts to your statement.
+
 - EDBB receives the funds.  
-- Refunds are possible; they show up as a separate credit line once processed by your issuer.
+- If a refund is approved, it returns as a separate credit once processed by your bank.
 
 If you see a hold without a matching invoice, wait for the authorization to expire or contact your card issuer for details.  
-For questions about completed charges, open a ticket with the invoice number and we’ll review the transaction.
+For questions about completed charges, contact Support via the messenger or by email with the invoice number and we’ll review the transaction.

@@ -1,123 +1,77 @@
 ---
 title: "Understand the System Configuration Dialog"
 sidebarTitle: "* System Configuration"
-description: "Tune CPU, disk, network, video, and VLAN settings for your EDBB VPS using the system configuration dialog."
+description: "Tune CPU, boot, storage, network, and display settings for your EDBB VPS using the System Configuration dialog."
 ---
 
-## ⚙️ System Configuration Dialog in VPS Panel
+# System Configuration Overview
 
-The **System Configuration** dialog in the EDBB portal lets you customize hardware emulation settings. Adjust these options to optimize performance and ensure compatibility with your operating system and workloads.
-
-Below you'll find a detailed explanation of each setting:
-
----
-
-## ⏲️ Boot Menu Timeout
-
-This setting controls how long the boot menu is displayed when your VPS starts.  
-Options:
-
-- **0 sec** – Skip the boot menu.
-- **5 sec (recommended)** – Provides a short pause to access boot options if needed.
-- **30 sec** – Allows extra time to select boot options.
-- **60 sec** – Extended time for troubleshooting or manual selection.
-
-For most users, **5 seconds** is ideal.
+<Info>
+  The System Configuration dialog controls how the hypervisor presents hardware to your VPS. Changes typically require a reboot—save your work before applying them.
+</Info>
 
 ---
 
-## 🧠 CPU Cores vs. Sockets
+## Accessing the Dialog
 
-This setting controls how CPU resources are presented to your VPS (only valid if you have more than one vCPU)
-
-- **Multiple Sockets**: Emulates multiple physical CPUs. Useful for certain legacy systems but can introduce overhead.
-- **Multiple Cores**: Emulates multiple cores within a single CPU socket. This is more efficient and recommended for most modern systems.
-
-📖 [Learn more about CPU cores vs. sockets](https://docs.edbb.com/faq/upgrades-downgrades/cpu-cores-vs-cpu-sockets-in-vps-environments/understanding-cpu-cores-vs-sockets-in-vps).
-
----
-
-## 🧩 CPU Model
-
-This determines how the CPU is presented to the guest operating system:
-
-- **default** – A generic, highly compatible CPU model that works well with most operating systems.
-- **Host CPU Passthrough** – Passes the host's actual CPU features (like AES, SSE3, SSE4.1, SSE4.2, etc.) to the VPS for better performance, especially with workloads that can utilize advanced instruction sets.
-
-**Recommendation:**  
-For maximum performance and compatibility, use **Host CPU Passthrough** unless your operating system has specific requirements.
+<Steps>
+  <Step title="Open the service dashboard">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, open <strong>Services</strong>, and select the VPS you want to adjust.
+  </Step>
+  <Step title="Launch System Configuration">
+    In the Settings tab, click <strong>System Configuration</strong>. The dialog opens with tabs for each hardware category.
+  </Step>
+</Steps>
 
 ---
 
-## 🖥️ Video Driver
+## Key Settings
 
-This defines the virtual display adapter used for the VNC remote console:
-
-- **Cirrus**: Standard and compatible with most operating systems.
-- **QXL**: Enhanced graphics performance, mostly used with SPICE-compatible systems.
-
-For most users, **Cirrus** is sufficient. Windows might perform slightly better with **QXL**.
-
----
-
-## 💾 Disk Driver
-
-The disk driver determines how your VPS’s storage device is presented to the guest operating system:
-
-- **Virtio (Recommended)**: High-performance paravirtualized driver. Requires Virtio drivers (Linux supports this natively; Windows may need drivers).
-- **IDE**: Highly compatible but slower performance.
-- **SCSI**: Balanced option for certain OS environments.
-
-> **For Mikrotik RouterOS**:  
-> Set **Disk Driver** to **IDE** to ensure compatibility.  
-> 📖 [Mikrotik CHR installation guide](https://docs.edbb.com/advanced-setup-guides/script-based-mikrotik-router-os-installation-guide-winbox)
-
----
-
-## 🌐 Network Driver
-
-Controls the emulated network interface:
-
-- **Virtio (Recommended)**: High performance but requires drivers.
-- **E1000**: Emulates an Intel network adapter. Compatible with most systems.
-- **RTL8139**: Legacy option with broad compatibility but lower performance.
-
-> **For Mikrotik RouterOS**:  
-> Set **Network Driver** to **E1000** for the best compatibility.  
-> 📖 [Mikrotik CHR installation guide](https://docs.edbb.com/advanced-setup-guides/script-based-mikrotik-router-os-installation-guide-winbox)
+<CardGroup cols={3}>
+  <Card title="⏲️ Boot Menu Timeout">
+    Controls how long the boot menu appears at startup. <strong>5 seconds</strong> offers a brief window to select alternate boot devices.
+  </Card>
+  <Card title="🧠 CPU Layout">
+    Choose how virtual CPUs are exposed—<strong>Multi-Core</strong> for efficiency, or <strong>Multi-Socket</strong> if legacy software requires it.
+  </Card>
+  <Card title="🧩 CPU Model">
+    Set <strong>Host CPU Passthrough</strong> to expose advanced instruction sets unless an OS needs a more generic model.
+  </Card>
+  <Card title="🖥️ Video Adapter">
+    Pick <strong>Cirrus</strong> for broad compatibility or <strong>QXL</strong> if you use SPICE-aware systems and need smoother graphics.
+  </Card>
+  <Card title="💾 Disk Driver">
+    <strong>Virtio</strong> delivers best performance (Windows may need drivers). Use <strong>IDE</strong> for legacy guests or RouterOS.
+  </Card>
+  <Card title="🌐 Network Driver">
+    Choose <strong>Virtio</strong> for high throughput, <strong>E1000</strong> for broad compatibility, or <strong>RTL8139</strong> when legacy OS support is required.
+  </Card>
+  <Card title="⌨️ VNC Keymap">
+    Match the console keyboard layout (e.g., <strong>en-us</strong>, <strong>de</strong>, <strong>fr</strong>) to your physical keyboard.
+  </Card>
+  <Card title="📝 Description">
+    Add a friendly label to help identify the VPS inside the client area (e.g., <em>prod-web-fra</em>).
+  </Card>
+  <Card title="🔒 VLAN Assignment">
+    If Private VLAN is enabled, select the VLAN ID to place this VPS on an isolated network segment.
+  </Card>
+</CardGroup>
 
 ---
 
-## 🌍 VNC Keymap
+## Apply Changes
 
-The VNC Keymap ensures that the keyboard layout in your remote VNC session matches your physical keyboard. Common options include:
+<Steps>
+  <Step title="Review and save">
+    Adjust the relevant fields and click <strong>Apply</strong>. The dialog closes once the settings are stored.
+  </Step>
+  <Step title="Reboot if required">
+    Most hardware changes need a restart. Use the <strong>Server On</strong> menu to reboot the VPS so the new configuration takes effect.
+  </Step>
+</Steps>
 
-- **en-us** – US English
-- **de** – German
-- **fr** – French
+<Callout type="warning">
+  Switching disk or network drivers can make the guest OS unbootable if drivers aren’t installed. Confirm driver support before applying changes.
+</Callout>
 
-Select the layout that corresponds to your local keyboard.
-
-📖 [Learn more about VNC](https://docs.edbb.com/vps-management/enable-vnc-server#understanding-vnc).
-
----
-
-## 📝 Description
-
-This is a free-text field where you can label your VPS with a custom name or note. It helps you organize and identify your servers in the client area.
-
-Example: pro-webserver-ffm
-
----
-
-## 🔒 VLAN Settings
-
-If you have purchased the **Private VLAN** option, this dropdown lets you assign your VPS to a private VLAN. This provides secure, isolated networking between your VPS instances on the same host.
-
-The dropdown shows any VLAN IDs provisioned for your account. Contact support if you need VLAN availability extended to additional services.
-
----
-
-## ⚠️ Important Notes:
-- Changing any of these settings requires a **power-cycle** of your VPS to apply the changes.
-- Use the recommended drivers for best performance unless specific compatibility (like with Mikrotik) is required.
+You’re ready to tailor the virtual hardware for your workload while staying within the EDBB portal.

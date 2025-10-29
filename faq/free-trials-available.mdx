@@ -1,40 +1,53 @@
 ---
 title: "Do You Offer Free VPS Trials?"
 sidebarTitle: "* Free Trial Policy"
-description: "EDBB does not run free VPS trials, but you can evaluate any plan risk-free with a 24-hour refund window and public latency tools."
+description: "EDBB skips free trials but backs every order with a 24-hour refund window and self-service testing tools."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-## No Free Trials, But a Fast Refund Option
+# Evaluation Options Without a Free Trial
 
-EDBB does not provide complimentary VPS trials.  
-Provisioning infrastructure, software licenses, and payment processing costs make true “free tiers” impractical.
+<Info>
+  EDBB does not run complimentary VPS trials. Instead, every new order includes a 24-hour refund window—spin up a plan, test it thoroughly, and cancel within the first day for a full refund if it’s not a fit.
+</Info>
 
-Instead, every VPS order is backed by a **24-hour refund window**. Spin up any plan, test to your satisfaction, and cancel within the first day for a full refund if it isn’t the right fit.
-
-<CtaButton label="Cancellation & Refund Policy" link="/faq/billing-lifecycle/cancellation-and-refund-policy" />
-
----
-
-## How to Evaluate Before You Buy
-
-1. **Latency Check** – run tests with the [EDBB latency tool](https://latency.edbb.com) to identify the best location.  
-2. **Looking Glass** – inspect routing paths from multiple regions via our [Looking Glass endpoints](https://www.edbb.com/blog/looking-glass#list-of-our-worldwide-looking-glass-servers).  
-3. **Pingable Gateways** – benchmark round-trip times using the [public gateway list](https://my.edbb.com/stgfefew_net_list.php).  
-4. **Network Map** – explore data center locations on [Google Maps](https://www.google.com/maps/d/u/0/edit?mid=1OMZyb6w3t_MNEQ-XYb8QlFjwqio&usp=sharing).
-
-These tools let you validate network performance without provisioning a server.
+<CtaButton label="Read the Refund Policy" link="/faq/billing-lifecycle/cancellation-and-refund-policy" />
 
 ---
 
-## Frequently Asked
+## Test Performance Before You Commit
+
+<CardGroup cols={2}>
+  <Card title="🌍 Latency Tool">
+    Benchmark round-trip times from your location to every data center.
+    <CtaButton label="Open Latency App" link="https://latency.edbb.com" openInNewTab={true} />
+  </Card>
+  <Card title="🔭 Looking Glass">
+    Run traceroutes and bandwidth tests directly from EDBB POPs.
+    <CtaButton label="Open Looking Glass" link="https://www.edbb.com/blog/looking-glass#list-of-our-worldwide-looking-glass-servers" openInNewTab={true} />
+  </Card>
+  <Card title="📡 Pingable Gateways">
+    Ping our on-net gateway list without logging in.
+    <CtaButton label="View Gateway List" link="https://my.edbb.com/stgfefew_net_list.php" openInNewTab={true} />
+  </Card>
+  <Card title="🗺️ Location Map">
+    Visualize each site and drill into local contact details.
+    <CtaButton label="View Location Map" link="https://www.google.com/maps/d/u/0/edit?mid=1OMZyb6w3t_MNEQ-XYb8QlFjwqio&usp=sharing" openInNewTab={true} />
+  </Card>
+</CardGroup>
+
+---
+
+## Frequently Asked Questions
 
 **Why no free credits?**  
-KVM virtualization and global PoPs incur real costs even during evaluation. The refund approach keeps pricing fair for all customers.
+KVM virtualization, software licensing, and payment processing costs make true “free tiers” unsustainable. The refund window keeps pricing fair for everyone.
 
 **Can I cancel after a few days?**  
-You can cancel whenever you like, but refunds are only guaranteed within 24 hours of initial provisioning.
+You can cancel anytime, but refunds are only guaranteed within the first 24 hours of provisioning.
 
-**What if I need long-term testing?**  
-Order the smallest plan, automate installation with Cloud-Init, and cancel once testing is complete. Monthly pricing remains only a few euros.
+**Need long-term evaluation?**  
+Order the smallest plan, automate setup with Cloud-Init, and cancel once testing is complete. The monthly cost is only a few euros, comparable to hourly providers.
+
+With these tools and the 24-hour refund policy, you can evaluate EDBB confidently without an ongoing free trial program.

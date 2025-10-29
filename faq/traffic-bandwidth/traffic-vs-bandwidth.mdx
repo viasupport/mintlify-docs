@@ -4,14 +4,37 @@ sidebarTitle: "* Traffic vs Bandwidth"
 description: "Traffic measures total data transferred over time; bandwidth is the maximum throughput available at any moment." 
 ---
 
-## Bandwidth
+## Same Pipe, Different Metrics
 
-Represents the capacity of the network port.  
-EDBB host nodes provide multi-gigabit uplinks so bursts of traffic can flow without congestion.
+<Info>
+  Bandwidth is the **speed limit** of your port; traffic is the **amount of data** you actually move during a billing cycle.
+</Info>
 
-## Traffic
+<CardGroup cols={2}>
+  <Card title="🚀 Bandwidth">
+    <ul>
+      <li>Measured in Mbit/s or Gbit/s</li>
+      <li>Represents real-time throughput capacity</li>
+      <li>EDBB hypervisors use multi-gigabit uplinks for bursty workloads</li>
+    </ul>
+  </Card>
+  <Card title="📦 Traffic">
+    <ul>
+      <li>Measured in GB or TB per month</li>
+      <li>Counts all in/out data transfer during the billing period</li>
+      <li>Each VPS plan includes a traffic pool you can top up if needed</li>
+    </ul>
+  </Card>
+</CardGroup>
 
-Totals the amount of data sent and received during a billing period.  
-Your VPS plan includes a monthly traffic allowance measured in GB or TB.
+---
 
-Think of bandwidth as the width of a pipe and traffic as the volume of water that passed through it over time.
+## Visualizing the Difference
+
+Imagine a highway:
+
+- **Bandwidth** is how many lanes you have—the maximum cars per second.  
+- **Traffic** is how many cars actually drove down that highway this month.  
+- You can burst to the full lane capacity, but the total number of cars still counts toward your traffic allowance.
+
+Track both metrics in the EDBB portal under the **Traffic** tab; it shows current throughput and period-to-date usage side by side.

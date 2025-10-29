@@ -4,15 +4,36 @@ sidebarTitle: "* Change Location"
 description: "EDBB cannot relocate an existing VPS between locations; provision a new instance in the target region and cancel the old one."
 ---
 
-## Relocation Policy
+import { CtaButton } from "/snippets/cta-button.mdx";
 
-Each EDBB VPS is bound to a specific data center and IP allocation.  
-We cannot migrate the same instance to another city or country because routing, storage, and compliance differ per location.
+## Why We Don’t “Move” an Existing VPS
 
-## How to Switch Regions
+<Info>
+  Every EDBB VPS is tied to the hardware, storage, and IP blocks of a specific data center. Relocating it mid-life would break routing policy, compliance obligations, and physical storage assignments—so we treat a new location as a fresh deployment.
+</Info>
 
-1. Order a new VPS in the desired facility via the EDBB portal.  
-2. Migrate data and services to the new instance.  
-3. Cancel the original VPS once the move is completed.
+---
 
-Choose the target site carefully to align with latency, compliance, or GeoIP requirements going forward.
+## How to Change Regions the Right Way
+
+<Steps>
+  <Step title="Deploy in the new location">
+    Order a VPS in the target facility from the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a>. Match the plan size so migrations stay simple.
+  </Step>
+  <Step title="Migrate data and services">
+    Use snapshots, rsync, database dumps, or configuration management to move workloads from the original instance.
+  </Step>
+  <Step title="Retire the old VPS">
+    After validation, cancel the previous VPS to stop billing. Remember to update DNS, allow-lists, and monitoring endpoints with the new IP.
+  </Step>
+</Steps>
+
+---
+
+## Tips Before You Provision
+
+- Confirm latency with the <a href="https://latency.edbb.com" target="_blank" rel="noreferrer">EDBB latency dashboard</a> or Looking Glass.  
+- Check regional compliance requirements (data residency, licensing) ahead of time.  
+- Plan for GeoIP propagation—most databases refresh within a few days of the new IP going live.
+
+<CtaButton label="Browse available locations" link="https://www.edbb.com/vps" openInNewTab={true} />

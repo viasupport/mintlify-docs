@@ -4,15 +4,29 @@ sidebarTitle: "* Change IP"
 description: "Swap the primary IPv4 on your EDBB VPS for free within 24 hours, or purchase a standard or bespoke change later on."
 ---
 
+import { CtaButton } from "/snippets/cta-button.mdx";
+
+<Info>
+  You can refresh the primary IPv4 once per VPS for free within the first 24 hours. After that window, order a standard or bespoke change directly inside the EDBB VPS Portal.
+</Info>
+
 ## Free Change Within 24 Hours
 
 Every new VPS includes a one-time IP change at no cost during the first 24 hours.
 
-Steps:
+<Steps>
+  <Step title="Open the EDBB VPS Portal">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a> and pick the VPS from <strong>Services → My Products</strong>.
+  </Step>
+  <Step title="Stay on the Dashboard tab">
+    The summary card on the right lists <strong>Primary IPv4</strong> with copy and refresh icons. This is where the free swap is triggered.
+  </Step>
+  <Step title="Request the change">
+    Click the circular arrows icon beside the IP, confirm the prompt, and the portal will queue the replacement address.
+  </Step>
+</Steps>
 
-1. Sign in to the [EDBB dashboard](https://my.edbb.com/clientarea.php).  
-2. Open the VPS under **Services**.  
-3. Click the ♻️ icon next to the current IPv4 to request the change.
+If the refresh icon is greyed out or missing, the complimentary swap has been used—scroll down to the **IP Change** button at the bottom of the page to order a paid change instead.
 
 Once processed, reinstall the VPS or configure the new address manually—the previous IP stops responding immediately.
 
@@ -33,13 +47,13 @@ If the free window has passed, choose one of two add-ons:
 
 The system assigns the next available address automatically. Subnet or prefix cannot be preselected.
 
-<CtaButton label="Order Standard Change" link="https://my.edbb.com/cart.php?gid=addons" />
+<CtaButton label="Order Standard Change" link="https://my.edbb.com/cart.php?gid=addons" openInNewTab={true} />
 
 ### Bespoke IPv4 Change
 
 Review the list of eligible addresses presented after ordering and choose the one that fits your needs.
 
-<CtaButton label="Order Bespoke Change" link="https://my.edbb.com/cart.php?gid=addons" />
+<CtaButton label="Order Bespoke Change" link="https://my.edbb.com/cart.php?gid=addons" openInNewTab={true} />
 
 ---
 

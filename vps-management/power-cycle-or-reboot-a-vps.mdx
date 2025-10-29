@@ -1,26 +1,59 @@
 ---
 title: "Power Cycle or Reboot a VPS"
 sidebarTitle: "* Reboot VPS"
-description: "Learn how to reboot or power-cycle your EDBB VPS via the portal controls or from within the operating system."
+description: "Control VPS power states from the EDBB portal—restart, stop, or start with a couple of clicks."
 ---
 
-## Clean & Safe Shutdown (and Start)
+<Note>
+  Prefer graceful reboots whenever possible: run <code>sudo shutdown -h now</code> or <code>sudo halt</code> inside Linux (or the equivalent command in Windows), then start the VPS from the portal. This keeps filesystems and services healthy before you resort to a forced power cycle.
+</Note>
 
-You can trigger a shutdown with **`shutdown -h now`** or **`halt`** inside the OS, then click **Start** in the EDBB portal to power it back on. This is the preferred method for a clean cold boot.
+## Restart a Running VPS
 
-## Start / Stop and Restart Buttons
+<Steps>
+  <Step title="Open the VPS dashboard">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, go to <strong>Services</strong>, and select the VPS you want to reboot.
+  </Step>
+  <Step title="Choose Restart">
+    Click the arrow next to the green <strong>Server On</strong> button and select <strong>Restart Server</strong>. The VPS powers off and back on in one action.
 
-If your service is currently in **SHUTDOWN** state, you can **Start** your VPS from the portal.
-Regardless of the current state, you always have the option to **Restart** your VPS.
+![Restart server menu](/assets/vps-start-restart.png)
+  </Step>
+</Steps>
 
-![Reboot VPS](/assets/vps-start-restart.webp)
+<Callout type="warning">
+  Restart performs an immediate power cycle at the hypervisor level. If the operating system still responds, run its built-in reboot command first for a graceful shutdown.
+</Callout>
 
-If your service is currently in **RUNNING** state, you can **Stop** (shut down) your VPS.
-You always have the option to **Restart** your VPS.
+---
 
-![Reboot VPS](/assets/vps-stop-restart.webp)
+## Stop a Running VPS
 
-## Stop and Restart from a technical perspective
+<Steps>
+  <Step title="Navigate to the power controls">
+    From the same dropdown next to <strong>Server On</strong>, choose <strong>Stop Server</strong> to shut the VPS down.
+  </Step>
+  <Step title="Wait for the state to change">
+    The service status switches to <strong>Stopped</strong> once the hypervisor powers it off. Console access ends immediately.
+  </Step>
+</Steps>
 
-Both the **Stop** and **Restart** buttons terminate the hypervisor process which is managing your VPS. In addition, a Restart also initiates a fresh start of your virtual machine on a new hypervisor process. if you had a VNC/noVNC console open, you need to restart VNC/noVNC console too.
-Please always consider a clean shutdown through your operating system first!
+
+---
+
+## Start a Stopped VPS
+
+<Steps>
+  <Step title="Press Start Server">
+    When the instance is stopped, the button turns blue and reads <strong>Start Server</strong>. Click it to boot the VM.
+
+![Start server after shutdown](/assets/vps-stop-restart.png)
+  </Step>
+  <Step title="Reconnect">
+    Once the status changes to <strong>Running</strong>, reopen the console or reconnect over SSH/RDP to resume work.
+  </Step>
+</Steps>
+
+<Callout type="warning">
+  Stop is equivalent to pulling the power cable. Use it only if the guest OS no longer reacts to `shutdown` or `poweroff` commands.
+</Callout>

@@ -4,15 +4,32 @@ sidebarTitle: "* Over Limit"
 description: "When your VPS hits 100% of its traffic allocation, throughput is throttled; learn how to restore full speed." 
 ---
 
-## Throttle Behavior
+## What Happens When You Hit the Limit?
 
-After your plan’s traffic allowance is fully consumed (with a 5% grace), the NIC is limited to approximately 64 kbit/s.  
-The VPS remains online but responses will be slow.
+<Info>
+  Once your monthly traffic allowance (plus a 5% grace buffer) is exhausted, EDBB throttles the VPS NIC to roughly **64 kbit/s**. The VM stays online, but production workloads will feel sluggish until you add traffic or reach the next reset.
+</Info>
 
-## Restore Full Speed
+---
 
-- **Upgrade the plan** for a higher monthly allowance.  
-- **Assign pool traffic** manually or via auto hydration if you maintain a pool balance.  
-- **Wait for the next reset** on the service renewal date.
+## Options to Restore Full Speed
 
-Applying additional traffic or upgrading removes the throttle immediately.
+<CardGroup cols={3}>
+  <Card title="🔁 Assign Pool Traffic">
+    Move capacity from your global traffic pool. Manual assignments apply instantly; auto hydration can top up automatically if enabled.
+  </Card>
+  <Card title="📦 Upgrade Your Plan">
+    Switching to a plan with a larger monthly allowance removes the throttle as soon as the upgrade completes.
+  </Card>
+  <Card title="🕒 Wait for Renewal">
+    If you don’t need immediate bandwidth, the cap lifts automatically on the next billing cycle reset.
+  </Card>
+</CardGroup>
+
+---
+
+## Stay Ahead of the Curve
+
+- Monitor usage on the **Traffic** tab in the portal—graphs show both consumption and remaining pool balance.  
+- Set calendar reminders around high-usage campaigns so you can assign extra traffic proactively.  
+- Combine with off-peak batch jobs or CDN caching to stretch your allowance further.

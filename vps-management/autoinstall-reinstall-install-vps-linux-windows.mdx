@@ -1,88 +1,76 @@
 ---
 title: "Reinstall Your VPS (Linux or Windows)"
 sidebarTitle: "* Reinstall VPS"
-description: "Rebuild your EDBB VPS with a fresh Linux or Windows image using the portal’s AutoInstall workflow."
+description: "Use the Installation tab in the EDBB portal to deploy a fresh Linux or Windows template with new credentials."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-# Reinstall Your VPS with a Fresh OS
+# Reinstall from the Installation Tab
 
-You can reinstall your Virtual Private Server (VPS) with a clean operating system in just a few clicks.\
-Whether you’re switching from Linux to Windows or simply starting fresh, the **AutoInstall OS** feature lets you rebuild your VPS quickly and securely.
+<Info>
+  Reinstalling wipes the entire VPS disk and replaces the operating system. Double-check that off-site backups or snapshots exist before you continue.
+</Info>
 
-> ⚠️ **Important:** Reinstalling your VPS will permanently erase all data.\
-> Make sure you have backups before proceeding.
-
-![Reinstall VPS Button](/assets/vps-reinstall-os-button.webp)
-
----
-
-## ▶️ Watch: Linux Auto-Install (Video Guide)
-
-Watch this short tutorial to see how to reinstall your VPS with Linux.\
-We’ll walk you through the essential steps to ensure a smooth and successful installation.
-
-<iframe width="100%" height="450" src="https://www.loom.com/embed/33e129dad9554baebb562b3e84e9527a?sid=1010322b-9466-416f-a135-19e0f07a8951" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
-
----
-
-## ▶️ Watch: Windows Auto-Install (Video Guide)
-
-This video shows you how to reinstall your VPS with Windows Server (RDP).\
-Learn how to start the reinstall, set your administrator password, and re-enable remote access.
-
-<iframe width="100%" height="450" src="https://www.loom.com/embed/731fb25215a7488bb0463bd2c8d1fb16?sid=e7bd52c6-2f17-454e-991e-176c847de424" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
-
----
-
-## Step-by-Step Reinstallation
+## Run AutoInstall in Five Steps
 
 <Steps>
-  <Step title="Log in to the EDBB portal">
-    Go to the [EDBB VPS Portal](https://my.edbb.com/clientarea.php) and open the **Services** tab.
+  <Step title="Open your VPS in the portal">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, go to <strong>Services</strong>, and choose the VPS you want to rebuild.
   </Step>
-  <Step title="Locate your VPS">
-    Select the VPS you want to reinstall.
+  <Step title="Switch to Installation → AutoInstall OS">
+    Use the <strong>Installation</strong> tab on the service dashboard, then stay on the default <strong>AutoInstall OS</strong> view.
+    <div style={{marginTop: "16px"}}>
+      <img src="/assets/vps-reinstall-os.png" alt="Installation tab in the EDBB portal" style={{width: "100%", maxWidth: "820px", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.08)"}} />
+    </div>
   </Step>
-  <Step title="Click “AutoInstall OS”">
-    Choose your preferred operating system and set a new password.\
-    This will be your Linux **root** or Windows **Administrator** password.
-
-    > ⚠️ **Note:** No confirmation email is sent when reinstalling — keep your new password safe!
+  <Step title="Pick the operating system">
+    Click the tile for the OS family you need (Ubuntu, Debian, Rocky, AlmaLinux, Windows Server, etc.).
+    <div style={{marginTop: "16px"}}>
+      <img src="/assets/vps-reinstall-os-sel.png" alt="Selecting an AutoInstall template" style={{width: "100%", maxWidth: "820px", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.08)"}} />
+    </div>
+  </Step>
+  <Step title="Choose the version & confirm options">
+    Use the dropdown beneath the tile to pick the release you want. If the OS offers additional options (desktop vs. minimal, language packs, etc.) review them before you proceed.
+  </Step>
+  <Step title="Set credentials and launch">
+    Enter the new password (or paste an SSH public key) and click <strong>Start installation</strong>. The portal queues the reinstall and shows the progress log in real time.
   </Step>
 </Steps>
 
----
-
-## Installation Time & Port Behavior
-
-Once the reinstallation starts, your VPS will go through the automated setup process. The image below shows the typical duration and port behavior for each operating system:
-
-![Installation times for Linux and Windows](/assets/windows-linux-install-time-ports-closed.png)
-
-<Note>
-  During reinstallation, **remote access (SSH/RDP)** is temporarily disabled while your VPS is being rebuilt.\
-  You’ll be able to connect again once the installation has finished — typically after **≈ 5 minutes for Linux** or **≈ 15 minutes for Windows**.
-
-  ⚠️ **Do not power off or reboot your VPS** during this time, as it may interrupt the OS setup.
-</Note>
+<Callout type="warning">
+  No confirmation email is sent after a reinstall. Store the new credentials immediately—the password replaces the previous root/Administrator login as soon as the job completes.
+</Callout>
 
 ---
 
-## Installation via Cloud-Init
+## Track Progress & Reconnect
 
-Prefer your own image or automated bootstrap? Use **Cloud-Init** to upload a qcow2 template and supply user-data for first boot.
+<div style={{display: "grid", gap: "16px", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))"}}>
+  <div style={{background: "var(--mint-color-surface-muted, #0f1125)", borderRadius: "18px", border: "1px solid rgba(255,255,255,0.08)", padding: "20px", display: "flex", alignItems: "center", gap: "18px"}}>
+    <div style={{width: "72px", aspectRatio: "1 / 1", borderRadius: "50%", border: "3px solid var(--mint-color-primary, #5B6BFF)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", fontWeight: 700}}>≈5m</div>
+    <div>
+      <strong style={{display: "block", marginBottom: "6px"}}>Linux timeline</strong>
+      <p style={{margin: 0}}>Most Linux templates complete within about five minutes. Let AutoInstall handle the reboot—no extra clicks needed.</p>
+    </div>
+  </div>
+  <div style={{background: "var(--mint-color-surface-muted, #0f1125)", borderRadius: "18px", border: "1px solid rgba(255,255,255,0.08)", padding: "20px", display: "flex", alignItems: "center", gap: "18px"}}>
+    <div style={{width: "72px", aspectRatio: "1 / 1", borderRadius: "50%", border: "3px solid var(--mint-color-primary, #5B6BFF)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", fontWeight: 700}}>≈15m</div>
+    <div>
+      <strong style={{display: "block", marginBottom: "6px"}}>Windows timeline</strong>
+      <p style={{margin: 0}}>Windows Server usually needs around fifteen minutes. Once the status shows <em>Running</em>, reconnect via SSH/RDP with the new credentials.</p>
+    </div>
+  </div>
+</div>
 
-<Note>
-  Cloud-Init is ideal when you need to:\
-  • deploy a custom or pre-configured image\
-  • automate user creation, SSH keys, or initial setup commands\
-  • keep full control over image configuration
+<Callout type="info">
+  The Installation tab streams log entries while the image is provisioned. SSH/RDP ports remain closed until the job finishes. ⚠️ Do not power off or reboot the VPS manually—AutoInstall restarts it automatically once the OS is ready.
+</Callout>
 
-  For standard Linux or Windows builds, the **AutoInstall OS** option remains the quickest route.
-</Note>
+---
+
+## Need a Custom Image Instead?
+
+Prefer to upload your own qcow2 template or run cloud-init automation? Use the Cloud-Init workflow to keep full control over first boot actions.
 
 <CtaButton label="Provision with Cloud-Init" link="../vps-management/edis-cloud-init-vps-installation" />
-
-import { CtaButton } from "/snippets/cta-button.mdx";

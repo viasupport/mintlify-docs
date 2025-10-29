@@ -4,26 +4,55 @@ sidebarTitle: "* Additional IPs"
 description: "Add up to 10 randomly-assigned IPv4 addresses to your EDBB VPS with a flat monthly fee per address."
 ---
 
+import { CtaButton } from "/snippets/cta-button.mdx";
+
 ## What’s Included
 
-The standard add-on lets you assign as many as **10 extra IPv4 addresses** to a single VPS.  
-Each address is delivered from the pool available in the data center and is automatically selected for you.
+<Info>
+  The additional IPv4 add-on delivers up to <strong>10 randomly assigned addresses</strong> per VPS. Each IP comes from the local pool for your data center and is billed monthly.
+</Info>
 
-| Service | Price |
-|---------|-------|
-| System-assigned IPv4 | Included |
-| Monthly fee per additional IPv4 | **€5** |
+## Pricing Snapshot
+
+| Item | Price |
+|------|-------|
+| Provisioning fee | Included |
+| Monthly charge per additional IPv4 | **€5** |
 
 ---
 
 ## How to Place the Order
 
-1. Contact EDBB Support via the messenger in the customer portal.  
-2. Provide the VPS identifier (primary IPv4 or KVM ID).  
-3. Specify how many additional addresses you require (maximum 10).
+### Option A: Chat with Support
 
-You’ll receive a payment link for the add-on. After payment clears, the new IPv4 address is provisioned automatically and appears in the VPS management view.
+<Steps>
+  <Step title="Start the conversation">
+    Sign in to the EDBB VPS Portal and contact Support via the messenger or by email—let them know you’d like more IPv4 addresses.
+  </Step>
+  <Step title="Share the service details">
+    Provide the primary IPv4 (or KVM service ID) and state how many extra addresses you need—up to ten per VPS.
+  </Step>
+  <Step title="Approve the invoice">
+    Support sends a payment link for the add-on. Once it’s paid, the new IPv4 addresses appear under the <strong>Network</strong> tab of the service.
+  </Step>
+</Steps>
 
-Remember to configure the interface within your operating system so the additional address becomes reachable.
+### Option B: Order via Upgrade Components
+
+<Steps>
+  <Step title="Open Upgrades for the VPS">
+    From <strong>Services</strong>, pick the VPS and switch to the <strong>Upgrades</strong> tab. Choose <strong>Upgrade Components</strong>.
+  </Step>
+  <Step title="Select Additional IPs">
+    Enter the number of addresses you want (up to ten) and proceed to checkout.
+  </Step>
+  <Step title="Pay and confirm">
+    Complete the payment. The new IPv4 assignments populate automatically under the <strong>Network</strong> tab.
+  </Step>
+</Steps>
+
+After either option, configure each IP inside your operating system (netplan, NetworkManager, or Windows TCP/IP settings) so traffic starts flowing—or reinstall the VPS to let the new addresses apply automatically.
+
+---
 
 <CtaButton label="Need a specific IP?" link="./order-bespoke-ip-address" />

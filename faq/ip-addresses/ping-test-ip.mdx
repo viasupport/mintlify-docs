@@ -1,31 +1,47 @@
 ---
 title: "Ping Test & Latency Tools"
 sidebarTitle: "* Ping & Latency"
-description: "Benchmark latency and connectivity to EDBB VPS locations using our public gateway list, latency app, Looking Glass nodes, and location map."
+description: "Use EDBB’s latency, gateway, and looking-glass tools to benchmark network routes and choose the best VPS location."
 ---
 
-## Quick Checks Before You Buy
+import { CtaButton } from "/snippets/cta-button.mdx";
 
-EDBB publishes several self-service tools so you can evaluate network reachability and make an informed decision about where to deploy.
+# Measure Latency Before You Deploy
 
-### Pingable Gateways
+<Info>
+  EDBB offers public tools so you can evaluate round-trip times and routing paths without provisioning a VPS. Combine them to pick the ideal data center for your workload.
+</Info>
 
-- Browse the [gateway directory](https://my.edbb.com/stgfefew_net_list.php) for IPv4 addresses you can ping directly.  
-- Availability differs per data center; contact Support if you need confirmation for a specific /24.
+---
 
-### Latency Dashboard
+## Latency & Route Testing Toolkit
 
-- Visit the experimental [latency app](https://latency.edbb.com) to measure round-trip times from your location to each EDBB site.  
-- Results help you shortlist the region with the best response times.
+<CardGroup cols={2}>
+  <Card title="🌍 Latency App">
+    Compare round-trip times from your location to each EDBB POP.
+    <CtaButton label="Open Latency Dashboard" link="https://latency.edbb.com" openInNewTab={true} />
+  </Card>
+  <Card title="🔭 Looking Glass">
+    Run pings, traceroutes, and MTR tests directly from our network.
+    <CtaButton label="Open Looking Glass" link="https://www.edbb.com/blog/looking-glass#list-of-our-worldwide-looking-glass-servers" openInNewTab={true} />
+  </Card>
+  <Card title="📡 Pingable Gateways">
+    Benchmark latency with our on-net gateway list (no login required).
+    <CtaButton label="View Gateway List" link="https://my.edbb.com/stgfefew_net_list.php" openInNewTab={true} />
+  </Card>
+  <Card title="🗺️ Location Map">
+    Visualize our global footprint and drill into each data center.
+    <CtaButton label="View Location Map" link="https://www.google.com/maps/d/u/0/edit?mid=1OMZyb6w3t_MNEQ-XYb8QlFjwqio&usp=sharing" openInNewTab={true} />
+  </Card>
+</CardGroup>
 
-### Looking Glass Catalog
+---
 
-- Use the [Looking Glass index](https://www.edbb.com/blog/looking-glass#list-of-our-worldwide-looking-glass-servers) to run ping, traceroute, and MTR tests from within our network.  
-- Download sample files to assess throughput when necessary.
+## Suggested Workflow
 
-### Location Map
+1. **Latency scan** – run the latency app to shortlist the top-performing locations.  
+2. **Route verification** – use the Looking Glass to confirm stable paths and evaluate packet loss.  
+3. **Gateway pings** – test the on-net gateway for the final candidates to gauge consistency.  
+4. **Document results** – save the numbers so you can compare with other providers or regions later.
 
-- Explore all VPS points-of-presence on the [interactive map](https://www.google.com/maps/d/u/0/edit?mid=1OMZyb6w3t_MNEQ-XYb8QlFjwqio&usp=sharing).  
-- Each marker links back to the relevant Looking Glass entry or contact details.
-
-Combine the data from these resources to choose the EDBB deployment that matches your latency and routing requirements.
+With these tools, you can make a data-driven decision about where to deploy your EDBB VPS.

@@ -4,26 +4,33 @@ sidebarTitle: "* Bespoke IPs"
 description: "Choose exact IPv4 addresses for your EDBB VPS from curated prefixes with a one-time setup fee plus monthly recurring charge."
 ---
 
+import { CtaButton } from "/snippets/cta-button.mdx";
+
 ## Bespoke Address Option
 
-For workloads that need specific ranges, EDBB offers a bespoke add-on.  
-You may request up to **10 addresses** and select each one from a curated list available in the target data center.
+<Info>
+  Bespoke IPv4s are ideal when you must land on specific geo locations, prefixes, or reputations. EDBB sources the addresses from curated pools so you can hand-pick up to <strong>10 per VPS</strong>.
+</Info>
 
-| Service | Price |
-|---------|-------|
-| Hand-picked IPv4 | **€10** one-time per address |
-| Monthly fee per IPv4 | **€5** |
+## Pricing Snapshot
+
+| Item | Price |
+|------|-------|
+| One-time selection fee per IPv4 | **€10** |
+| Monthly charge per IPv4 | **€5** |
 
 ---
 
-## Request Workflow
+## How to Request a Bespoke IPv4
 
-1. Start a conversation with EDBB Support via the portal messenger.  
-2. Share the VPS identifier (primary IPv4 or KVM ID) and the count of desired bespoke addresses.  
-3. Review the list of available prefixes supplied by the team and select the address(es) you want.
+<Steps>
+  <Step title="Contact EDBB Support">
+    From the EDBB VPS Portal, reach out via the messenger or by email. Include your VPS identifier (primary IPv4 or KVM ID) and how many bespoke addresses you need.
+  </Step>
+</Steps>
 
-An invoice will be issued. Once payment is recorded, the chosen addresses are assigned to your VPS and visible in the management interface.
+Support will reply with the curated list of available addresses for your location. Pick the exact IPv4s you want, confirm the selection, and pay the invoice they send. The chosen addresses appear under the **Network** tab as soon as the order is fulfilled.
 
-As with all additional IPs, configure them manually inside your operating system after assignment.
+Finish by configuring each IPv4 manually within your operating system—or reinstall the VPS so the addresses populate automatically.
 
 <CtaButton label="Prefer automated assignment?" link="./order-additional-ip-address" />

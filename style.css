@@ -16,19 +16,27 @@
 }
 
 .custom-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: 6px;
     background-color: var(--brand-accent);
-    padding: 5px 10px;
-    border-radius: 4px;
-}
-
-.custom-cta-button:hover {
-    background-color: var(--brand-accent-dark);
-}
-
-.custom-cta-button a {
+    color: #fff;
+    font-weight: 600;
     text-decoration: none;
-    color: white;
-    border: none
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.custom-cta-button:hover,
+.custom-cta-button:focus {
+    background-color: var(--brand-accent-dark);
+    transform: translateY(-1px);
+}
+
+.custom-cta-button:focus {
+    outline: 2px solid var(--brand-accent-light);
+    outline-offset: 2px;
 }
 
 #navigation-items ul>li {
