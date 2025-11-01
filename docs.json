@@ -33,7 +33,7 @@
         "tab": "Documentation",
         "groups": [
           {
-            "group": "* Getting Started",
+            "group": "* Onboarding Hub",
             "pages": [
               "index",
               "quickstart",
@@ -45,7 +45,7 @@
               "backups"            ]
           },
           {
-            "group": "VPS Management",
+            "group": "VPS Control Center",
             "pages": [
               "vps-management/vps-management-portal",
               "vps-management/autoinstall-reinstall-install-vps-linux-windows",
@@ -66,7 +66,7 @@
             ]
           },
           {
-            "group": "FAQ",
+            "group": "Help & Answers",
             "pages": [
               "faq/what-is-a-virtual-private-server",
               "faq/what-is-a-kvm-vps",
@@ -163,7 +163,7 @@
           },
 
           {
-            "group": "Advanced Setup Guides",
+            "group": "Advanced Playbooks",
             "pages": [
               "advanced-setup-guides/script-based-mikrotik-router-os-installation-guide-winbox",
               "advanced-setup-guides/manually-resize-disk-after-plan-upgrade-on-live-linux-systems",
@@ -171,7 +171,7 @@
             ]
           },
           {
-            "group": "Misc",
+            "group": "Reference Library",
             "pages": [
               "misc/extending-180-day-trial-version-of-windows",
               "misc/reporting-abuse",
