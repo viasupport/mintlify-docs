@@ -26,11 +26,15 @@ Every new VPS includes a one-time IP change at no cost during the first 24 hours
   </Step>
 </Steps>
 
-If the refresh icon is greyed out or missing, the complimentary swap has been used—scroll down to the **IP Change** button at the bottom of the page to order a paid change instead.
+<div style={{marginTop: "16px"}}>
+  <img src="/assets/vps-change-ip-recycle-symbol.png" alt="Recycle icon for requesting a free IP change" style={{width: "100%", maxWidth: "420px", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.08)"}} />
+</div>
+
+<Callout type="info">
+  If the refresh icon is greyed out or missing, the complimentary swap has been used—scroll down to the <strong>IP Change</strong> button at the bottom of the page to order a paid change instead.
+</Callout>
 
 Once processed, reinstall the VPS or configure the new address manually—the previous IP stops responding immediately.
-
-![Recycle icon for IP change](/assets/vps-change-ip-recycle-symbol.webp)
 
 ---
 
@@ -38,22 +42,16 @@ Once processed, reinstall the VPS or configure the new address manually—the pr
 
 If the free window has passed, choose one of two add-ons:
 
-| Option | Price | Notes |
-|--------|-------|-------|
-| Standard change | **€5** | Random IPv4 from the available pool |
-| Bespoke change | **€10** | Pick an address from a curated list |
-
-### Standard IPv4 Change
-
-The system assigns the next available address automatically. Subnet or prefix cannot be preselected.
-
-<CtaButton label="Order Standard Change" link="https://my.edbb.com/cart.php?gid=addons" openInNewTab={true} />
-
-### Bespoke IPv4 Change
-
-Review the list of eligible addresses presented after ordering and choose the one that fits your needs.
-
-<CtaButton label="Order Bespoke Change" link="https://my.edbb.com/cart.php?gid=addons" openInNewTab={true} />
+<CardGroup cols={2}>
+  <Card title="📦 Standard change">
+    <p><strong>€5</strong> per request. The portal assigns the next available IPv4—perfect when you just need a fresh address.</p>
+    <CtaButton label="Order Standard Change" link="https://my.edbb.com/cart.php?gid=addons" openInNewTab={true} />
+  </Card>
+  <Card title="🎯 Bespoke change">
+    <p><strong>€10</strong> with a curated list of candidates so you can choose the exact IPv4 that fits your compliance or geolocation requirements.</p>
+    <CtaButton label="Order Bespoke Change" link="https://my.edbb.com/cart.php?gid=addons" openInNewTab={true} />
+  </Card>
+</CardGroup>
 
 ---
 

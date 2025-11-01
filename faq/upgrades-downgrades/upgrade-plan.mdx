@@ -1,64 +1,88 @@
 ---
-title: Upgrade to a Higher VPS Plan
+title: "Upgrade to a Higher VPS Plan"
 sidebarTitle: "* Upgrade Plan"
-description: This doc explains how to upgrade a VPS to a higher plan, which can include more RAM, additional vCPU cores, more disk space, and increased monthly traffic commitment.
+description: "Scale your EDBB VPS to the next tier, add more resources instantly, and understand billing, timing, and post-upgrade steps."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-![Learn how to upgrade your VPS plan](/assets/vps-upgrade-order.webp)
+# Upgrade a VPS Plan in Minutes
 
-## 🚀 How to upgrade your VPS to a higher tier
+<Info>
+  Plan upgrades swap your current VPS for a larger predefined tier—more vCPU, RAM, disk, and monthly traffic—without reinstalling or changing the IP address.
+</Info>
 
-You can upgrade your VPS plan (e.g. from **KVM SMART** to **KVM STARTER**) anytime directly through the management portal.
+## Why Upgrade?
 
----
+- Add CPU, memory, and disk space in one step.  
+- Boost the monthly traffic allowance tied to the plan.  
+- Keep your data intact; the upgrade happens in-place.
 
-## 🔄 What is a VPS Plan Upgrade?
-
-A plan upgrade means moving your VPS to a **larger, predefined plan** with more resources like:
-- More RAM
-- More vCPU cores
-- More traffic commitment
-
-No need to reinstall or migrate! The upgrade happens in-place.
-
-
+<Callout type="info">
+  Upgrades are prorated. You pay only the price difference for the remaining days in your billing cycle.
+</Callout>
 
 ---
 
-## 💶 How is it billed?
+## Option 1 — Use the Quick Upgrade Card
 
-You only pay the **price difference** between the two plans, **prorated for the rest of the billing period**.  
-You don’t pay the full price of the new plan — just the upgrade difference (you don't pay twice)
+If you already know which tier you need, click the upgrade shortcut on the service dashboard.
 
----
+![Quick upgrade button on the dashboard](/assets/Upgrade-right.png)
 
-## 🛠️ How to order a Plan Upgrade
-
-1. Log in to your [EDBB VPS Portal](https://my.edbb.com/clientarea.php)
-2. Find your VPS in the **Services** tab
-3. Click the **“Upgrade”** button
-4. Select the higher plan, confirm, and pay the invoice
-5. Within 7 minutes after payment confirmation, the upgrade is processed and you’ll receive an email with instructions
-
----
-
-## ⚙️ What happens next?
-
-- **No IP change** or reinstall required  
-- **Traffic upgrade** is available immediately  
-- **RAM and vCPU** become active after a **cold reboot**  
-- **Disk remains untouched** – you choose whether to resize your filesystem
+<Steps>
+  <Step title="Open the VPS dashboard">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a> and choose the service you want to scale.
+  </Step>
+  <Step title="Press Upgrade">
+    Hit the green <strong>Upgrade</strong> button in the right-hand column. You’ll land on the plan comparison page that lists every tier above your current one.
+  </Step>
+  <Step title="Choose a plan and pay">
+    Pick the higher plan, review the prorated amount, and pay the invoice. Once the payment clears, the upgrade finalises automatically.
+  </Step>
+</Steps>
 
 ---
 
-<CtaButton label="Learn how to upgrade individual resources" link="../upgrades-downgrades/upgrade-resources" />
+## Option 2 — Order from the Upgrade Tab
 
+Need to compare plan details first? Use the dedicated Upgrade tab.
 
+![Upgrade plan selector in the tab view](/assets/Upgrade-newplan.png)
 
-## Need more traffic than our plans offer?
+<Steps>
+  <Step title="Navigate to the Upgrade tab">
+    In the service view, click <strong>Upgrade</strong> in the tabs bar.
+  </Step>
+  <Step title="Open Upgrade Plan">
+    Press the blue <strong>Upgrade Plan</strong> button. This loads the comparison page that lists each higher tier with resource details.
+  </Step>
+  <Step title="Review and checkout">
+    Compare CPU, RAM, storage, and traffic quotas. Select your target plan, pay the prorated invoice, and the portal handles the rest.
+  </Step>
+</Steps>
 
-If you are already on the largest tier and need more traffic, you can purchase additional pool capacity. EDBB traffic pools let you manually assign traffic to any VPS or enable auto-hydration at 99% usage.
+<Callout type="warning">
+  Upgrades trigger a short reboot so the new resources can load. Save work inside the OS before confirming the change.
+</Callout>
 
-<CtaButton label="Learn about Traffic Pool" link="../traffic-bandwidth/traffic-pool-global-and-premium-traffic-zone" />
+---
+
+## After the Upgrade
+
+- **IP & data** stay the same—no migration is required.  
+- **RAM & vCPU** are available after a cold reboot of the VPS.  
+- **Disk size** increases, but filesystems and partitions are untouched; expand them manually if you want to use the extra space.  
+- **Traffic allowance** increases immediately.
+
+Need granular resource changes instead? Use Upgrade Components.
+
+<CtaButton label="Upgrade components individually" link="../upgrades-downgrades/upgrade-resources" />
+
+---
+
+## Need Even More Traffic?
+
+Top up your traffic pool to share data transfer across services. Auto-hydration can refill VPS traffic automatically when it nears 99% usage.
+
+<CtaButton label="Learn about Traffic Pools" link="../traffic-bandwidth/traffic-pool-global-and-premium-traffic-zone" />

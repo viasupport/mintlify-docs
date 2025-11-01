@@ -4,28 +4,50 @@ sidebarTitle: "* Reverse DNS"
 description: "Set or remove PTR records for your EDBB VPS IPv4/IPv6 directly in the management portal."
 ---
 
-## Before You Start
+## Prep Checklist
 
 <Info>
-  Make sure the forward (A/AAAA) record for your hostname already points to the IP you plan to configure. Reverse PTRs should match the hostname that answers forward lookups to avoid mail reputation issues.
+  Reverse DNS works best when the hostname already resolves forward to your VPS.
+  Create or update the A/AAAA record first so mail servers and reputation
+  services see a matching pair.
 </Info>
+
+- 📌 Have the exact FQDN you want to publish (for example `mail.example.com`).  
+- 🧾 Keep both IPv4 and IPv6 assignments handy—the Network tab lists them.  
+- 🔒 Plan to use lowercase hostnames without trailing dots; the portal formats PTRs automatically.
+
+---
 
 ## Update PTR Records in the Portal
 
 <Steps>
-  <Step title="Open the rDNS tab">
-    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a>, pick your VPS from <strong>Services</strong>, and switch to the <strong>rDNS</strong> tab.
+  <Step title="Open the rDNS panel">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a>, select your VPS under <strong>Services</strong>, and choose the <strong>rDNS</strong> tab.
   </Step>
-  <Step title="Set the IPv4 hostname">
-    Replace the placeholder with your FQDN, then press <strong>set</strong>. Use <code>unset</code> if you need to remove the record.
+  <Step title="Set the primary IPv4 hostname">
+    Replace the default value with your hostname and click <strong>Set</strong>. Use <strong>Unset</strong> if you need to revert to the system default.
   </Step>
-  <Step title="Add IPv6 entries">
-    Enter the desired suffix (for example <code>:1</code>) and hostname, then click <strong>add</strong>. Repeat for additional IPv6 addresses in your /64.
+  <Step title="Add IPv6 reverse records">
+    For each IPv6 address, enter the suffix (for example <code>:1</code>) and matching hostname, then press <strong>Add</strong>.
+  </Step>
+  <Step title="Review the summary">
+    Confirm the updated entries in the list; edits take effect immediately on EDBB’s side.
   </Step>
 </Steps>
 
+<div style={{marginTop: "16px"}}>
+  <img src="/assets/setting-up-reverse-pointers.png" alt="Reverse DNS configuration tab with IPv4 and IPv6 PTR fields" style={{width: "100%", maxWidth: "820px", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.08)"}} />
+</div>
+
 ---
 
-## Verify the Change
+## Verify & Troubleshoot
 
-EDBB pushes PTR updates instantly, but DNS caching can take a few minutes. Test with an external lookup tool (such as `dig -x`) to confirm the new record.
+- Use `dig -x <ip>` or an external rDNS checker after a few minutes—public caches may need time to refresh.  
+- If the hostname doesn’t appear, double-check that the forward record exists and matches exactly (including subdomain).  
+- Still seeing the old PTR? Clear local DNS caches or test from another network.
+
+<Callout type="warning">
+  Reverse DNS updates for mail servers should be paired with SPF/DKIM updates.
+  Mismatched hostnames can cause outgoing messages to be rejected or flagged as spam.
+</Callout>

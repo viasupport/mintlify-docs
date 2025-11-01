@@ -1,72 +1,70 @@
 ---
-title: Upgrade RAM, vCPU, Disk or IP on Your VPS
+title: "Upgrade VPS Components"
 sidebarTitle: "* Upgrade Resources"
-description: "Add more RAM, CPU cores, disk space, or IP addresses to your EDBB VPS and see what happens after the upgrade." 
+description: "Add RAM, vCPU, disk, or IPs to your existing EDBB VPS without switching plans—learn the workflow, billing, and post-upgrade steps."
 ---
 
 import { CtaButton } from "/snippets/cta-button.mdx";
 
-![Learn how to upgrade resources](/assets/upgrade-resources.webp)
+# Upgrade VPS Components
 
-## 🧩 Upgrade VPS Resources (RAM, CPU, Disk, IPs)
+<Info>
+  Component upgrades extend the resources of your current plan—RAM, vCPU, Drive Boost storage, or IPv4 addresses—without changing tiers or reinstalling the OS.
+</Info>
 
-Need more resources without changing your entire plan?  
-You can add more **RAM, vCPU cores, disk space (Drive Boost)** or **IP addresses** to your VPS.
+## What You Can Extend
 
----
+- Increase **RAM** for memory-intensive workloads.  
+- Add extra **vCPU** cores for parallel processing.  
+- Apply a **Drive Boost** to unlock additional disk space.  
+- Assign additional **IPv4 addresses**.  
+- Mix and match any combination of the above.
 
-## 🆚 What's the difference?
-
-This is **not** a plan change. It's a **resource extension** of your current VPS.
-
-You can:
-- Add **more RAM**
-- Add **more vCPU cores**
-- Boost your **disk space** (Drive Boost)
-- Add **IPv4 addresses**
-- Mix and match any of the above
+<Callout type="info">
+  Billing is prorated just like plan upgrades—you pay only the difference for the days remaining in your billing cycle.
+</Callout>
 
 ---
 
-## 💶 How is it billed?
+## Order a Component Upgrade via the Portal
 
-Just like plan upgrades:  
-You only pay the **prorated amount** for the rest of your billing cycle.
+<Steps>
+  <Step title="Open the VPS dashboard">
+    Sign in at the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, go to <strong>Services</strong>, and choose the VPS you want to extend.
+  </Step>
+  <Step title="Go to Upgrade → Upgrade Components">
+    Click the <strong>Upgrade</strong> tab, then press the blue <strong>Upgrade Components</strong> button. The comparison page lists each resource you can increase.
+    <div style={{marginTop: "16px"}}>
+      <img src="/assets/Upgrade-components.png" alt="Upgrade Components selection" style={{width: "100%", maxWidth: "820px", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.08)"}} />
+    </div>
+  </Step>
+  <Step title="Select resources & checkout">
+    Choose the additional RAM, vCPU, disk, or IPv4 addresses you need, pay the prorated invoice, and the changes apply automatically once payment clears.
+  </Step>
+</Steps>
 
----
-
-## 🛒 How to order a Resource Upgrade
-
-### Option A – Order via Support
-1. Contact our support team
-2. Share your VPS IP or KVM_ID
-3. We'll send you a personalized upgrade link immediately
-
-### Option B – Order via Portal
-1. Log in to the [EDBB VPS Portal](https://my.edbb.com/clientarea.php)
-2. Find your VPS in the **Services** tab
-3. Go to **Configurable Options**
-4. Click **“Upgrade Resources”** (your personalized link)
-5. Select what you want to upgrade
-6. Confirm and pay the invoice
-
----
-
-## 🛠️ What happens after payment?
-
-- We process the upgrade within **7 minutes** after payment confirmation  
-- You’ll receive an **email with activation steps**
-- **RAM and vCPU** require a **cold reboot**
-- **IP addresses** need to be manually configured inside your OS
-- **Disk Boost**: your disk is untouched. You decide when to expand partition or add a volume.
+<Callout type="warning">
+  Component upgrades may trigger a short reboot so the new resources take effect. Save your work before confirming the order.
+</Callout>
 
 ---
 
-<CtaButton label="Learn how to upgrade your plan" link="../upgrades-downgrades/upgrade-plan" />
+## After Payment
 
+- Upgrades are processed within minutes after payment confirmation.  
+- Expect an email summarising the change.  
+- **RAM & vCPU** require a cold reboot inside the OS.  
+- **IPv4 addresses** must be configured manually on the VPS.  
+- **Drive Boost** expands the virtual disk, but you decide when to grow partitions or filesystems.
 
-## Need more traffic than our plans offer?
+Need a full plan change instead? See the higher-tier upgrade guide.
 
-If you are already on the largest tier and need more traffic, you can purchase additional pool capacity. EDBB traffic pools let you manually assign traffic to your VPS or enable auto-hydration at 99% usage.
+<CtaButton label="Upgrade to a bigger plan" link="../upgrades-downgrades/upgrade-plan" />
 
-<CtaButton label="Learn about Traffic Pool" link="../traffic-bandwidth/traffic-pool-global-and-premium-traffic-zone" />
+---
+
+## Need More Traffic?
+
+Consider the traffic pool to top up bandwidth for any VPS in your account. Auto hydration can refill traffic automatically near 99% usage.
+
+<CtaButton label="Learn about Traffic Pools" link="../traffic-bandwidth/traffic-pool-global-and-premium-traffic-zone" />

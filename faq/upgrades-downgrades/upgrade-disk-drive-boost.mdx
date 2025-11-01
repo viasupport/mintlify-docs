@@ -1,19 +1,67 @@
 ---
-title: "Add Extra Disk Space"
+title: "Expand VPS Storage with Drive Boost"
 sidebarTitle: "* Drive Boost"
-description: "Order drive-boost increments to increase your VPS storage beyond the base plan." 
+description: "Attach additional disk capacity to your EDBB VPS in flexible increments and finish the resize from inside the operating system."
 ---
 
-## Available Drive Boosts
+import { CtaButton } from "/snippets/cta-button.mdx";
 
-Extend your VPS storage in 10 GB to 100 GB increments.  
-Pricing starts at €3.60 per month for +10 GB and scales with larger additions.
+## Why Choose Drive Boost
 
-## How to Request
+<Info>
+  Drive Boost adds persistent storage to an existing VPS without switching plans
+  or reinstalling the OS. Each boost is billed monthly alongside your VPS
+  subscription and remains active until you downgrade or cancel it.
+</Info>
 
-1. Send Support the VPS IP or KVM ID.  
-2. Specify the additional capacity you need.  
-3. We issue an invoice; once paid, the extra disk is attached.  
-4. Expand the partition and filesystem inside the OS when you’re ready—EDBB won’t modify your partitions automatically.
+- Stackable increments: **+10 GB**, **+25 GB**, **+50 GB**, or **+100 GB**  
+- Starts at **€3.60/month** for the +10 GB tier  
+- Combines cleanly with plan upgrades if you later need more CPU or RAM
 
-For larger extensions, multiple 100 GB blocks can be stacked as required.
+<Callout type="tip">
+  Need several hundred gigabytes? Order more than one Drive Boost—each block is
+  applied to the same virtual disk so you still manage a single volume in the OS.
+</Callout>
+
+---
+
+## Order the Boost Through the Portal
+
+<Steps>
+  <Step title="Open the service">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a>, head to <strong>Services</strong>, and select the VPS that needs extra space.
+  </Step>
+  <Step title="Go to Upgrade → Upgrade Components">
+    Use the <strong>Upgrade</strong> tab and click the blue <strong>Upgrade Components</strong> button. The comparison screen lists every add-on available for that VPS, including Drive Boost storage.
+  </Step>
+  <Step title="Pick the disk increment and confirm payment">
+    Choose the Drive Boost size, continue to checkout, and complete the payment. As soon as the invoice clears, the new virtual disk size is attached to the VPS.
+  </Step>
+</Steps>
+
+<Callout type="info">
+  Prefer personalised help or need a bespoke size? Message Support via the
+  portal messenger or email <strong>support@edbb.com</strong> with the VPS
+  hostname or IP and the total storage you’d like to add.
+</Callout>
+
+---
+
+## Finish the Expansion Inside Your OS
+
+1. **Confirm the new size** with `lsblk`, `fdisk -l`, or the Windows Disk Management console.  
+2. **Extend the partition** (e.g., `growpart`, `parted`, or DiskPart).  
+3. **Grow the filesystem** using the appropriate tool (`resize2fs`, `xfs_growfs`, etc.).  
+4. Validate that the mount point now shows the expanded capacity.
+
+<Callout type="warning">
+  <strong>EDBB never edits guest partitions for you.</strong> Drive Boost enlarges
+  the virtual disk only—the OS keeps its original partition layout until you
+  extend it manually. Back up critical data, grow partitions with your preferred
+  tools, and reboot if the kernel still reports the old size.
+</Callout>
+
+Need to extend other resources at the same time? Combine Drive Boost with RAM,
+vCPU, or IPv4 upgrades in the same workflow.
+
+<CtaButton label="See all component upgrades" link="../upgrades-downgrades/upgrade-resources" />

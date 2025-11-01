@@ -7,48 +7,53 @@ description: "Locate the Support PIN in the portal and understand when EDBB Supp
 # Manage Your Support PIN
 
 <Info>
-  The Support PIN verifies account ownership when you contact EDBB Support. Keep it handy for sensitive changes (billing, contact updates, service escalations) and store it securely.
+  The Support PIN proves account ownership when you contact EDBB about billing,
+  security, or sensitive service changes. Treat it like any other secret: share it
+  only with trusted teammates and rotate it if you suspect exposure.
 </Info>
 
 ---
 
-## Step 1 – Locate the PIN
+## Spot the PIN on the Summary Card
 
 <Steps>
-  <Step title="Open your VPS dashboard">
-    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, go to <strong>Services</strong>, and select the VPS.
+  <Step title="Open your VPS summary">
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a> and open the VPS from <strong>Services</strong>.
   </Step>
-  <Step title="Check the information card">
-    In the right-hand panel you’ll see <strong>Support PIN</strong> along with the KVM ID and installed OS. Use the copy icon to paste it into secure notes or when contacting Support.
+  <Step title="Check the right-side overview">
+    The <strong>Summary</strong> card on the right lists the Support PIN alongside the KVM ID, plan, and installed OS. Tap the copy icon to grab it instantly.
+  </Step>
+  <Step title="Store it safely">
+    Paste the value into your password manager or internal secret vault—avoid plain-text notes or chat messages.
   </Step>
 </Steps>
 
-![Support PIN](/assets/vps-support-pin.webp)
+![Support PIN summary card in the portal](/assets/vps-support-pin.png)
 
 ---
 
-## Step 2 – Know When We’ll Ask for It
+## When Support Will Ask for the PIN
 
-- Live chat or email requests involving billing, contact changes, or ownership questions.  
-- Resetting panel access, modifying rDNS, or attaching private data when messaging Support.  
-- Any time you need to prove identity before we discuss sensitive information.
+- 🔐 **Account validation** – identity checks for billing adjustments, contact updates, or GDPR-related requests.  
+- 🛠️ **Sensitive changes** – rDNS edits, reverse DNS delegation, or provisioning additional IPs through the support desk.  
+- 🚨 **Security escalations** – suspicious login reports, suspected compromise, or ownership challenges.
 
-Providing the PIN speeds up verification so we can process your request immediately.
+Providing the PIN with your first message speeds up verification so we can action the request without back-and-forth.
 
 ---
 
-## Step 3 – Keep the PIN Secure
+## Keep the PIN Under Control
 
 <CardGroup cols={3}>
-  <Card title="🔒 Store Safely">
-    Save the PIN in a team password manager instead of email or shared docs.
+  <Card title="🔒 Store & rotate">
+    Keep the PIN in a shared password manager. Rotate it if team membership changes or if you suspect it leaked.
   </Card>
-  <Card title="👥 Limit Access">
-    Update access when staff change roles so only current admins can view it.
+  <Card title="👥 Limit visibility">
+    Grant access only to staff who handle billing or infrastructure escalations. Remove old entries promptly.
   </Card>
-  <Card title="⚠️ Suspect Exposure?">
-    Contact Support via the messenger or by email—we can invalidate the old PIN and issue a new one.
+  <Card title="⚠️ Compromised?">
+    Reach Support via the portal messenger or email <strong>support@edbb.com</strong> and ask for a fresh PIN.
   </Card>
 </CardGroup>
 
-Need help right now? Reach us via the portal chat bubble or the <a href="https://www.edbb.com/contact" target="_blank">contact form</a>, quoting your VPS ID and Support PIN for quick verification.
+Need help right now? Message us through the portal messenger or email <strong>support@edbb.com</strong> and include your VPS ID plus the Support PIN for quick verification.

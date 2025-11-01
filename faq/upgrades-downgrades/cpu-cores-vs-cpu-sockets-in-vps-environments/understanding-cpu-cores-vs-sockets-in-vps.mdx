@@ -30,13 +30,13 @@ description: "Understand how vCPUs are mapped to sockets and cores, why it matte
 
 <Steps>
   <Step title="Open CPU settings">
-    In the EDBB VPS Portal, go to <strong>Settings → System Configuration</strong> (or **KVM Settings**), then locate <strong>CPU Topology</strong>.
+    In the EDBB VPS Portal, open your VPS and switch to the <strong>Settings</strong> tab. Locate the <strong>CPU Cores vs Sockets</strong> control.
   </Step>
-  <Step title="Choose sockets & cores">
-    Select how many sockets and how many cores per socket you want. The total cores × sockets must equal your vCPU allocation.
+  <Step title="Pick the layout">
+    Choose whether you want <strong>multiple sockets</strong> or <strong>multiple cores</strong>. The portal automatically maps your vCPU allotment to the selected layout.
   </Step>
-  <Step title="Apply cleanly">
-    Shut down the VPS, apply the change, and power the machine back on so the guest OS detects the new layout.
+  <Step title="Apply and reboot">
+    Click <strong>Apply</strong>, then power-cycle or reboot the VPS so the guest OS detects the new topology cleanly.
   </Step>
 </Steps>
 

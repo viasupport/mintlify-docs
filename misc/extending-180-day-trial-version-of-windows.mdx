@@ -1,52 +1,58 @@
 ---
-title: "Extending the 180-Day Windows Trial Period"
+title: "Extend a Windows Server Evaluation Period"
 sidebarTitle: "* Extend Windows Trial"
-description: "Extend Windows Server evaluation periods with the built-in slmgr rearm command and a quick reboot."
+description: "Rearm a Windows Server evaluation build, verify how many extensions remain, and stay compliant with Microsoft’s licensing rules."
 ---
 
-## How to extend your Windows trial
+## What to Expect
 
-Windows Server evaluation editions run for **180 days**. If you’re nearing the end of the trial, you can extend it with a simple command.
+<Info>
+  Windows Server evaluation images include up to five <strong>rearmer</strong>
+  credits. Each rearm grants another 180 days, so you can test for roughly
+  36 months in total before you must license the product.
+</Info>
 
-> **Good to know:** Microsoft allows a **limited number of extensions (“rearms”)** on evaluation editions. The command below works only while rearms remain available — on most editions, you can rearm up to five times (for a total of about **six 180-day periods, or nearly three years** of evaluation).
+- ⏱️ You can run the rearm at any point before the trial expires.  
+- 🔁 Every rearm reduces the remaining counter—track it so you’re not surprised.  
+- 🧾 Once the counter hits zero, you must activate Windows with a full license.
 
-### 1) Check your current license status
+---
 
-Open **PowerShell as Administrator** and run:
+## Extend the Trial in Three Commands
 
-```powershell
-slmgr -dlv
-```
+<Steps>
+  <Step title="Check the current activation window">
+    Launch <strong>PowerShell as Administrator</strong> and inspect the licensing
+    state:<br/>
+    <code>slmgr -dlv</code><br/>
+    The dialog shows the remaining days and how many rearms you still have.
+  </Step>
+  <Step title="Rearm the evaluation build">
+    Trigger a fresh 180-day period with:<br/>
+    <code>slmgr -rearm</code><br/>
+    You will receive a confirmation pop-up when the command succeeds.
+  </Step>
+  <Step title="Reboot to apply the new timer">
+    Apply the change immediately:<br/>
+    <code>Restart-Computer</code><br/>
+    After reboot, run <code>slmgr -dlv</code> again to verify the new expiration date.
+  </Step>
+</Steps>
 
-### 2) Extend the trial (add 180 days)
+---
 
-When you are close to expiry (or any time you like), run:
+## Stay Within Microsoft’s Rules
 
-```powershell
-slmgr -rearm
-```
+<Callout type="warning">
+  <strong>Evaluation only.</strong> Rearms are provided for lab and proof-of-concept
+  use. Once testing is finished—or the rearm counter is exhausted—you must buy
+  the appropriate Windows Server licence to stay compliant with Microsoft’s
+  Software License Terms.
+</Callout>
 
-### 3) Restart the server
+- ✅ Rearms are capped (typically five). Plan for the day you need to activate.  
+- ✅ Document each rearm so teammates know how many are left.  
+- ✅ Running in production with an evaluation build violates Microsoft policy.
 
-Reboot to apply the change:
-
-```powershell
-Restart-Computer
-```
-
-After the restart, your trial period is extended by another 180 days.
-
-### Is it legal to extend a trial version of Windows?
-
-Using the **slmgr -rearm** command to extend the trial period of Windows Server is a feature provided by Microsoft for specific editions of its software, primarily for evaluation purposes. This command resets the activation timer and can be used a limited number of times to extend the trial period, typically to allow users more time to evaluate the product before purchasing a license.
-
-However, the legality and ethical use of this feature depend on the terms set forth in the Microsoft Software License Agreement (SLA) you agreed to when you first installed or used the software. The SLA for Windows Server editions that offer this feature generally allows for a limited number of resets of the trial period, specifically to support testing and evaluation scenarios.
-
-While it is technically possible to use **slmgr -rearm** to extend the trial, it is essential to:
-
-1. **Use it within the limits** specified by Microsoft, which is typically up to two times, extending the trial to a maximum of an additional 180 days.
-2. **Understand it is intended for evaluation purposes** and not as a way to permanently avoid purchasing the necessary licenses for long-term use.
-
-If you are using the software in a commercial environment or for any purpose other than evaluation, it is recommended to purchase a valid license to stay compliant with Microsoft's licensing terms and avoid any legal issues.
-
-Always refer to the specific SLA for your version of Windows Server and consider consulting with a legal professional or Microsoft's licensing experts for advice tailored to your situation.
+When you’re ready to go live, activate Windows through your volume licence,
+Azure Hybrid Benefit, or retail key so updates and support continue uninterrupted.
