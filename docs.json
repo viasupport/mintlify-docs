@@ -33,7 +33,7 @@
         "tab": "Documentation",
         "groups": [
           {
-            "group": "* Onboarding Hub",
+            "group": "Onboarding Hub",
             "pages": [
               "index",
               "quickstart",
