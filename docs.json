@@ -135,7 +135,7 @@
                   {
                     "group": "DOS Attacks",
                     "pages": [
-                      "faq/traffic-bandwidth/dos-attacks/edis-global-ddos-protection-overview",
+                      "faq/traffic-bandwidth/dos-attacks/edbb-ddos-protection-overview",
                       "faq/traffic-bandwidth/dos-attacks/advisory-for-high-risk-clients"
                     ]
                   }
