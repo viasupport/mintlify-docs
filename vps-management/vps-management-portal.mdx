@@ -22,13 +22,13 @@ while a quick-action column on the left keeps power and console controls only on
 
 <CardGroup cols={3}>
   <Card title="⚡ Power Menu">
-    The green <strong>Server On</strong> button handles graceful starts and reboots. Open the dropdown to issue hard resets if the guest OS is frozen.
+    The green <strong>Server On</strong> button handles shutdowns and reboots. Open the dropdown to Stop or Restart your machine. 
   </Card>
   <Card title="🖥️ VNC Toggle">
-    Flip <strong>VNC</strong> on only when you need it. The button turns red while VNC is enabled, reminding you to disable it once troubleshooting is finished.
+    Flip <strong>VNC</strong> on only when you need it. The button turns green while VNC is enabled, reminding you to disable it once remote work is finished.
   </Card>
   <Card title="🔗 Open Console">
-    Launch the embedded noVNC viewer instantly—no extra navigation. Perfect for watching reinstalls, entering rescue environments, or capturing screenshots.
+    Launch the embedded noVNC viewer instantly. No extra navigation. Perfect for watching reinstalls, entering rescue environments, or capturing screenshots. Button in greyed-out when VNC is off.
   </Card>
 </CardGroup>
 
@@ -47,19 +47,20 @@ while a quick-action column on the left keeps power and console controls only on
 
 <CardGroup cols={2}>
   <Card title="📊 Traffic Dial">
-    Monitor consumed vs. allocated bandwidth. The dial shows percentage used, remaining quota, and the next refill date so you can plan ahead.
+    Monitor consumed vs. allocated traffic. The dial shows percentage used, remaining traffic, real values in GB, and the next refill date so you can plan ahead. An info banner warns when traffic is low or fully used.
   </Card>
   <Card title="🌊 Traffic Pool Ledger">
-    See global pool balances, hydration history, and trigger manual <strong>TopUp</strong> events. An info banner warns when auto hydration isn’t configured.
+    See global pool balance, hydration history, and trigger manual hydration,  <strong>TopUp</strong> traffic pool. An info banner warns when auto hydration isn't configured.
   </Card>
 </CardGroup>
 
 <CardGroup cols={2}>
   <Card title="🛠️ Fast Maintenance">
-    Shortcut buttons for <strong>Reinstall</strong> and <strong>IP Change</strong> now sit beneath the dashboard cards. Use them to rebuild or shuffle addresses without leaving the page.
+    Shortcut buttons for <strong>Reinstall</strong> and <strong>IP Change</strong> now sit beneath the dashboard cards. Use them to reinstall your OS or initiate random or bespoke IP address changes.
+
   </Card>
   <Card title="⬆️ Upgrades & Cancellation">
-    The green <strong>Upgrade Plan</strong> button starts resource upgrades; the red <strong>Request Cancellation</strong> button opens the guided termination flow.
+    The green <strong>Upgrade Plan</strong> button starts a plan upgrade; the red <strong>Request Cancellation</strong> button opens the guided termination dialogue. The "Upgrades" Tab allows for plan-upgrades and  resource upgrades (adding additional IP addresses, RAM, vCPU, drive boost)
   </Card>
 </CardGroup>
 
