@@ -9,92 +9,68 @@ import { CtaButton } from "/snippets/cta-button.mdx";
 ## Reinstall from the Installation Tab
 
 <Warning>
-Important: Reinstalling your VPS will permanently erase all data.
-Make sure you have backups before proceeding.
+  Important: Reinstalling your VPS will permanently erase all data. Make sure you have backups before proceeding.
 </Warning>
 
 ## Run AutoInstall in Five Easy Steps
 
 <Steps>
   <Step title="Locate your VPS in the control panel">
-    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB Control Panel</a>, go to <strong>Services</strong>, and choose the VPS you need to reinstall.
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">
+    EDBB Control Panel</a>
+
+    , go to <strong>Services</strong>
+    , and choose the VPS you need to reinstall.
   </Step>
   <Step title="Switch to Installation tab → Select Automated Installers">
-    Use the <strong>Installation</strong> tab on the service dashboard, then stay on the default <strong>Automated Installers</strong> view.
-    <div style={{marginTop: "16px"}}>
-  
-      <Frame>
-  <img src="/assets/vps-reinstall-os.png" alt="Install OS in Control Panel" />
-     </Frame>
+    Use the <strong>Installation</strong>
+     tab on the service dashboard, then stay on the default <strong>Automated Installers</strong>
+     view.
 
+    <div style={{ marginTop:"16px" }}>
+    <Frame>
+      ![Install OS in Control Panel](/assets/vps-reinstall-os.png)
+    </Frame>
     </div>
   </Step>
   <Step title="Pick the operating system">
     Click the tile of the OS family you would like to install (Ubuntu, Debian, Rocky, AlmaLinux, Windows Server, etc.). Windows 10 you find in the Windows Server section.
-    <div style={{marginTop: "16px"}}>
-      <img src="/assets/vps-reinstall-os-sel.png" alt="Selecting an AutoInstall template" style={{width: "100%", maxWidth: "820px", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.08)"}} />
+
+    <div style={{ marginTop:"16px" }}>
+    <img
+      src="/assets/vps-reinstall-os-sel.png"
+      alt="Selecting an AutoInstall template"
+      style={{ width:"100%",maxWidth:"820px",borderRadius:"16px",border:"1px solid rgba(0,0,0,0.08)" }}
+    />
+
     </div>
   </Step>
   <Step title="Choose the OS version & confirm options">
     Use the dropdown below the OS family tile to pick the version/release you would like to install. If the OS offers additional options (desktop vs. minimal, language packs, etc.) review them before you proceed.
   </Step>
   <Step title="Set password and launch">
-    Enter a password (or paste an SSH public key) and click <strong>Start the installation</strong>. Our dashboard launches the installation and shows a progress-bar.
+    Enter a password (or paste an SSH public key) and click <strong>Start the installation</strong>
+    . Our dashboard launches the installation and shows a progress-bar.
   </Step>
 </Steps>
 
-<Callout type="warning">
-  We do not send a new Welcome Email when you reinstall! The password you specify during installation will be your new root (Linux) or Windows Administrator password. 
-</Callout>
+<warning>
+  We do not send a new Welcome Email when you reinstall! The password you specify during installation will be your new root (Linux) or Windows Administrator password.
+</warning>
 
 ---
 
 ## Track Progress & Reconnect
 
-<div className="timeline">
-  <div className="trow">
-    <div className="tpill">≈5m</div>
-    <div>
-      <div className="thead">Linux timeline</div>
-      <div className="tbody">
-        Most Linux templates complete in about five minutes. AutoInstall handles the reboot—no extra clicks.
-      </div>
-    </div>
-  </div>
+| OS          | Approx. time | What happens / What to do                                                                                                         |
+| ----------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Linux**   | **≈ 5 min**  | AutoInstall provisions and reboots automatically — no extra clicks required. SSH is blocked during installation.                  |
+| **Windows** | **≈ 15 min** | When the status changes to _Running_, reconnect via **RDP** using the new credentials. RDP access is blocked during installation. |
 
-  <div className="trow">
-    <div className="tpill">≈15m</div>
-    <div>
-      <div className="thead">Windows timeline</div>
-      <div className="tbody">
-        Windows Server usually needs ~15 minutes. When the status shows <em>Running</em>, reconnect via SSH/RDP with the new credentials.
-      </div>
-    </div>
-  </div>
-</div>
-
-<Callout type="info">
-  The <strong>Installation</strong> tab streams logs while the image is provisioned. SSH/RDP ports remain closed until the job finishes.  
-  ⚠️ Do not power off or reboot the VPS manually—AutoInstall restarts it automatically when the OS is ready.
-</Callout>
-
-<style>
-{`
-.timeline { display:grid; gap:14px; }
-.trow { display:flex; gap:14px; align-items:flex-start; }
-.tpill{
-  flex:0 0 auto;
-  min-width:64px; height:36px; padding:0 10px;
-  display:flex; align-items:center; justify-content:center;
-  border:2px solid var(--mint-color-primary, #3857e8);
-  color: var(--mint-color-primary-contrast, currentColor);
-  border-radius:999px; font-weight:700;
-  background: color-mix(in srgb, var(--mint-color-primary, #3857e8) 8%, transparent);
-}
-.thead{ font-weight:600; margin-bottom:4px; }
-.tbody{ color: var(--mint-color-text-secondary, inherit); }
-`}
-</style>
+<info>
+  The **Installation** tab streams logs while the image is provisioned. SSH/RDP ports stay closed until the job finishes.\
+  ⚠️ Do **not** power off or reboot the VPS manually — AutoInstall restarts it automatically when the OS is ready.
+</info>
 
 ---
 
