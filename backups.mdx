@@ -9,12 +9,10 @@ description: "Please ensure you manage your machines and regularly back up your 
 EDBB does not provide any backup services for VPS. \
 It is important that you manage your own backups to protect your data.
 
-
 ## **What this means for you:**
 
-🛡 **You are responsible** for creating backups of your server and all important data.
-
-🛡 We recommend to schedule regular backups to ensure your data is safe.
+🛡 **You are responsible** for creating backups of your server and all important data. \
+🛡 We recommend scheduling regular backups to ensure your data is safe.
 
 ### **Why Regular Backups Are Essential for Your VPS Data Protection**
 
@@ -40,11 +38,10 @@ Regular backups are essential for protecting your data against hardware failures
 
 <Steps>
   <Step title="Choose your tooling">
-    Decide between snapshot-like full images (<code>
-     dd</code>
+    Decide between snapshot-like full images (
 
-    , <code>
-     qemu-img</code>
+    ,  dd\
+    , qemu-img
 
     ), file-level backups (<code>
      tar</code>
@@ -61,7 +58,7 @@ Regular backups are essential for protecting your data against hardware failures
     ).
   </Step>
   <Step title="Automate the cadence">
-    Use cron jobs or orchestration pipelines so backups run daily or weekly without manual steps.
+    Use cron jobs or orchestration pipelines so backups run daily or weekly without having to trigger the process manually.
   </Step>
   <Step title="Verify and rotate">
     Test restores periodically and prune old archives so you always have a clean, recent copy.
