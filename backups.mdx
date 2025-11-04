@@ -1,16 +1,24 @@
 ---
-title: Backup Responsibilities
-sidebarTitle: "Backup Policy"
-description: Understand your role in safeguarding VPS data and learn how to request image exports when needed.
+title: "Backups"
+sidebarTitle: "Backup Guide"
+description: "Please ensure you manage your machines and regularly back up your server data"
 ---
 
 ## Protecting Your VPS Data
 
-<Info>
-  EDBB keeps the hypervisor stable but does <strong>not</strong> ship VPS plans with automatic snapshots or backups. You decide how, where, and how often to protect your own data.
-</Info>
+EDBB does not provide any backup services for VPS. \
+It is important that you manage your own backups to protect your data.
 
----
+
+## **What this means for you:**
+
+🛡 **You are responsible** for creating backups of your server and all important data.
+
+🛡 We recommend to schedule regular backups to ensure your data is safe.
+
+### **Why Regular Backups Are Essential for Your VPS Data Protection**
+
+Regular backups are essential for protecting your data against hardware failures, accidental deletions, or cyber threats. Without proper backups, you risk losing critical data, leading to costly downtime or permanent data loss. By scheduling regular backups, you safeguard your systems, enabling quick recovery and uninterrupted operations, minimizing significant disruptions.
 
 ## Why It Matters
 
@@ -32,7 +40,25 @@ description: Understand your role in safeguarding VPS data and learn how to requ
 
 <Steps>
   <Step title="Choose your tooling">
-    Decide between snapshot-like full images (<code>dd</code>, <code>qemu-img</code>), file-level backups (<code>tar</code>, <code>rsync</code>), or sync tools (<code>rclone</code>, <code>restic</code>).
+    Decide between snapshot-like full images (<code>
+     dd</code>
+
+    , <code>
+     qemu-img</code>
+
+    ), file-level backups (<code>
+     tar</code>
+
+    , <code>
+     rsync</code>
+
+    ), or sync tools (<code>
+     rclone</code>
+
+    , <code>
+     restic</code>
+
+    ).
   </Step>
   <Step title="Automate the cadence">
     Use cron jobs or orchestration pipelines so backups run daily or weekly without manual steps.
@@ -47,11 +73,15 @@ description: Understand your role in safeguarding VPS data and learn how to requ
 ## Requesting a Downloadable Image
 
 <Info>
-  Instant snapshots are not included, but you can request a downloadable <code>.qcow2</code> image of your VPS disk. Each export costs <strong>€25</strong> to cover handling.
+  Instant snapshots are not included, but you can request a downloadable <code>
+   .qcow2</code>
+
+  image of your VPS disk. Each export costs <strong>€25</strong>
+   to cover handling.
 </Info>
 
-- Contact Support via the portal messenger or by email with the VPS ID and timeframe.  
-- We prepare the image and provide a secure download link.  
+- Contact Support via the portal messenger or by email with the VPS ID and timeframe.
+- We prepare the image and provide a secure download link.
 - Download promptly—links expire to keep data safe.
 
 Full instructions live in [Requesting a Downloadable .qcow2 Image Backup](https://docs.edbb.com/faq/upgrades-downgrades/requesting-qcow2-image-backup).
