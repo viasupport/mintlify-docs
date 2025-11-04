@@ -19,19 +19,16 @@ The following violations will result in account termination or legal action:
     - Hosting or distributing CSAM will lead to immediate account termination and reporting to authorities.
   </Card>
   <Card title="🦠 Malware & Botnets">
-    Command-and-control servers, droppers, phishing kits, or similar tooling are removed on sight—no warnings.
+    C2 Servers, sinkholes, droppers, phishing kits or similar tools lead to immediate termination - no warnings are sent.
   </Card>
   <Card title="🔓 Unauthorized Access">
     Attempts to tamper with EDBB infrastructure or upstream carriers void your service agreement immediately.
   </Card>
   <Card title="🌪️ DDoS Operations">
-    Launching attacks (booter services), stress testing, or using our infrastructure for DOS attacks is prohibited.
+    Launching attacks (booter services), stress testing, or using EDBB infrastructure for DOS attacks is prohibited.
   </Card>
   <Card title="🛍️ Counterfeit Commerce">
     - Hosting websites selling counterfeit products (e.g., Nike, Adidas, Moncler) leads to account suspension.
-  </Card>
-  <Card title="⛏️ Cryptocurrency Mining">
-    Cryptocurrency mining activities are prohibited on EDBB VPS palns (and no longer profitable anyway)
   </Card>
 </CardGroup>
 
@@ -39,15 +36,17 @@ The following violations will result in account termination or legal action:
 
 ## 2. Network & Platform Safeguards
 
+The following activities are  forbidden and will lead to account suspension or termination.
+
 <CardGroup cols={2}>
   <Card title="📨 SPAM & Bulk Messaging">
     Unsolicited email, SMS, or direct messages are not allowed. Verified complaints suspend the service; repeat offences result in cancellation without refund.
   </Card>
   <Card title="🧮 IPv6 Usage">
-    - Maximum of <strong>20 IPv6 addresses</strong>
+    - Maximum of <strong>10 IPv6 addresses</strong>
        per VPS
-    - Rapid rotation or randomized usage that stresses routing tables counts as abuse
-    - Flooding the Neighbor Discovery cache triggers termination
+    - Rapid rotation or randomized usage (random IPv6 proxies) are not allowed.
+    - Flooding the Neighbor Discovery cache leads to account termination.
   </Card>
   <Card title="🕵️ Scanning">
     Unauthorized port scans, vulnerability probing against third-party infrastructure are not allowed. (Get in touch to obtain an exempt if you are a security firm conducting contractual work).
@@ -57,6 +56,9 @@ The following violations will result in account termination or legal action:
   </Card>
   <Card title="💬 IRC Hosting">
     IRC workloads attract abuse. Review the Advisory for High-Risk Clients before deploying IRC infrastructure.
+  </Card>
+  <Card title="⛏️ Cryptocurrency Mining">
+    Cryptocurrency mining activities are prohibited on EDBB VPS plans (and no longer profitable anyway)
   </Card>
 </CardGroup>
 
@@ -71,7 +73,7 @@ Users must respect the dignity, rights, and safety of others. The following acti
     - Distributing, hosting, or endorsing content that infringes on intellectual property rights, including copyrights, trademarks, and patents.
   </Card>
   <Card title="🗞️ Defamation">
-    - Publishing or sharing knowingly false information that damages the reputation of individuals or organizations.
+    - Publishing or sharing knowingly false information with the purpose of damaging the reputation of individuals or organizations.
   </Card>
   <Card title="🔐 Privacy">
     - Unauthorized sharing of private information, images, videos, or other content that violates personal privacy.
