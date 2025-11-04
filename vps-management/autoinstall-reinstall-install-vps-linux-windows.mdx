@@ -51,22 +51,22 @@ Make sure you have backups before proceeding.
 
 ## Track Progress & Reconnect
 
-<div className="pcards">
-  <div className="pcard">
-    <div className="pbadge">≈5m</div>
+<div className="timeline">
+  <div className="trow">
+    <div className="tpill">≈5m</div>
     <div>
-      <div className="ptitle">Linux timeline</div>
-      <div className="ptext">
+      <div className="thead">Linux timeline</div>
+      <div className="tbody">
         Most Linux templates complete in about five minutes. AutoInstall handles the reboot—no extra clicks.
       </div>
     </div>
   </div>
 
-  <div className="pcard">
-    <div className="pbadge">≈15m</div>
+  <div className="trow">
+    <div className="tpill">≈15m</div>
     <div>
-      <div className="ptitle">Windows timeline</div>
-      <div className="ptext">
+      <div className="thead">Windows timeline</div>
+      <div className="tbody">
         Windows Server usually needs ~15 minutes. When the status shows <em>Running</em>, reconnect via SSH/RDP with the new credentials.
       </div>
     </div>
@@ -80,32 +80,19 @@ Make sure you have backups before proceeding.
 
 <style>
 {`
-.pcards{
-  display:grid; gap:16px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-.pcard{
-  display:flex; gap:16px; align-items:center;
-  padding:18px; border-radius:16px;
-  background: var(--mint-color-surface, #fff);
-  border:1px solid var(--mint-color-border, #e7e9ee);
-}
-.pbadge{
-  width:64px; height:64px; border-radius:999px;
+.timeline { display:grid; gap:14px; }
+.trow { display:flex; gap:14px; align-items:flex-start; }
+.tpill{
+  flex:0 0 auto;
+  min-width:64px; height:36px; padding:0 10px;
   display:flex; align-items:center; justify-content:center;
-  border:3px solid var(--mint-color-primary, #3857e8);
-  background: color-mix(in srgb, var(--mint-color-primary, #3857e8) 10%, transparent);
-  font-weight:700;
+  border:2px solid var(--mint-color-primary, #3857e8);
+  color: var(--mint-color-primary-contrast, currentColor);
+  border-radius:999px; font-weight:700;
+  background: color-mix(in srgb, var(--mint-color-primary, #3857e8) 8%, transparent);
 }
-.ptitle{ font-weight:600; margin-bottom:4px; }
-.ptext{ color: var(--mint-color-text-secondary, inherit); }
-/* Dark mode refinement */
-@media (prefers-color-scheme: dark){
-  .pcard{
-    background: var(--mint-color-surface-muted, #0f1222);
-    border-color: color-mix(in srgb, #fff 12%, transparent);
-  }
-}
+.thead{ font-weight:600; margin-bottom:4px; }
+.tbody{ color: var(--mint-color-text-secondary, inherit); }
 `}
 </style>
 
