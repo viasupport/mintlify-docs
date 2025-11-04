@@ -45,7 +45,7 @@
               "acceptable-use-policy"]
           },
           {
-            "group": "VPS Control Center",
+            "group": "VPS Management",
             "pages": [
               "vps-management/vps-management-portal",
               "vps-management/autoinstall-reinstall-install-vps-linux-windows",
@@ -66,7 +66,7 @@
             ]
           },
           {
-            "group": "Help & Answers",
+            "group": "FAQ",
             "pages": [
               "faq/what-is-a-virtual-private-server",
               "faq/what-is-a-kvm-vps",
@@ -216,7 +216,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/edbb"
+      "x": "https://x.com/edbb_vps"
     }
   },
   "integrations": {
@@ -227,7 +227,7 @@
   "redirects": [
     {
       "source": "/everything-vps",
-      "destination": "/getting-started/everything-vps"
+      "destination": "/index"
     }
   ]
 }
