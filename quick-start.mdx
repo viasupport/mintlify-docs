@@ -1,0 +1,139 @@
+---
+title: "VPS Quick Start Checklist"
+sidebarTitle: "Quick Start"
+description: "Get your EDBB VPS up and running in minutes — from your welcome email to your first login and system updates."
+---
+
+import { CtaButton } from "/snippets/cta-button.mdx";
+
+## 🚀 Quickstart Guide
+
+Welcome to EDBB VPS Hosting! This guide helps you access, secure, and start using your new VPS in just a few minutes. Each step walks you from your welcome email to your first login and essential setup tasks.
+
+---
+
+## 1. **Check Your Inbox**
+
+After ordering a VPS and after rerceiving a payment confirmation, you’ll receive a **Welcome Email** from EDBB containing:
+
+- Your VPS Primary **IPv4 address**
+- ****Username andpassword****
+- **Operating system** and configuration details
+- A direct link to the **management dashboard**
+
+Don’t see the message? Inspect your **Spam** or **Junk** folders. Need help? Click the blue chat icon at the bottom of this page.
+
+---
+
+## 2. Access the Control Panel
+
+The \*\*Control Panel \*\*keeps all VPS controls in one place:
+
+<CtaButton label="Open EDBB Control Panel" link="https://my.edbb.com" />
+
+Inside the panel you can:
+
+- Start, stop, or reboot your VPS
+- Reinstall your operating system
+- View IP addresses and network settings
+- Access the integrated VNC Console
+- Monitor traffic and manage your Traffic Pool
+- Order additional resources (IP addresses, RAM, vCPU cores)
+
+> 💡 **Tip:** Use a strong password and log out after each session — especially on shared computers.
+
+---
+
+## 3. Connect to Your VPS
+
+Once your VPS is active, connect directly using **SSH** (Linux/macOS) or **RDP** (Windows).
+
+### For Linux VPS
+Use your terminal:
+
+```bash
+ssh root@<your-vps-ip>
+```
+
+Accept the fingerprint and enter your root password from the welcome email.
+
+### For Windows VPS
+Open **Remote Desktop Connection** (mstsc) and connect to your VPS IP:
+
+```
+Computer: <your-vps-ip>
+User: Administrator
+```
+
+Enter your password when prompted to access your Windows desktop.
+
+
+## 4. Change Your Password
+
+For security reasons, you should **change your default password** as soon as you log in for the first time.
+
+### For Linux VPS
+
+Run the following command in your SSH session:
+
+```bash
+passwd
+```
+
+Then enter:
+
+1. Your **current password**
+2. A **new strong password**
+3. Confirm the new password
+
+💡 *Tip:* Use at least 12 characters, including upper/lowercase letters, numbers, and symbols.
+
+---
+
+### For Windows VPS
+
+1. Press **Ctrl + Alt + End** (or use the on-screen keyboard if you’re on macOS).
+2. Click **Change a password**.
+3. Enter your **old password**, then your **new password** twice.
+4. Press **Enter** to confirm.
+
+Your new password will take effect immediately — make sure to store it securely (e.g., in a password manager).
+
+
+
+## 5. Update Your System
+
+Always begin by installing the latest updates and patches.
+
+**Debian / Ubuntu**
+
+```bash
+apt update && apt upgrade -y
+```
+
+**AlmaLinux / Rocky / CentOS**
+
+```bash
+dnf update -y
+```
+
+Keeping your system updated ensures security and stability.
+
+---
+
+
+## 6. Set Hostname and Reverse DNS (Optional)
+
+Set a custom hostname for your VPS:
+
+```bash
+hostnamectl set-hostname myserver.example.com
+```
+
+To configure reverse DNS (PTR record), use the **rDNS* section in your dashboard.
+A matching hostname and PTR record help improve email deliverability and server reputation.
+
+---
+
+
+> **Need help?** Click the blue **chat icon** on this page
