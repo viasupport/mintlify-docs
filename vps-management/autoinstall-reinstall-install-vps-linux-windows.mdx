@@ -51,26 +51,77 @@ Make sure you have backups before proceeding.
 
 ## Track Progress & Reconnect
 
-<div style={{display: "grid", gap: "16px", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))"}}>
-  <div style={{background: "var(--mint-color-surface-muted, #0f1125)", borderRadius: "18px", border: "1px solid rgba(255,255,255,0.08)", padding: "20px", display: "flex", alignItems: "center", gap: "18px"}}>
-    <div style={{width: "72px", aspectRatio: "1 / 1", borderRadius: "50%", border: "3px solid var(--mint-color-primary, #5B6BFF)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", fontWeight: 700}}>≈5m</div>
+<div className="progress-cards">
+  <div className="pcard">
+    <div className="pbadge">≈5m</div>
     <div>
-      <strong style={{display: "block", marginBottom: "6px"}}>Linux timeline</strong>
-      <p style={{margin: 0}}>Most Linux templates complete within about five minutes. Let AutoInstall handle the reboot—no extra clicks needed.</p>
+      <strong className="ptitle">Linux timeline</strong>
+      <p className="ptext">
+        Most Linux templates complete within about five minutes. Let AutoInstall
+        handle the reboot—no extra clicks needed.
+      </p>
     </div>
   </div>
-  <div style={{background: "var(--mint-color-surface-muted, #0f1125)", borderRadius: "18px", border: "1px solid rgba(255,255,255,0.08)", padding: "20px", display: "flex", alignItems: "center", gap: "18px"}}>
-    <div style={{width: "72px", aspectRatio: "1 / 1", borderRadius: "50%", border: "3px solid var(--mint-color-primary, #5B6BFF)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", fontWeight: 700}}>≈15m</div>
+
+  <div className="pcard">
+    <div className="pbadge">≈15m</div>
     <div>
-      <strong style={{display: "block", marginBottom: "6px"}}>Windows timeline</strong>
-      <p style={{margin: 0}}>Windows Server usually needs around fifteen minutes. Once the status shows <em>Running</em>, reconnect via SSH/RDP with the new credentials.</p>
+      <strong className="ptitle">Windows timeline</strong>
+      <p className="ptext">
+        Windows Server usually needs around fifteen minutes. Once the status shows
+        <em> Running</em>, reconnect via SSH/RDP with the new credentials.
+      </p>
     </div>
   </div>
 </div>
 
 <Callout type="info">
-  The Installation tab streams log entries while the image is provisioned. SSH/RDP ports remain closed until the job finishes. ⚠️ Do not power off or reboot the VPS manually—AutoInstall restarts it automatically once the OS is ready.
+  The <strong>Installation</strong> tab streams log entries while the image is provisioned.
+  SSH/RDP ports remain closed until the job finishes. ⚠️ Do not power off or reboot the VPS
+  manually—AutoInstall restarts it automatically once the OS is ready.
 </Callout>
+
+<style>
+  {`
+  .progress-cards {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .pcard {
+    background: var(--mint-color-surface, #ffffff);
+    border: 1px solid var(--mint-color-border, #e6e8eb);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .pbadge {
+    width: 72px;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+    border: 3px solid var(--mint-color-primary, #3857e8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 700 18px/1 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+
+  .ptitle { display:block; margin: 0 0 6px 0; }
+  .ptext  { margin: 0; }
+
+  /* Dark mode tweaks */
+  @media (prefers-color-scheme: dark) {
+    .pcard {
+      background: var(--mint-color-surface-muted, #101322);
+      border-color: color-mix(in srgb, #fff 12%, transparent);
+    }
+  }
+  `}
+</style>
 
 ---
 
