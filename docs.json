@@ -39,10 +39,10 @@
               "check-your-inbox",
               "no-email-received",
               "how-our-support-team-helps-you",
-              "acceptable-use-policy",
               "linux-secure-shell-ssh",
               "windows-remote-desktop",
-              "backups"            ]
+              "backups",
+              "acceptable-use-policy"]
           },
           {
             "group": "VPS Control Center",
