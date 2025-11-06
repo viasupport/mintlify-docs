@@ -1,13 +1,17 @@
 ---
 title: "Traffic Stats & Monthly Refills"
 sidebarTitle: "Traffic Dashboard"
-description: "Track how EDBB meters VPS traffic, when usage resets, and what happens at 100% consumption." 
+description: "Review how EDBB meters VPS traffic, when traffic refills happen, and what happens when all traffic has been consumed."
 ---
 
-## Find Everything on the Traffic Tab
+## EDBB Traffic Overview
 
 <Info>
-  In the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a>, open your VPS and switch to the <strong>Traffic</strong> tab. It shows the current cycle, auto-hydration settings, pool balance, and usage charts at a glance.
+  In the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">
+  EDBB VPS Portal</a>
+
+  , open your VPS and switch to the <strong>Traffic</strong>
+   tab. It shows the current cycle, auto-hydration settings, pool balance, and usage charts at a glance.
 </Info>
 
 ![Traffic tab overview](/assets/traffic_info.png)
@@ -16,10 +20,9 @@ description: "Track how EDBB meters VPS traffic, when usage resets, and what hap
 
 ## Read the Summary Card
 
-- **Progress ring** – % of your monthly allowance consumed.  
-- **Numerical usage** – exact GB used vs. available.  
+- **Progress ring** – % of your monthly allowance consumed.
+- **Numerical usage** – exact GB used vs. available.
 - **Refill timer** – when the allowance resets (matches your VPS renewal date).
-
 
 ![Cumulative traffic chart](/assets/cumulative_traffic.png)
 
@@ -29,16 +32,28 @@ Email alerts land at 80%, 90%, and 100%, but the portal indicator is the quickes
 
 ## Inspect Daily & Cumulative Graphs
 
-- Hover over the bars to see each day’s combined ingress + egress in GB.  
+- Hover over the bars to see each day’s combined ingress + egress in GB.
 - Use the cumulative chart to verify long-running jobs or unexpected spikes.
 
-<div style={{display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "stretch"}}>
-  <div style={{flex: "1 1 320px"}}>
-    <img src="/assets/daily_traffic.png" alt="Daily traffic chart" style={{width: "100%", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.06)"}} />
-  </div>
-  <div style={{flex: "1 1 320px"}}>
-    <img src="/assets/traffic_info-cal.png" alt="Traffic calendar view" style={{width: "100%", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.06)"}} />
-  </div>
+<div style={{ display:"flex",gap:"16px",flexWrap:"wrap",alignItems:"stretch" }}>
+<div style={{ flex:"1 1 320px" }}>
+<img
+  src="/assets/daily_traffic.png"
+  alt="Daily traffic chart"
+  style={{ width:"100%",borderRadius:"16px",border:"1px solid rgba(0,0,0,0.06)" }}
+/>
+
+</div>
+
+<div style={{ flex:"1 1 320px" }}>
+<img
+  src="/assets/traffic_info-cal.png"
+  alt="Traffic calendar view"
+  style={{ width:"100%",borderRadius:"16px",border:"1px solid rgba(0,0,0,0.06)" }}
+/>
+
+</div>
+
 </div>
 
 Totals reset automatically at the start of the next billing cycle.
@@ -47,16 +62,15 @@ Totals reset automatically at the start of the next billing cycle.
 
 ## Manage Traffic Pool & Hydration
 
-
 ![Manual and auto hydration tabs](/assets/traffic-pool-edbb-manual-auto-hydration.png)
 
-**A — Traffic Pool**  
+**A — Traffic Pool**\
 Shows the shared balance for your account. Click “Top up” to purchase more capacity when needed.
 
-**B — Manual Hydration**  
+**B — Manual Hydration**\
 Select a block (+100 GB, +500 GB, +1 TB, +10 TB) and press **Assign Traffic** to add it instantly to the VPS.
 
-**C — Auto Hydration**  
+**C — Auto Hydration**\
 Set a top-up size (e.g., +100 GB). When usage hits 99%, the chosen amount is assigned automatically. Check the status banner for the active rule.
 
 All assignments are logged under **Hydration log** and **Pool log**.
@@ -67,7 +81,8 @@ All assignments are logged under **Hydration log** and **Pool log**.
 
 <Steps>
   <Step title="Grace & throttle">
-    After a 5% grace buffer, the NIC is capped at roughly <strong>64 kbit/s</strong>. The VPS stays online but feels slow.
+    After a 5% grace buffer, the NIC is capped at roughly <strong>64 kbit/s</strong>
+    . The VPS stays online but feels slow.
   </Step>
   <Step title="Restore full speed">
     Assign pool traffic, upgrade the plan, or wait for the monthly refill—any of these actions lifts the throttle immediately.
@@ -76,3 +91,9 @@ All assignments are logged under **Hydration log** and **Pool log**.
     Monitor the Traffic tab and enable auto hydration if you run resource-heavy workloads. Always keep recent off-site backups in case you choose to wait for the reset window.
   </Step>
 </Steps>
+
+### How We Meter Traffic
+
+EDBB reads traffic counters directly on the Ethernet interfaces of your Virtual Private Servers in real-time. The total traffic usage is determined by summing up the ingress (incoming) and egress (outgoing) traffic.
+
+$Total Traffic  =  \sum (\text{IN} + \text{OUT})$
