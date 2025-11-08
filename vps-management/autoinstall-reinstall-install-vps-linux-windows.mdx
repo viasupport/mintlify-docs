@@ -19,8 +19,8 @@ import { CtaButton } from "/snippets/cta-button.mdx";
     Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">
      EDBB Control Panel</a>
 
-    , go to <strong>Services</strong>
-     , and choose the VPS you need to reinstall.
+    Go to <strong>Services</strong>
+    , and select the VPS you would like to reinstall.
   </Step>
   <Step title="Switch to Installation tab → Select Automated Installers">
     Use the <strong>Installation</strong>
@@ -62,10 +62,10 @@ import { CtaButton } from "/snippets/cta-button.mdx";
 
 ## Track Progress & Reconnect
 
-| OS          | Approx. time | What happens / What to do                                                                                                                                                    |
-| ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Linux**   | **≈ 5 min**  | AutoInstall provisions and reboots automatically — no extra clicks required. SSH is blocked during installation. Linux typically finishes installation in 5 minutes. When the status changes to _Running_, connect via **SSH** using the new root password.         |
-| **Windows** | **≈ 15 min** | RDP access is blocked during installation. When the status changes to _Running_, connect via **RDP** using the new Administrator password. Windows usually takes 15 minutes to install. |
+| OS          | Approx. time | What happens / What to do                                                                                                                                                                                                                                   |
+| ----------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Linux**   | **≈ 5 min**  | AutoInstall provisions and reboots automatically — no extra clicks required. SSH is blocked during installation. Linux typically finishes installation in 5 minutes. When the status changes to _Running_, connect via **SSH** using the new root password. |
+| **Windows** | **≈ 15 min** | RDP access is blocked during installation. When the status changes to _Running_, connect via **RDP** using the new Administrator password. Windows usually takes 15 minutes to install.                                                                     |
 
 <info>
   The **Installation** tab streams logs while the image is provisioned. SSH/RDP ports stay closed until the job finishes.\
