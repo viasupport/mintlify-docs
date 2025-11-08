@@ -20,7 +20,7 @@ import { CtaButton } from "/snippets/cta-button.mdx";
      EDBB Control Panel</a>
 
     Go to <strong>Services</strong>
-    , and select the VPS you would like to reinstall.
+    and select the VPS you would like to reinstall.
   </Step>
   <Step title="Switch to Installation tab → Select Automated Installers">
     Use the <strong>Installation</strong>
@@ -33,7 +33,7 @@ import { CtaButton } from "/snippets/cta-button.mdx";
     </Frame>
     </div>
   </Step>
-  <Step title="Pick the operating system">
+  <Step title="Select the operating system">
     Click the tile of the OS family you would like to install (Ubuntu, Debian, Rocky, AlmaLinux, Windows Server, etc.). Windows 10 you find in the Windows Server section.
 
     <div style={{ marginTop:"16px" }}>
@@ -45,12 +45,14 @@ import { CtaButton } from "/snippets/cta-button.mdx";
 
     </div>
   </Step>
-  <Step title="Choose the OS version & confirm options">
-    Use the dropdown below the OS family tile to pick the version/release you would like to install. If the OS offers additional options (desktop vs. minimal, language packs, etc.) review them before you proceed.
+  <Step title="Choose the OS version">
+    Use the dropdown below the OS family tile to pick the version/release you would like to install.
   </Step>
   <Step title="Set password and launch">
-    Enter a password (or paste an SSH public key) and click <strong>Start the installation</strong>
-     . Our dashboard launches the installation and shows a progress-bar.
+    Enter a password (or paste an SSH public key) and click <strong>Start the installation.</strong>
+     Our dashboard initiates the installation.
+
+     We do not send a new Welcome Email when you reinstall! The password you specify during installation will be your new root (Linux) or Windows Administrator password.
   </Step>
 </Steps>
 
