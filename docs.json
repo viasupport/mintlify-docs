@@ -130,7 +130,7 @@
                 "pages": [
                   "faq/traffic-bandwidth/traffic-vs-bandwidth",
                   "faq/traffic-bandwidth/traffic-stats-refill-explained",
-                  "faq/traffic-bandwidth/traffic-pool-global-and-premium-traffic-zone",
+                  "faq/traffic-bandwidth/traffic-pool",
                   "faq/traffic-bandwidth/exceeding-monthly-included-traffic",
                   {
                     "group": "DOS Attacks",
