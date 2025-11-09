@@ -1,46 +1,33 @@
 ---
-title: "Understand Traffic Pools & Zones"
+title: "Understand Traffic Pool"
 sidebarTitle: "Traffic Pool"
-description: "Learn how EDBB traffic pools work, how to assign capacity manually or automatically, and what separates the Global and Premium traffic zones." 
+description: "Learn how EDBB traffic pool works, how to assign traffic to your VPS (manually or automatically)"
 ---
 
-## What Is the Traffic Pool?
+## What Is a Traffic Pool?
 
 <Info>
-  The traffic pool is a shared bucket of data transfer you can assign to any VPS in your account. Buy it once, consume it where you need it, and reassign it between instances at any time.
+  The traffic pool is like a bank account holding a traffic reserve. Top-up your account and assign traffic to any VPS in your account when needed.
 </Info>
 
-- Pool traffic never expires.  
-- Assignments take effect instantly and appear in the hydration log.  
-- Auto hydration rules can refill a VPS the moment it reaches 99% usage.
+- Pool traffic never expires.
+- Assignments take effect instantly and appear in the hydration log.
+- Auto hydration refills a VPS the moment it reaches 99% usage.
 
 ![Traffic hydration controls](/assets/traffic-pool-edbb-manual-auto-hydration.png)
 
-**A — Traffic Pool balance**: shows remaining TB and provides the <strong>Top up</strong> button.  
-**B — Manual hydration**: add fixed chunks of 100 GB, 500 GB, 1 TB, or 10 TB to the selected VPS.  
-**C — Auto hydration**: choose a profile (e.g., +100 GB). The system assigns it automatically at 99% usage.
+**A — Traffic Pool Balance**: shows remaining TB and provides a button to <strong>Top up</strong>
+ the pool.\
+**B — Manual Hydration**: manually assign portions of +100 GB, +500 GB, +1 TB, or +10 TB to the selected VPS.\
+**C — Auto Hydration**: choose a profile (e.g., +100 GB). The system automatically adds e.g. +100GB at 99% traffic usage levels.
 
 ---
 
-## Global vs Premium Traffic Zones
-
-| Zone | Member locations | Multiplier | Ideal use case |
-|------|------------------|------------|----------------|
-| **Global Traffic Zone** | Most EDBB data centers across Europe, North America, and Asia | 1 TB assigned = 1 TB delivered | Standard workloads and geo-distributed projects |
-| **Premium Traffic Zone** | High-cost routes such as Cyprus, UAE, Australia, Chile, and Colombia | 1 TB assigned = 0.5 TB delivered | Latency-sensitive applications in premium markets |
-
-<Note>
-  Premium zone traffic reflects elevated carrier costs. When assigned to a VPS in a premium location, usage is debited at 2× the normal rate (e.g., 1 TB assigned counts as 2 TB consumed).
-</Note>
-
-You can run both zone balances in the same pool. Each VPS shows its traffic zone on the Traffic tab so you know which multiplier applies.
-
----
 
 ## Monitor, Refill, and Stay Ahead
 
-- Check pool balance and assignment history via the **Hydration log** and **Pool log** buttons.  
-- Email alerts fire at 80%, 90%, and 100% pool usage; top up before the balance is exhausted.  
+- Check pool balance and assignment history via the **Hydration log** and **Pool log** buttons.
+- Email alerts fire at 80%, 90%, and 100% pool usage; top up before the balance is exhausted.
 - Combine pool top-ups with plan upgrades if your baseline traffic requirement grows over time.
 
 Need more detail on usage graphs and throttling rules? See [Traffic Stats & Monthly Refills](./traffic-stats-refill-explained) and [Exceeded Monthly Traffic](./exceeding-monthly-traffic-limit-edis-global).
