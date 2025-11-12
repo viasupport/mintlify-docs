@@ -7,7 +7,7 @@ description: "Use Netplan to change IPv4 addresses, gateways, or DNS entries on 
 ## Update IPv4 Settings via Netplan
 
 <Info>
-  Netplan is the default network configuration tool on Ubuntu 18.04 through 24.04. Always grab the latest IP details from the EDBB portal before editing configuration files.
+  Netplan is the default network configuration tool on Ubuntu 18.04 through 24.04. Always grab the latest IP details from the EDBB Control Panel before editing configuration files.
 </Info>
 
 ---
@@ -72,7 +72,7 @@ network:
 ```
 
 - Replace `ens3` with your interface name.  
-- Update addresses, gateway, and DNS values using the portal data.  
+- Update addresses, gateway, and DNS values using the Control Panel data.  
 - Maintain spacing—YAML is indentation-sensitive.
 
 ---
@@ -104,7 +104,7 @@ ping -c 3 203.0.113.1       # gateway
 ping -c 3 edbb.com
 ```
 
-Reconnect via SSH using the new address once the pings succeed. Disable VNC in the portal if you no longer need the console.
+Reconnect via SSH using the new address once the pings succeed. Disable VNC in the Control Panel if you no longer need the console.
 
 ---
 
