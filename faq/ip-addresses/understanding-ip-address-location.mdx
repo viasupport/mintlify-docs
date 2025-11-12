@@ -1,19 +1,26 @@
 ---
-title: "Can I Use an IP from Another Country?"
-sidebarTitle: "IP vs Location"
-description: "EDBB assigns IP space per data center. To receive an IP in a different country, deploy the VPS in that region."
+title: IP from another country
+description: Learn why IP addresses are confined to specific geographic locations and how they adhere to the principles of internet routing. Explore our diverse range of VPS server locations to find the IP location you require.
 ---
 
-## How Location Works
+import { CtaButton } from "/snippets/cta-button.mdx";
 
-<Info>
-  Each EDBB data center advertises its own IP prefixes. Routing policy and registry rules mean those prefixes must be announced from the facility where the hardware lives.
-</Info>
+## The Limitations and Principles of IP Address Allocation - Why Your Server's Location Matters
 
-## What This Means for You
+It is not possible to assign an IP address from one country to a server in another country.
 
-- A VPS provisioned in Vienna keeps an Austrian IP. You can’t borrow one from Madrid without moving the workload.  
-- Need a different country? Deploy the VPS (or migrate via snapshot) to that region in the EDBB portal.  
-- For multi-region presence, run multiple VPSs and dispatch traffic with DNS, load balancing, or tunneling tools.
+### The Geographic Link of IP Addresses
 
-Consult the location selector in the EDBB portal to pick the facility that matches your geo-IP and latency requirements.
+IP addresses are arranged in blocks, specifically blocks of 256 addresses known as a /24 network segment (or larger), and these blocks are tied to particular geographic areas and server locations. This structure prevents the assignment of an IP address from one country to a VPS or service in another country, or the rerouting of a single IP address internationally, adhering to the established principles of internet routing.
+
+### Need an IP from Another Country?
+
+If your requirements dictate having an IP address from a different country, the straightforward solution is to purchase a server located in that particular country.
+
+You can discover a broad range of VPS server locations available on our website, offering you the flexibility to choose the IP location that suits your needs.
+
+<CtaButton
+  label='Our Server Locations'
+  link='https://www.edbb.com/'
+  openInNewTab={true}
+/>

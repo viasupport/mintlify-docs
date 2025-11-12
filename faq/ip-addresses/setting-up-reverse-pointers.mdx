@@ -22,7 +22,7 @@ description: "Set or remove PTR records for your EDBB VPS IPv4/IPv6 directly in 
 
 <Steps>
   <Step title="Open the rDNS panel">
-    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB VPS Portal</a>, select your VPS under <strong>Services</strong>, and choose the <strong>rDNS</strong> tab.
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank" rel="noreferrer">EDBB Control Panel</a>, select your VPS under <strong>Services</strong>, and choose the <strong>rDNS</strong> tab.
   </Step>
   <Step title="Set the primary IPv4 hostname">
     Replace the default value with your hostname and click <strong>Set</strong>. Use <strong>Unset</strong> if you need to revert to the system default.
@@ -41,7 +41,7 @@ description: "Set or remove PTR records for your EDBB VPS IPv4/IPv6 directly in 
 
 ---
 
-## Verify & Troubleshoot
+## Verify - Troubleshoot
 
 - Use `dig -x <ip>` or an external rDNS checker after a few minutes—public caches may need time to refresh.  
 - If the hostname doesn’t appear, double-check that the forward record exists and matches exactly (including subdomain).  

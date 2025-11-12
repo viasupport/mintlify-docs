@@ -12,11 +12,11 @@ description: "Learn why DNS leak tools may show resolvers outside the VPS locati
 
 When you run a test, expect to see the city of the resolver PoP that answered. The VPS itself still resides in the data center you selected.
 
-## Does This Change Geo-IP Results?
+## Does This Change Geo-IP Results
 
 No—Geo-IP lookups track the public IPv4/IPv6 assigned to your VPS. Switching resolvers has no impact on how websites geolocate your service.
 
-## Prefer a Different Resolver?
+## Prefer a Different Resolver
 
 Updating the resolver is optional, but easy:
 
@@ -24,7 +24,7 @@ Updating the resolver is optional, but easy:
 - Windows: open the adapter properties → **Internet Protocol Version 4/6** → specify custom DNS servers.  
 - Custom resolvers (Unbound, Pi-hole, etc.) can be hosted on the VPS or elsewhere if you need total control.
 
-## Why Run DNS Leak Tests at All?
+## Why Run DNS Leak Tests at All
 
 - Verify VPN tunnels keep DNS traffic inside the encrypted path.  
 - Confirm the system isn’t falling back to an ISP resolver.  

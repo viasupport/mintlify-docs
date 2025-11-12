@@ -122,7 +122,8 @@
                   "faq/billing-lifecycle/btc-payment-arrived-after-the-payment-window",
                   "faq/billing-lifecycle/find-and-download-invoices",
                   "faq/billing-lifecycle/add-contact-receive-invoices-different-email",
-                  "faq/billing-lifecycle/handling-blocked-cryptocurrency-payments-cryptomus"
+                  "faq/billing-lifecycle/handling-blocked-cryptocurrency-payments-cryptomus",
+                  "faq/billing-lifecycle/scheduled-billing-window"
                 ]
               },
               {
@@ -154,7 +155,9 @@
                   {
                     "group": "CPU Resources in VPS",
                     "pages": [
-                      "faq/upgrades-downgrades/cpu-cores-vs-cpu-sockets-in-vps-environments/understanding-cpu-cores-vs-sockets-in-vps"
+                      "faq/upgrades-downgrades/cpu-cores-vs-cpu-sockets-in-vps-environments/understanding-cpu-cores-vs-sockets-in-vps",
+                      "faq/upgrades-downgrades/cpu-cores-vs-cpu-sockets-in-vps-environments/how-to-check-cpu-cores-linux-vps",
+                      "faq/upgrades-downgrades/cpu-cores-vs-cpu-sockets-in-vps-environments/how-to-check-cpu-cores-windows-vps"
                     ]
                   }
                 ]
@@ -167,7 +170,8 @@
             "pages": [
               "advanced-setup-guides/script-based-mikrotik-router-os-installation-guide-winbox",
               "advanced-setup-guides/manually-resize-disk-after-plan-upgrade-on-live-linux-systems",
-              "advanced-setup-guides/extend-hard-drive-windows-guide"
+              "advanced-setup-guides/extend-hard-drive-windows-guide",
+              "advanced-setup-guides/gui-versions-of-ubuntu-debian"
             ]
           },
           {
@@ -176,7 +180,8 @@
               "misc/extending-180-day-trial-version-of-windows",
               "misc/reporting-abuse",
               "misc/security-compliance",
-              "misc/fix-for-realvnc-closing-connection"
+              "misc/fix-for-realvnc-closing-connection",
+              "misc/fix-black-screen-windows-server"
             ]
           }
         ]

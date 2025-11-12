@@ -14,7 +14,7 @@ Cloud-Init is a lightweight framework baked into many Linux templates. On first 
 
 ---
 
-## Why Use Cloud-Init?
+## Why Use Cloud-Init
 
 - **Automated onboarding** – preconfigure users, passwords, SSH keys, and services.  
 - **Repeatable builds** – the same image and user-data produce identical environments across regions.  
@@ -38,11 +38,11 @@ Cloud-Init is a lightweight framework baked into many Linux templates. On first 
 
 ---
 
-## Upload & Provision (Existing VPS)
+## Upload - Provision (Existing VPS)
 
 <Steps>
   <Step title="Open the Installation tab">
-    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, choose your VPS, and switch to the <strong>Installation</strong> tab.
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB Control Panel</a>, choose your VPS, and switch to the <strong>Installation</strong> tab.
   </Step>
   <Step title="Select Custom Image">
     Choose the <strong>Custom Image</strong> sub-tab to reveal the Cloud-Init upload interface.
@@ -67,7 +67,7 @@ Cloud-Init is a lightweight framework baked into many Linux templates. On first 
 
 ---
 
-## Sample `#cloud-config`
+## Sample `cloud-config`
 
 ```yaml
 #cloud-config
@@ -98,7 +98,7 @@ power_state:
 
 ---
 
-## Validate & Troubleshoot
+## Validate - Troubleshoot
 
 - Run `sudo cloud-init status --wait` after first boot to confirm success.  
 - Check `/var/log/cloud-init.log` for detailed logs if tasks fail.  

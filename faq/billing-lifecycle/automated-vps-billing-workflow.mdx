@@ -1,46 +1,54 @@
 ---
-title: "Automated VPS Billing Workflow"
-sidebarTitle: "Billing Timeline"
-description: "Review EDBB’s invoice timeline, reminders, suspension, and deletion schedule for overdue VPS services." 
+title: "VPS Billing Workflow"
+description: "The document outlines the automated billing procedure for EDIS Global VPS services, including invoice generation, credit card captures, friendly and overdue reminders, service suspension, termination and data deletion."
 ---
 
-## How the Billing Cycle Flows
+## Simplified VPS Billing Workflow
 
-<Info>
-  EDBB invoices run on a predictable rhythm: reminders before the due date, multiple nudges if payment fails, and a clear suspension/deletion window if the balance stays overdue.
-</Info>
+This timetable shows when we send invoices, reminders, when we suspend services, terminate plans, and when we delete VPS from our disks if an invoice does not receive its payment.
 
-<Steps>
-  <Step title="Invoice Creation (Day -7)">
-    Seven days before renewal, the system generates the invoice and emails you the PDF.
-  </Step>
-  <Step title="Auto-Capture Attempt (Day -6)">
-    Saved cards are charged automatically. Update card details in the portal if the attempt fails.
-  </Step>
-  <Step title="Reminder Countdown (Day -2)">
-    A friendly reminder lands in your inbox two days before the due date—ideal for manual reviews or alternate payment methods.
-  </Step>
-  <Step title="Invoice Due (Day 0)">
-    The service is still active, but payment is now required. Overdue reminders begin the following day.
-  </Step>
-  <Step title="Overdue Nudges (Day +1, +2, +3)">
-    Daily reminders encourage settlement while the VPS continues running. Pay any time to stop the sequence.
-  </Step>
-  <Step title="Suspension (Day +7)">
-    The VPS is powered off and access is blocked. No data is deleted yet—pay the invoice to restore service automatically.
-  </Step>
-  <Step title="Termination Phase (Day +14)">
-    If unpaid, the subscription is terminated. The VPS remains powered off but disk data is still retained.
-  </Step>
-  <Step title="Final Deletion (Day +20)">
-    Storage is wiped permanently. At this point the service cannot be recovered; you’ll need to order a new VPS and restore from backups.
-  </Step>
-</Steps>
+| **Day** | **Event**             | **Action**                                                        |
+| ------- | --------------------- | ----------------------------------------------------------------- |
+| -7d     | 🟢 Invoice Created    | Invoice is generated and sent                                     |
+| -6d     | 🟢 Credit Card Charge | Automatic attempt to charge your card                             |
+| -2d     | 🟢 Friendly Reminder  | First unpaid reminder sent                                        |
+| 0       | 🟡 Due Date           | Payment is due                                                    |
+| \+1d    | 🟡 Overdue Reminder 1 | First overdue reminder                                            |
+| \+2d    | 🟡 Overdue Reminder 2 | Second overdue reminder                                           |
+| \+3d    | 🟡 Overdue Reminder 3 | Third overdue reminder                                            |
+| \+7d    | 🟠 Service Suspension | VPS service powers down                                           |
+| \+14d   | 🔴 Termination        | VPS agreement ends (service no longer active, data still present) |
+| \+20d   | 🔴 Data Deletion      | All VPS data permanently removed (and invoice is cancelled)       |
+
+##  Service Recovery Options
+
+### **✅ Your Invoice shows Unpaid**
+
+**Service recovery is possible!**
+
+Proceed with the payment of your invoice, your service will reactivate automatically. <img src="/assets/invoice-status-unpaid-cropped.webp" alt="Billing WorkflowInvoice timing, payment reminders,..." />
+
+### **❌ If Your Invoice is Cancelled**
+
+#### Service Recovery is Not Available
+
+If your invoice shows as **CANCELLED**, **recovery is NOT possible**.
+
+Your VPS and **all data have been deleted** **(6 days after termination)**
+
+![Billing WorkflowInvoice timing, payment reminders,...](/assets/invoice-status-cancelled-cropped.webp)
 
 ---
 
-## Reactivate Before Day +20
+<Note>
+  ## **Client Responsibility Notice**
 
-- Settle the outstanding invoice and the VPS will power back on automatically.  
-- Need more time? Contact Support via messenger or email before suspension hits—we can advise on options.  
-- Always maintain off-site backups so you can recover quickly if deletion occurs.
+  VPS customers are solely responsible for:
+
+  - Managing their virtual machines
+  - Creating regular backups of their servers
+  - Securing all important data
+  - Keeping payment methods updated to avoid suspension and deletion
+
+  EDBB strongly recommends maintaining backups of all critical information.
+</Note>

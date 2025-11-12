@@ -12,13 +12,13 @@ Our redesigned control panel splits daily tasks into tabs:
 while a quick-action column on the left keeps power and console controls only one click away.
 
 <Frame>
-  <img src="/assets/edbb-management-portal.png" alt="EDBB VPS Control Panel" />
+  <img src="/assets/Control panel.png" alt="EDBB VPS Control Panel" />
 </Frame>
 
 
 ---
 
-## Quick Actions & Console Access
+## Quick Actions - Console Access
 
 <CardGroup cols={3}>
   <Card title="⚡ Power Menu">
@@ -62,11 +62,18 @@ while a quick-action column on the left keeps power and console controls only on
   <Card title="⬆️ Upgrades & Cancellation">
     The green <strong>Upgrade Plan</strong> button starts a plan upgrade; the red <strong>Request Cancellation</strong> button opens the guided termination dialogue. The "Upgrades" Tab allows for plan-upgrades and  resource upgrades (adding additional IP addresses, RAM, vCPU, drive boost)
   </Card>
+  <Card title="⚙️ Configured Options">
+    Displays all additional resources and upgrades applied to your VPS:  
+    - **Additional IPs:** shows the number of extra IPv4 addresses assigned.  
+    - **Drive Size Boost:** total extra disk space added to your main storage.  
+    - **RAM Upgrade:** amount of extra memory allocated.  
+    - **vCPU Upgrade:** number of additional CPU cores or sockets.  
+  </Card>
 </CardGroup>
 
 ---
 
-## Tabs for Installation & Networking
+## Tabs for Installation - Networking
 
 - **Installation** – start AutoInstall for Linux or Windows, mount helper ISOs, review Cloud-Init status, or upload custom media.  
 - **Traffic** – inspect per-service usage graphs, refill timers, and the traffic pool ledger.  

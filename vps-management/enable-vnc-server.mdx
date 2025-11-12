@@ -1,7 +1,7 @@
 ---
 title: "Enable VNC on Your VPS"
 sidebarTitle: "VPS VNC Access"
-description: "Turn VNC on or off from the EDBB portal so you can reach the console via Open Console or a desktop VNC client."
+description: "Turn VNC on or off from the EDBB Control Panel so you can reach the console via Open Console or a desktop VNC client."
 ---
 
 # Enable VNC for Console Access
@@ -16,7 +16,7 @@ description: "Turn VNC on or off from the EDBB portal so you can reach the conso
 
 <CardGroup cols={3}>
   <Card title="🔐 Portal Access">
-    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a> and open the VPS you want to manage.
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB Control Panel</a> and open the VPS you want to manage.
   </Card>
   <Card title="🕒 Maintenance Window">
     Plan a brief window—it’s best to enable VNC only when you’re actively using it.
@@ -32,14 +32,15 @@ description: "Turn VNC on or off from the EDBB portal so you can reach the conso
 
 <Steps>
   <Step title="Open the quick action menu">
-    In the service dashboard, locate the quick action panel. Click the arrow next to the red <strong>VNC Off</strong> button and choose <strong>Enable VNC</strong>.
+    In the service Control Panel, locate the quick action panel. Click the arrow next to the red <strong>VNC Off</strong> button and choose <strong>Enable VNC</strong>.
+    ![VNC access controls in the quick action panel](/assets/enable-vnc.png)
   </Step>
   <Step title="Wait for VNC to turn on">
     The button turns green and displays <strong>VNC On</strong>. The panel now shows the VNC hostname and password for desktop clients.
   </Step>
 </Steps>
 
-![VNC access controls in the quick action panel](/assets/vnc-stop-open-console-hostname.png)
+![VNC access controls in the quick action panel](/assets/VNC-info.png)
 
 ---
 
@@ -48,6 +49,7 @@ description: "Turn VNC on or off from the EDBB portal so you can reach the conso
 - Click <strong>Open Console</strong> to launch the browser-based console. No password is required for this view—just click inside the window to capture keyboard and mouse input.  
 - Prefer a desktop client? Copy the VNC hostname and password shown in the panel and connect using RealVNC, TightVNC, or any compatible viewer.
 
+![Open console](/assets/vnc-console.png)
 ---
 
 ## Step 3 – Disable VNC When Finished
@@ -66,3 +68,14 @@ description: "Turn VNC on or off from the EDBB portal so you can reach the conso
 </Callout>
 
 You can now confidently toggle VNC on and off whenever you need direct console access to your EDBB VPS.
+
+## Desktop VNC Client Instructions
+
+Connect to your server using your preferred **VNC Viewer** (for example: RealVNC, TightVNC, or UltraVNC).
+
+1. **Open your VNC Client** on your computer.  
+2. **Enter the VNC Server address and port** shown in the **Information card** (e.g. `your-server-ip:5901`).  
+3. **Use the VNC password** provided in **Step 1 – Start VNC**.  
+4. Click **Connect** to establish the session.
+
+💡 *Tip:* If the connection fails, make sure the Rescue System or VPS is running.

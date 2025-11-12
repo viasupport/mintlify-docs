@@ -12,12 +12,12 @@ description: "Control VPS power states from the EDBB portal—restart, stop, or 
 
 <Steps>
   <Step title="Open the VPS dashboard">
-    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB VPS Portal</a>, go to <strong>Services</strong>, and select the VPS you want to reboot.
+    Sign in to the <a href="https://my.edbb.com/clientarea.php" target="_blank">EDBB Control Panel</a>, go to <strong>Services</strong>, and select the VPS you want to reboot.
   </Step>
   <Step title="Choose Restart">
     Click the arrow next to the green <strong>Server On</strong> button and select <strong>Restart Server</strong>. The VPS powers off and back on in one action.
 
-![Restart server menu](/assets/vps-start-restart.png)
+![Restart server menu](/assets/Restart.png)
   </Step>
 </Steps>
 
@@ -27,7 +27,7 @@ description: "Control VPS power states from the EDBB portal—restart, stop, or 
 
 ---
 
-## Stop a Running VPS
+## Stop VPS
 
 <Steps>
   <Step title="Navigate to the power controls">
@@ -35,19 +35,20 @@ description: "Control VPS power states from the EDBB portal—restart, stop, or 
   </Step>
   <Step title="Wait for the state to change">
     The service status switches to <strong>Stopped</strong> once the hypervisor powers it off. Console access ends immediately.
+    ![Restart server menu](/assets/stop-server.png)
   </Step>
 </Steps>
 
 
 ---
 
-## Start a Stopped VPS
+## Start VPS
 
 <Steps>
   <Step title="Press Start Server">
     When the instance is stopped, the button turns blue and reads <strong>Start Server</strong>. Click it to boot the VM.
 
-![Start server after shutdown](/assets/vps-stop-restart.png)
+![Start server after shutdown](/assets/start-vps.png)
   </Step>
   <Step title="Reconnect">
     Once the status changes to <strong>Running</strong>, reopen the console or reconnect over SSH/RDP to resume work.
