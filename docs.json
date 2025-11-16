@@ -218,7 +218,14 @@
       "type": "button",
       "label": "Dashboard",
       "href": "https://my.edbb.com/clientarea.php"
+    },  
+
+      "primary": {
+      "type": "button",
+      "label": "Blog",
+      "href": "https://blog.edbb.com"
     }
+    
   },
   "footer": {
     "socials": {
