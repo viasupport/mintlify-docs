@@ -216,16 +216,9 @@
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Dashboard",
+      "label": "Control Panel",
       "href": "https://my.edbb.com/clientarea.php"
-    },  
-
-      "primary": {
-      "type": "button",
-      "label": "Blog",
-      "href": "https://blog.edbb.com"
-    }
-    
+    }  
   },
   "footer": {
     "socials": {
