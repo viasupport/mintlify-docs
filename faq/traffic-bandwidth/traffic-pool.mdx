@@ -15,11 +15,9 @@ description: "Learn how EDBB traffic pool works, how to assign traffic to your V
 - Traffic purchases are instant and are logged in the pool log.
 - Traffic assignments are instant and are logged in the hydration log
 
-## How to Get Started
+## 🌐 Traffic Pool Starter Credit
 
-**🛒 Purchase Traffic**: Choose the amount of traffic you need and [Top Up](https://manage.edisglobal.com/cart.php?gid=214) your Traffic Pool.
-
-**🌐 Traffic Pool Starter Credit**: Every new VPS includes **100 GB of Traffic Pool Starter Credit**.  
+Every new VPS includes **100 GB of Traffic Pool Starter Credit**.  
 This one-time credit helps you explore the Traffic Pool feature and gives you a buffer for unexpected traffic bursts.
 
 Your 100 GB starter credit:
@@ -27,6 +25,10 @@ Your 100 GB starter credit:
 - **never expires**
 - **can be assigned to any VPS** in your account
 - can be used **manually** or **automatically** via *Auto-Hydration*
+
+## How to Get Started
+
+**🛒 Purchase Traffic**: Choose the amount of traffic you need and [Top Up](https://manage.edisglobal.com/cart.php?gid=214) your Traffic Pool.
 
 **📌 Assign Traffic**: Once payment is complete, head to the **Traffic** **tab** in your control panel to assign traffic to your VPS. Use +100GB, +500GB, +1TB, +10TB buttons for **Manual Hydration**.
 
@@ -38,6 +40,39 @@ Your 100 GB starter credit:
  the pool.\
 **B — Manual Hydration**: manually assign portions of +100 GB, +500 GB, +1 TB, or +10 TB to the selected VPS.\
 **C — Auto Hydration**: choose a profile (e.g., +100 GB). The system automatically adds e.g. +100GB to your VPS at 99% traffic usage levels.
+
+---
+
+## Traffic Pool Accounting Balance Sheet
+
+The balance sheet below (demo data) works like a bank account statement.  
+We log **traffic top-ups**, **pool traffic consumption**, and the resulting balance after each transaction.  
+This report provides a transparent overview of **traffic pool usage across your entire VPS hosting account**.
+
+**How to Read the Balance Sheet**
+
+- **Date/Time:** Timestamp of the transaction  
+- **Source:** The VPS instance consuming traffic, or a Traffic Pool Top-Up  
+- **Change:** Traffic added (positive) or used (negative)  
+- **New Balance:** Remaining traffic after the transaction  
+
+| Date/Time           | Source                                                  | Change         | New Balance |
+|---------------------|---------------------------------------------------------|----------------|-------------|
+| 2025-03-19 17:14:42 | kvm_demo_id105                                          | -100 GB        | 6000 GB     |
+| 2025-03-19 15:01:33 | kvm_demo_id105                                          | -100 GB        | 6700 GB     |
+| 2025-03-19 12:44:11 | **Traffic Pool Starter Credit (100GB) kvm_demo_id207**  | **+100 GB**    | 6800 GB     |
+| 2025-03-18 18:22:09 | kvm_demo_id105                                          | -1000 GB       | 6700 GB     |
+| 2025-03-18 10:48:55 | kvm_demo_id304                                          | -500 GB        | 7700 GB     |
+| 2025-03-18 10:45:02 | kvm_demo_id412                                          | -300 GB        | 8200 GB     |
+| 2025-03-18 09:32:50 | **Traffic Pool Top-Up**                                 | **+1000 GB**   | 8500 GB     |
+| 2025-03-17 20:11:27 | kvm_demo_id105                                          | -1000 GB       | 7500 GB     |
+| 2025-03-17 19:08:44 | kvm_demo_id105                                          | -1000 GB       | 8500 GB     |
+| 2025-03-17 17:55:31 | kvm_demo_id207                                          | -500 GB        | 9500 GB     |
+| 2025-03-12 11:22:54 | **Traffic Pool Top-Up**                                 | **+10000 GB**  | 10000 GB    |
+
+📩 **We will notify you by email when 80% of your total Traffic Pool balance has been used.**
+
+<CtaButton label="Top-up Traffic Pool" link="https://my.edbb.com/cart.php?gid=214" />
 
 ---
 
